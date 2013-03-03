@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= @item[:title]%> - TheSLinux</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" media="screen">
+  </head>
+  <body>
+    <div id="main">
+      <% if @item[:title] %>
+      <h1><%= @item[:title] %></h1>
+        <%
+          metas = []
+          valid_tags = (@item[:tags] || []).select{|tag| tag.match(/^[a-z0-9]+$/)}
+          if not valid_tags.empty?
+            metas << "<strong>Thẻ:</strong> " \
+                      + valid_tags.map{|t| link_for_tag(t, "/tags/") }.join(", ")
+          end
+          if @item[:origin]
+            metas << "<strong>Bài gốc:</strong> <a href=\"#{@item[:origin]}\">#{@item[:origin]}</a>"
+          end
+          if @item[:license]
+            metas << "<strong>Giấy phép:</strong> #{@item[:license]}"
+          end
+          if @item[:translators] or @item[:translator]
+            metas << "<strong>Người dịch:</strong> #{item[:translators] ||@item[:translator]}"
+          end
+        %>
+        <% if not metas.empty? %>
+        <p>
+          <%= metas.join("\n<br />\n")%>
+        </p>
+        <% end %>
+      <% end %>
+      <%= yield %>
+      <% if not @item[:virtual] %>
+      <p>
+        ----
+        <br /><em><%= git(:stat, @item) %>;</em>
+        <br /><em><%= git(:last_update, @item) %></em>
+      </p>
+      <% end %>
+    </div>
+    <div id="sidebar">
+      <h2><a href="/">TheSLinux</a></h2>
+      <ul>
+        <li><a href="/news/">tin tức</a>
+              <%= item_news?("news/", 1000) ? " (mới)" : "" %>
+          </li>
+        <li><a href="/about/">giới thiệu</a></li>
+        <li><a href="/tags/">thẻ bài viết</a></li>
+        <li><a href="/faq/">hỏi - đáp</a></li>
+        <li><a href="/changes/">thay đổi gần đây</a></li>
+      </ul>
+      <h2>Liên hệ</h2>
+      <ul>
+        <li><a href="https://twitter.com/theslinux/">Twitter</a></li>
+        <li><a href="http://groups.google.com/group/theslinux">Nhóm thư</a></li>
+        <li>email: <strong>info</strong> @ <strong>domain</strong></li>
+      </ul>
+      <h2>Linh tinh</h2>
+      <ul>
+        <li><a href="http://www.google.com.vn/?q=site:theslinux.org+&nbsp;">tìm với Google</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
