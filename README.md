@@ -19,8 +19,10 @@
 ## How to contribute
 
    To contribute to this work you need to create a fork of the Github
-   repository https://github.com/theslinux/homepage , make the changes
-   and create your pull request.
+   repository https://github.com/theslinux/homepage , make some changes
+   and create your pull request. Remember to fetch the latest updates
+   from the main repository _(see the address provided)_ by using
+   `git pull --rebase` to avoid some potential conflicts.
 
    Before creating new pull request you need to review your changes locally
    by using the `view` or `watch` options provided by `Nanoc`.
