@@ -35,6 +35,10 @@ compile '/stylesheet/' do
   # don’t filter or layout
 end
 
+compile '/rss/' do
+  filter :erb
+end
+
 compile '/changes/' do
   filter :erb
   filter :kramdown
