@@ -3,11 +3,11 @@
   padding: 0;
 
   font-family: Georgia, Palatino, Times, 'Times New Roman', sans-serif;
-  color: #fff;
+  color: #000;
 }
 
 body {
-  background: #000;
+  background: #fff;
 }
 
 a {
@@ -115,7 +115,7 @@ code {
 }
 
 pre {
-  color: white;
+  color: #000;
   background-color: black;
   padding: 1em;
   font-family: monospace;
@@ -123,7 +123,7 @@ pre {
 }
 
 pre code {
-  color: white;
+  color: #000;
   font-family: monospace;
 }
 
