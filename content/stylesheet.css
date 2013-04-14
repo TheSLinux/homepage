@@ -180,3 +180,11 @@ table.CodeRay td.code {
   padding: 0px;
   margin: 0px;
 }
+
+@font-face {
+    font-family: "BlackChancery";
+    src: url(/black-chancery.ttf) format("truetype");
+}
+.blackchancery {
+    font-family: "BlackChancery", Verdana, Tahoma;
+}
