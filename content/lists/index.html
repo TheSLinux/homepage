@@ -9,10 +9,10 @@ tags: ['email', 'list']
 Các nhóm thư được cung cấp bởi <http://freelists.org>.
 
 Để tham gia nhóm thư bạn cần đăng ký thông qua giao diện web của nhóm đó,
-hoặc [đăng ký bằng email](#mailreg). Sau khi đăng ký bạn có thể gửi email
-tới địa chỉ của nhóm thư và tất cả các thành viên sẽ nhận được.
+hoặc [đăng ký bằng email](#mailreg), hoặc [sử dụng mẫu đăng ký nhanh](#fastoption).
 
-Khi tham gia bất kỳ nhóm thư nào bạn cần chú ý tuân theo [các quy tắc chung](#rules).
+Sau khi đăng ký bạn có thể gửi email tới địa chỉ của nhóm thư và tất cả các
+thành viên sẽ nhận được. Khi gửi thư bạn cần chú ý [các quy tắc chung](#rules).
 
 Nếu chỉ muốn theo dõi mà không cần viết `email` nào, có thể dùng địa chỉ
 `rss` được cho như dưới đây.
@@ -60,6 +60,61 @@ gửi một email vào địa chỉ `theslinux-questions-request@freelists.org`
 với tiêu đề của thư là `subscribe`. Chờ khoảng mấy phút bạn sẽ nhận
 được email phản hồi từ địa chỉ  `ecartis@freelists.org` với các chỉ dẫn
 bạn cần làm theo.
+
+
+## Đăng ký và điều chỉnh nhanh {#fastoption}
+
+Bạn có thể đăng ký hoặc chỉnh các thiết lập cơ bản bằng cách điền
+và gửi thông tin theo mẫu sau
+
+----
+
+{::nomarkdown}
+<br>
+<form action="http://www.freelists.org/cgi-bin/subscription.cgi" method="post">
+  Địa chỉ email của bạn:
+  <input type="text" name="email">
+  <input type=hidden name="url_or_message" value="http://theslinux.org/lists/#fothanks">
+  <br>Tên nhóm thư:
+  <select name="list">
+    <option value="thesilnux-security">Security - Trao đổi về bảo mật </option>
+    <option value="theslinux-questions">Questions - Câu hỏi của người dùng</option>
+    <option value="theslinux-bugs">Bugs - Báo lỗi</option>
+    <option value="theslinux-hackers">Hackers - Dành cho người phát triển</option>
+  </select>
+  <br>Tuỳ chọn:
+  <select name="action">
+    <option value="subscribe">Đăng ký</option>
+    <option value="unsubscribe">Bỏ đăng ký</option>
+    <option value="set digest">Bật chế độ Digest</option>
+    <option value="unset digest">Tắt chế độ Digest</option>
+    <option value="set vacation">Bắt đầu kỳ nghỉ</option>
+    <option value="unset vacation">Kết thúc kỳ nghỉ</option>
+    <option value="help">Nhận tài liệu hướng dẫn</option>
+  </select>
+  <br><br>
+  <input type=submit value="Xác nhận và gửi yêu cầu">
+</form>
+<br>
+{:/nomarkdown}
+
+----
+
+Sau khi được `xác nhận và gửi`, yêu cầu sẽ chuyển đến trang <http://freelists.org>
+và sau đó sẽ [quay trở lại đây](#fothanks).
+
+## Ghi chú {#fothanks}
+
+Khi sử dụng [mẫu đăng ký ở trên](#fastoption) bạn sẽ được chuyển hướng
+đến <http://freelists.org> và khi mọi chuyện tốt đẹp, bạn sẽ
+
+1. Được chuyển hướng về trang này;
+2. Bạn sẽ nhận được email với các chỉ dẫn tiếp theo.
+
+Email bạn nhận được từ địa chỉ `ecartis@freelists.org`, có thể nằm trong
+`Inbox` hoặc `Spam box`. Nội dung thư là tiếng Anh nhưng hầu hết các chỉ
+dẫn đều đơn giản bạn hãy thử làm theo trước khi tìm kiếm giúp đỡ.
+
 
 [github.issues]: https://github.com/TheSLinux/gs/issues
 [bugs.web]: http://www.freelists.org/list/theslinux-bugs
