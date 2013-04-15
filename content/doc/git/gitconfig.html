@@ -1,0 +1,48 @@
+---
+title: Cấu hình cho git
+allow_comment: yes
+tags: ['git', 'programming']
+origin: https://github.com/archlinuxvn/home/blob/master/content/doc/git/gitconfig.html
+---
+
+**Mục lục**
+
+* TOC
+{:toc}
+
+----
+
+Bài này cung cấp ví dụ cho `~/.gitconfig`.
+
+## Tại sao
+
+Trong `subversion` (hay `svn`), thông tin về người dùng được lưu ở phía
+máy phục vụ (`svn server`), do đó, bạn không quan tâm nhiều. Trong khi đó,
+`git` lưu thông tin tác giả, email,... của người ghi vào kho ngay trên
+chính máy của bạn. Hai thông tin quan trọng là tên và email. Nếu
+bạn không điều chỉnh cho phù hợp thì nhật ký của kho `git` sẽ rất rối và
+sau này nhìn lại bạn sẽ chẳng biết _chính-bạn-là-ai_ trong phần nhật ký.
+
+Nếu như bạn đang dùng `git`, việc xem lại nhật ký là quan trọng; vì thế
+đừng chậm trễ trong việc điều chỉnh cấu hình `~/.gitconfig`.
+
+## Nội dung tập tin
+
+[Tập tin cấu hình mẫu](/doc/git/sample-gitconfig.txt).
+
+Bạn tải vè chép nội dung tập tin trên vào tập tin `~/.gitconfig`, sau đó
+chỉnh lại cho phù hợp, nhất là tên và email trong mục `[user]`. Thay đổi
+sẽ có tác dụng cho tất cả kho `git` trên máy của bạn, trừ những kho được thiết
+lập riêng bằng cấu hình trong tập tin `/path/to/git/repository/.git/config`.
+
+Nội dung các tập tin cấu hình có thể chỉnh bằng tay, hoặc bằng lệnh
+`git config --global` hoặc `git config`. Để biết thêm chi tiết,
+thử với `git config --help`.
+
+Có một lưu ý nhỏ là định nghĩa `st = status -uno` bên dưới đây chỉ thông báo
+thay đổi của các tập tin *đã có* trong `git repository`, còn các tập tin
+mới chưa được thêm vào sẽ được bỏ qua.
+
+Bạn cũng thấy là bạn có thể chọn tên tùy ý. Đây thực tế là `nickname`, và
+bạn luôn có thể `mạo danh` người khác. Nhưng đừng làm thế; hãy chọn cho
+chính bạn một `nickname` thật kêu, thật đáng nhớ với mọi người nhé.
