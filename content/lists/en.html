@@ -1,0 +1,129 @@
+---
+title: Mailing list
+tags: ['email', 'list']
+---
+
+* TOC
+{:toc}
+
+Our lists are provided by <http://freelists.org>.
+
+To join any list you need to register by using its web UI, or by using
+[email command](#mailreg) or by [using this quick form](#fastoption).
+
+
+When you're registered to a list you can send and receive email to/from
+all members of the list. When sending new message to a list you need to
+[follow some common rules](#rules).
+
+If you just want to read lists' message without being a member, you
+may use the `rss` links as provided below.
+
+## Lists
+
+* **theslinux-`security`@freelists.org** :
+  Focus on seucirty topics.
+  [Web-UI][security.web], [archive][security.archive] and [RSS feed][security.rss].
+
+* **theslinux-`questions`@freelists.org** :
+  General questions from users.
+  [Web-UI][questions.web], [archive][questions.archive] and [RSS feed][questions.rss].
+
+* **theslinux-`bugs`@freelists.org** :
+  Reporting bugs.
+  You make use the [Github system][github.issues] instead.
+  [Web-UI][bugs.web], [archive][bugs.archive] and [RSS feed][bugs.rss].
+
+* **theslinux-`hackers`@freelists.org** :
+  This is for hackers and developers.
+  [Web-UI][hackers.web], [archive][hackers.archive] and [RSS][hackers.rss].
+
+## Common rules {#rules}
+
+Our lists are public. Once your email is sent to the list, any one
+who has internet connection can receive and read your message.
+So the first rule for you is to `be careful`, and `to respect other people`.
+
+Every list has its own kind of topics. Don't use wrong list for your
+problem. In case you are not sure, the list `theslinux-questions`
+may be the good one.
+
+You can use English or Vietnamese in our lists. However, please don't
+use both English and Vietnamese in a **same** topic (thread).
+
+If you think your problem or message doesn't follow up the current
+thread, you may edit the email subject and/or use the prefix `[OT]`
+to help other people to track discussion.
+
+## Email command {#emailreg}
+
+To register to the list `foobar@freelists.org`, you can send an email
+to the address `foobar-request@freelists.org` (here `foobar` is `theslinux-questions`,
+`theslinux-hackers`, bla bla), and use **subscribe** as email subject.
+You will need to wait some minutes after your email is sent out.
+The list server will answer you with the last steps to finish your registration.
+
+Our lists are run by `Ecartis` which also provides many useful email commands.
+Please read `Ecartis` documentation for details.
+
+## Quick registration form {#fastoption}
+
+You can register and/or change your list' setting by using the following form.
+
+----
+
+{::nomarkdown}
+<br>
+<form action="http://www.freelists.org/cgi-bin/subscription.cgi" method="post">
+  Your email:
+  <input type="text" name="email">
+  <input type=hidden name="url_or_message" value="http://theslinux.org/lists/en/#fothanks">
+  <br>The list you want to join:
+  <select name="list">
+    <option value="theslinux-security">Security topics</option>
+    <option value="theslinux-questions">Users' Questions</option>
+    <option value="theslinux-bugs">Reporting Bugs</option>
+    <option value="theslinux-hackers">Hackers or Developers</option>
+  </select>
+  <br>Option:
+  <select name="action">
+    <option value="subscribe">Subscribe</option>
+    <option value="unsubscribe">Unsubscribe</option>
+    <option value="set digest">Turn Digest mode on</option>
+    <option value="unset digest">Turn Digest mode off</option>
+    <option value="set vacation">Set Vacation mode on</option>
+    <option value="unset vacation">Set Vacation mode off</option>
+    <option value="help">Get help</option>
+  </select>
+  <br><br>
+  <input type=submit value="Confirm and send this form">
+</form>
+<br>
+{:/nomarkdown}
+
+----
+
+After this form is confirmed and sent, you will be redirected to
+<http://freelists.org> and then to [this page](#fothanks).
+
+## Notes {#fothanks}
+
+Whe you use [our quick registration form](#fastoption) you will be redirected
+to <http://freelists.org> and finally to this page. You will also receive
+some instructions via email from `ecartis@freelists.org`. This email
+may come to your `Inbox` or `Spam box`. Please check and follow
+instructions in that email.
+
+[github.issues]: https://github.com/TheSLinux/gs/issues
+[bugs.web]: http://www.freelists.org/list/theslinux-bugs
+[bugs.rss]: http://www.freelists.org/feed/theslinux-bugs
+[bugs.archive]: http://www.freelists.org/archive/theslinux-bugs/
+[questions.web]: http://www.freelists.org/list/theslinux-questions
+[questions.rss]: http://www.freelists.org/feed/theslinux-questions
+[questions.archive]: http://www.freelists.org/archive/theslinux-questions/
+[hackers.web]: http://www.freelists.org/list/theslinux-hackers
+[hackers.rss]: http://www.freelists.org/feed/theslinux-hackers
+[hackers.archive]: http://www.freelists.org/archive/theslinux-hackers/
+[security.web]: http://www.freelists.org/list/theslinux-security
+[security.rss]: http://www.freelists.org/feed/theslinux-security
+[security.archive]: http://www.freelists.org/archive/theslinux-security/
