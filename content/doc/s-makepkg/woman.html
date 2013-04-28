@@ -44,7 +44,7 @@ của `TheSLinux` ở địa chỉ  [buildsystem][], có các đặc điểm cơ
   môi trường.
 * Yêu cầu các gói được viết tuân theo chuẩn mô tả trong nhánh [TheBigBang][].
 
-Còn nhiều điiểm chi tiết hơn bạn có thể xem ngay bên trong mã nguồn của
+Còn nhiều điểm chi tiết hơn bạn có thể xem ngay bên trong mã nguồn của
 kịch bản [s-run.sh][].
 
 ## Cài đặt `s-makepkg`
@@ -133,7 +133,7 @@ này bằng cách dùng các biến môi trường được mô tả trong phầ
 
 * **`PACKAGE_TAG`** : Chỉ ra chính xác gói cùng với phiên bản sẽ được tạo ra.
 
-* **`PACKAGE_REF_TAG`**  : Chỉ ra phiên bản tham khảo của gói đã biên dịch
+* **`PACKAGE_REF_TAG`** : Chỉ ra phiên bản tham khảo của gói đã biên dịch
   trước đó. Số hiệu biên dịch sẽ được tính tự động dựa trên giá trị tham khảo.
   Phiên bản tham khảo phải tồn tại như một thẻ (`tag`) hợp lệ
   trong kho `git`.
@@ -141,6 +141,9 @@ này bằng cách dùng các biến môi trường được mô tả trong phầ
 * **`PACKAGE_BASE`** : Chỉ ra tên gói cần biên dịch. Điều này là cần thiết
   khi thư mục hiện hành không có tên trùng với tên gói,
   hoặc khi bạn đang làm việc với các nhánh không cùng tên với gói.
+
+* **`PACKAGE_FEATURE`** : Chỉ ra `tính năng` đặc biệt của gói. Giá trị của
+  biến này sẽ được đính kèm với tên gói cuối cùng.
 
 * **`PACKAGE_VERSION`** : Chỉ ra phiên bản của gói
 
@@ -168,6 +171,16 @@ biên dịch do `s-makepkg` tự động xác định
 
     # Kết quả: gói `linux-api-headers-3.2.44-???.tar.xz`, ở đây
     # `???` là số hiệu thay đổi tùy theo sự xác định của `s-makepkg`
+
+Nếu đang thử nghiệm tính năng `new-feature` mới cho gói `geany`, bạn có thể
+sử dụng biến `PACKAGE_FEATURE` để tạo gói `geany-new-feature` như sau
+
+    #!sh
+    $ git checkout geany
+    PACKAGE_FEATURE="new-feature" s-makepkg
+
+Kết quả sau cùng bạn sẽ thu được gói `geany-new-feature` và gói này sẽ
+xung đột với gói `geany`: bạn không thể cài hai gói này cùng lúc.
 
 Các biến môi trường còn lại được dùng khi bạn cần chỉ ra con số cụ thể
 cho tên gói (ví dụ `linux-api-headers`), số phiên bản (ví dụ `3.2.44`)
