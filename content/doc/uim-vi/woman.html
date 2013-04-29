@@ -1,0 +1,145 @@
+---
+title: Sử dụng uim-vi
+tags: ['uim', 'vietnamese', 'telex', 'vni']
+---
+
+* TOC
+{:toc}
+
+## Mô tả
+
+`uim-vi` cung cấp bộ gõ tiếng Việt cho người dùng `TheSLinux`, với các
+kiểu gõ `telex` và `vni` truyền thống. `uim-vi` là một bản tinh chỉnh
+của bản gốc `uim`, với các cài đặt thuận lợi cho người dùng tiếng Việt.
+
+## Cài đặt
+
+Hiện tại chưa có sẵn các gói cho `uim-vi`. Bạn cần biên dịch các gói
+`m17n-db-vi` và `uim-vi` từ mã nguồn nhờ [s-makepkg](/doc/s-makepkg/woman/).
+
+## Đặc điểm
+
+Về mặt **kỹ thuật** `uim` không được thiết kế theo mô hình `server` -- `client`
+như `ibus` hay `scim`. Đi kèm `uim` là một bộ thông dịch `Scheme` nhỏ
+gọn dùng để viết các phần mở rộng, các kiểu nhập. Từ sản phẩm gốc `uim`,
+những bộ gõ và điều chỉnh không thuận tiện cho người dùng Việt Nam được
+lược bỏ đi, để tạo nên `uim-vi`.
+
+Đối với **người dùng**, `uim(-vi)` có các đặc điểm như sau đây.
+
+* Hỗ  trợ: `uim-vi` hỗ trợ các dòng ứng dụng cơ bản trên
+  hệ thống Linux là `KDE`, `QT`, `GTK`
+* Các kiểu gõ tiếng Việt:
+  `xtelex`, `xvni` _(chính thức được hỗ trợ và phát triển bởi `TheSLinux`)_,
+  `m17n-vi-telex`, `m17n-vi-vni` _(sử dụng các bảng của thư viện [m17n][])_,
+  `viqr` _(theo mô tả trong [VIQR][])_.
+* Cấu hình:
+  Khả năng thay đổi kiểu gõ cho từng ứng dụng hoặc từng khu vực trên màn hình.
+  Thay đổi được các phím tắt thông qua giao diện đồ họa hoặc qua tập tin cấu hình.
+
+Đối với **nhà phát triển**, `uim` có thể được mở rộng và điều chỉnh dễ dàng
+bằng cách viết các hỗ trợ ở dạng _thông dịch_ trong ngôn ngữ `Scheme`.
+
+## Chương trình đi kèm
+
+Các tiện ích có ích cho người dùng cuối đi kèm trong `uim(-vi)`:
+
+1. `uim-setup`: Cấu hình các phím tắt và điều chỉnh tính năng của `uim`
+2. `uim-toolbar-gtk-systray`: Thể hiện biểu tượng trên khay hệ thống,
+  dùng để thể hiện kiểu gõ đang sử dụng và trạng thái của kiểu gõ (tắt, m)ở.
+
+## Kiểu gõ `xtelex` và `xvni` {#xtelex}
+
+Đây là hai kiểu gõ được hỗ trợ và phát triển chính thức bởi `TheSLinux`,
+và là kiểu gõ mặc định trong `uim-vi`.
+
+Được phát triển tiếp từ sản phẩm gốc của [Trần Thạch Anh][myquartz]
+dành cho `scim`, hai kiểu gõ này thực chất là một bộ tự điển các tổ hợp
+để sinh ra các từ (hoặc một phần của từ) tiếng Việt.
+
+Trong khi một số bộ gõ tiếng Việt khác cố gắng trừu tượng hóa các cách
+gõ tiếng Việt trong máy tính và triển khai theo các quy lập trình,
+`xtelex` và `xvni` là mô tả trực quan các tổ hợp như [ví dụ][xtelex].
+Cách tiếp cận này có các đặc điểm sau
+
+1. Thay đổi và phát triển kiểu gõ dễ dàng, trực quan;
+2. Thêm bớt các ngoại lệ đơn giản và mau chóng;
+3. Chỉ cần am hiểu về tiếng Việt là có thể phát triển bảng `xtelex` và `xvni`.
+
+## Những vấn đề thường gặp
+
+Các hướng dẫn dưới đây đúng với cài đặt **mặc định** của `TheSLinux`.
+
+1. **Chọn kiểu gõ nào:** Bạn có thể chọn một trong các kiểu gõ `m17n-vi-telex`,
+  `m17n-vi-vni`, `xtelex`, `xvni`, `viqr` (và cách gõ trực tiếp). Nếu bạn
+  đã từng sử dụng các kiểu gõ khác trước đây, bạn cần chút thời gian để
+  làm quen với một trong các kiểu gõ này. Chúng tôi hy vọng các bạn có thể
+  tham gia thử nghiệm và phát triển `xtelex`, `xvni`
+
+2. **Tạm thời tắt bộ gõ như thế nào**: Sử dụng phím tắt **Super Escape**
+  (phím tắt **Super** là phím có lá cờ `Windows` trên bàn phím của bạn).
+  Khi dùng phím tắt này, bộ gõ hiện tại sẽ tạm thời ngắt và thay vào đó
+  là kiểu trực tiếp _(để gõ tiếng Anh)_, hoặc _ngược lại_.
+  Bạn có thể cấu hình lại `uim` bằng chương trình `uim-setup` để chuyển
+  đổi giữa hai kiểu gõ tức thì. Từ khóa: **input method toggle**
+
+3. **Chuyển đổi qua lại giữa các bộ gõ thế nào**: Sử dụng phím tắt
+  **Ctrl Alt \\**. Mỗi lần sử dụng phím tắt này bạn sẽ chuyển qua bộ
+  gõ mới, với các thiết lập mặc định của bộ gõ đó. Điều đó có nghĩa là
+  các ghi nhớ cho trạng thái của bộ gõ _(đang bật hoặc tắt)_ sẽ bị mất đi.
+  Mặc dù cách này cũng có thể dùng để tạm thời tắt bộ gõ, nhưng đúng như
+  câu hỏi, bạn chỉ dùng phím tắt này khi thật sự cần chuyển đổi giữa
+  các kiểu gõ mà thôi. Từ khóa: **input method switching**
+
+4. **Đổi lại các phím tắt và kiểu gõ mặc định như thế nào**:
+  Sử dụng chương trình `uim-setup` và tìm đến phần **Global Settings**.
+
+5. **Khi chạy uim-setup, chương trình bị dừng đột ngột, chắc là bị lỗi**:
+  Bạn sao lưu và xóa thư mục **~/.uim.d/** và chạy lại chương trình
+  `uim-setup`. Nếu vẫn bị lỗi, hay liên hệ và báo với đội phát triển
+  theo các chỉ dẫn trong phần [Hỗ trợ](#support).
+
+7. **Trong các bộ gõ tôi biết tôi gõ _thế này_ để được _thế này_ nhưng**
+  **trong `uim-vi` tôi không làm được như vậy**: Mỗi bộ gõ có đặc điểm
+  riêng và cách tiếp cận riêng. Bạn hãy mô tả chi tiết các phím mà bạn
+  đã gõ và kết quả bạn mong muốn để đôi phát triển `TheSLinux` có thể
+  xác định, phân loại lỗi và cân nhắc thêm, bớt tính năng vào `uim-vi`.
+
+6. **Tôi không muốn dùng uim-setup**: Bạn có thể sử dụng `scim` hoặc `ibus`
+  thay cho `uim-vi`. Hiện tại bạn phải biên dịch các gói này từ mã nguồn.
+
+
+## Hỗ trợ. Góp ý. báo lỗi {#support}
+
+Vui lòng báo các lỗi theo [hướng dẫn chung](/bugs/). Các câu hỏi,
+thảo luận vui lòng dùng nhóm thư [theslinux-hackers](/lists/#all).
+
+Thông tin mới nhất về `uim-vi` có thể tìm thấy [ở trang Github][uim-vi.home].
+
+## Tác giả
+
+`uim` được viết và bảo trì bởi nhiều tác giả, là dự án được hỗ trợ bởi [IPA][].
+Trang chủ của `uim` có tại <https://github.com/uim/uim>.
+
+`uim-vi` được bảo trì bởi đội phát triển `TheSLinux` và mã nguồn của các
+thay đổi được cho ở [kho github][uim-vi.home].
+
+Các kiểu gõ `xtelex` và `xvni` được tiếp tục phát triển từ sản phẩm
+của [Trần Thạch Anh][myquartz].
+
+## Giấy phép
+
+`uim(-vi)` được phân phối theo giấy phép [BSD mới][newBSD].
+Bộ gõ `xtelex` và `xvni` được phân phối theo giấy phép [GPLv2][].
+Việc sử dụng, phân phối, chỉnh sửa `uim` và `uim-vi` cùng các thành phần
+của nó phải được thực hiện dưới những quy định của giấy phép đã chỉ ra.
+
+[VNI]: http://vi.wikipedia.org/wiki/VNI
+[VIQR]: http://vi.wikipedia.org/wiki/VIQR
+[m17n]: http://www.nongnu.org/m17n/
+[uim-vi.home]: https://github.com/TheSLinux/buildsystem/commits/uim-vi
+[newBSD]: http://opensource.org/licenses/BSD-3-Clause
+[GPLv2]: http://www.gnu.org/licenses/gpl-2.0.html
+[IPA]: IPA (http://www.ipa.go.jp/)
+[myquartz]: https://code.google.com/p/scim-tables-vietnamese-ext/
+[xtelex]: https://github.com/TheSLinux-forks/myquartz-scim2uim/blob/master/src/Telex.txt.in
