@@ -209,19 +209,13 @@ EOF
       when false
         []
       when nil # "CC BY-ND 3.0"
-        ["This page is published under the license <a href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">CC BY-NC-ND 3.0</a>.",
+        ["Trang này được phân phối theo giấy phép <a href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">CC BY-NC-ND 3.0</a>.",
+         "Bạn được phép <b>Sao chép</b>, <b>Chia sẻ</b>, <b>Phân phối lại</b> trang này dưới điều kiện sau:",
          "",
-         "You are free to",
-         "",
-         "  Share — to copy, distribute and transmit the work",
-         "",
-         "under the following conditions:",
-         "",
-         "  (1) Attribution — You must attribute the work in the manner",
-         "      specified by the author or licensor <em>(but not in any way",
-         "      that suggests that they endorse you or your use of the work)</em>",
-         "  (2) Noncommercial — You may not use this work for commercial purposes;",
-         "  (3) No Derivative Works — You may not alter, transform, or build upon this work."
+         "(1) Bạn phải ghi tên tác giả và giấy phép; tuy nhiên không được",
+         "    hàm ý tác giả  trao trang này hoặc quyền sử dụng trang này cho bạn;",
+         "(2) Bạn không dùng trang này vào mục đích thương mại;",
+         "(3) Bạn không thay đổi, điều chỉnh hay tạo ra sản phẩm khác từ trang này.",
         ]
       else
         ["This page is published under the license <strong>#{name}</strong>"]

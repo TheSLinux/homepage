@@ -41,6 +41,7 @@
         <br /><em><%= git(:last_update, @item) %></em>
       </p>
       <% end %>
+      <pre class="license"><%= license_text(@item[:license]) %></pre>
     </div>
     <div id="sidebar">
       <h2><a href="/">TheSLinux</a></h2>
