@@ -209,13 +209,15 @@ EOF
       when false
         []
       when nil # "CC BY-ND 3.0"
-        ["Trang này được phân phối theo giấy phép <a href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">CC BY-NC-ND 3.0</a>.",
-         "Bạn được phép <b>Sao chép</b>, <b>Chia sẻ</b>, <b>Phân phối lại</b> trang này dưới điều kiện sau:",
+        ["Trang này thuộc quyền sở hữu của <b>TheSLinux</b>,",
+         "  và được phân phối với giấy phép <a href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">CC BY-NC-ND 3.0</a>.",
          "",
-         "(1) Bạn phải ghi tên tác giả và giấy phép; tuy nhiên không được",
-         "    hàm ý tác giả  trao trang này hoặc quyền sử dụng trang này cho bạn;",
-         "(2) Bạn không dùng trang này vào mục đích thương mại;",
-         "(3) Bạn không thay đổi, điều chỉnh hay tạo ra sản phẩm khác từ trang này.",
+         "Bạn được <b>Sao chép</b>, <b>Chia sẻ</b>, <b>Phân phối</b> trang này dưới điều kiện sau:",
+         "",
+         "(1) Bạn phải ghi tên tác giả <b>TheSLinux</b> và giấy phép; tuy nhiên <b>không</b>",
+         "    được hàm ý tác giả  trao trang này hay quyền sử dụng trang này cho bạn;",
+         "(2) Bạn <b>không</b> dùng trang này vào mục đích thương mại;",
+         "(3) Bạn <b>không</b> thay đổi, điều chỉnh hay tạo ra sản phẩm từ trang này.",
         ]
       else
         ["This page is published under the license <strong>#{name}</strong>"]
