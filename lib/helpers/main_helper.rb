@@ -209,7 +209,7 @@ EOF
       when false
         []
       when nil # "CC BY-ND 3.0"
-        ["Trang này thuộc quyền sở hữu của <b>TheSLinux</b>,",
+        ["Trang này là một phần của <b>TheSLinux</b>,",
          "  và được phân phối với giấy phép <a href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">CC BY-NC-ND 3.0</a>.",
          "",
          "Bạn được <b>Sao chép</b>, <b>Chia sẻ</b>, <b>Phân phối</b> trang này dưới điều kiện sau:",
