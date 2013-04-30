@@ -1,6 +1,6 @@
 ---
 title: Sử dụng uim-vi
-tags: ['uim', 'vietnamese', 'telex', 'vni']
+tags: ['uim', 'vietnamese', 'telex', 'vni', 'woman']
 ---
 
 * TOC
@@ -67,7 +67,7 @@ Cách tiếp cận này có các đặc điểm sau
 2. Thêm bớt các ngoại lệ đơn giản và mau chóng;
 3. Chỉ cần am hiểu về tiếng Việt là có thể phát triển bảng `xtelex` và `xvni`.
 
-## Những vấn đề thường gặp
+## Vấn đề thường gặp
 
 Các hướng dẫn dưới đây đúng với cài đặt **mặc định** của `TheSLinux`.
 
@@ -81,7 +81,7 @@ Các hướng dẫn dưới đây đúng với cài đặt **mặc định** c�
   Khi dùng phím tắt này, bộ gõ hiện tại sẽ tạm thời ngắt và thay vào đó
   là kiểu trực tiếp _(để gõ tiếng Anh)_, hoặc _ngược lại_.
   Bạn có thể cấu hình lại `uim` bằng chương trình `uim-setup` để chuyển
-  đổi giữa hai kiểu gõ tức thì. Từ khóa: **input method toggle**
+  đổi giữa hai kiểu gõ tức thì. Từ khóa: `input method toggle`
 
 3. **Chuyển đổi qua lại giữa các bộ gõ thế nào**: Sử dụng phím tắt
   **Ctrl Alt \\**. Mỗi lần sử dụng phím tắt này bạn sẽ chuyển qua bộ
@@ -89,15 +89,22 @@ Các hướng dẫn dưới đây đúng với cài đặt **mặc định** c�
   các ghi nhớ cho trạng thái của bộ gõ _(đang bật hoặc tắt)_ sẽ bị mất đi.
   Mặc dù cách này cũng có thể dùng để tạm thời tắt bộ gõ, nhưng đúng như
   câu hỏi, bạn chỉ dùng phím tắt này khi thật sự cần chuyển đổi giữa
-  các kiểu gõ mà thôi. Từ khóa: **input method switching**
+  các kiểu gõ mà thôi. Từ khóa: `input method switching`
 
 4. **Đổi lại các phím tắt và kiểu gõ mặc định như thế nào**:
-  Sử dụng chương trình `uim-setup` và tìm đến phần **Global Settings**.
+  Sử dụng chương trình `uim-setup` và tìm đến phần `Global Settings`.
 
 5. **Khi chạy uim-setup, chương trình bị dừng đột ngột, chắc là bị lỗi**:
   Bạn sao lưu và xóa thư mục **~/.uim.d/** và chạy lại chương trình
   `uim-setup`. Nếu vẫn bị lỗi, hay liên hệ và báo với đội phát triển
   theo các chỉ dẫn trong phần [Hỗ trợ](#support).
+
+8. **Khi tôi gõ _w_ thì không hiện ra _ư_**: Nhiều bộ gõ đặt ra các
+  luật riêng so với định nghĩa ban đầu [VNI], ví dụ khi gõ _w_ hoặc _[_
+  thì sẽ in ra _ư_. Trong kiểu gõ `xtelex` thì không có các hỗ trợ này.
+  Tạm thời nếu muốn có chữ _ư_ khi gõ _w_, bạn hãy thử với `m17n-vi-telex`.
+  Trong tương lai, `uim-vi` sẽ thêm các hỗ trợ để người dùng có thể
+  thêm các định nghĩa gõ tắt tùy ý.
 
 7. **Trong các bộ gõ tôi biết tôi gõ _thế này_ để được _thế này_ nhưng**
   **trong `uim-vi` tôi không làm được như vậy**: Mỗi bộ gõ có đặc điểm
@@ -107,7 +114,6 @@ Các hướng dẫn dưới đây đúng với cài đặt **mặc định** c�
 
 6. **Tôi không muốn dùng uim-setup**: Bạn có thể sử dụng `scim` hoặc `ibus`
   thay cho `uim-vi`. Hiện tại bạn phải biên dịch các gói này từ mã nguồn.
-
 
 ## Hỗ trợ. Góp ý. Báo lỗi {#support}
 
