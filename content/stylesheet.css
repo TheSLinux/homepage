@@ -128,9 +128,15 @@ pre code {
 }
 
 pre.license {
-  color: gray;
+  color: #000;
   background-color: transparent;
-  font-size: 10px;
+  font-size: 11px;
+  font-family: normal;
+}
+
+pre.license b {
+  color: green;
+  font-size: 11px;
   font-family: normal;
 }
 
