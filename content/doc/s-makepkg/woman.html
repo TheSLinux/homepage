@@ -1,0 +1,232 @@
+---
+title: Sử dụng s-makepkg
+tags: ['pacman', 'smakepkg', 'devel', 'woman']
+---
+
+* TOC
+{:toc}
+
+## Mô tả
+
+`s-makepkg` là tiện ích dành cho người những phát triển `TheSLinux`,
+dùng để biên dịch các gói từ mã nguồn nhờ sử dụng các mô tả biên dịch
+có ở kho [buildsystem][].
+
+## Sử dụng khi nào
+
+`s-makepkg` được dùng khi bạn cần
+
+* Phát triển các gói mới cho `TheSLinux`;
+* Biên dịch các gói từ mã nguồn, sử dụng các mô tả mới nhất của gói.
+
+`s-makepkg` có thể được cài trên `ArchLinux` hoặc `TheSLinux`.
+
+## Khác biệt so với `makepkg`
+
+Về mặt kỹ thuật, `s-makepkg` sẽ gọi tới lệnh nguyên thuỷ `makepkg` của
+gói `pacman`. Lệnh nguyên thuỷ `makepkg` thực ra đã được điều chỉnh để
+có thể dùng kèm với `s-makepkg`.
+
+`s-makepkg` được thiết kế để làm việc với kho mô tả biên dịch  chính thức
+của `TheSLinux` ở địa chỉ  [buildsystem][], có các đặc điểm cơ bản sau
+
+* Tự động nhận dạng phiên bản (`package version`) và số hiệu biên dịch
+  (`release number`) từ thông tin của kho `git`. Những thông tin `pkgname`,
+  `pkgver` và `pkgrel` không cần phải chỉ ra trong tập tin `PKGBUILD`,
+  mà được cho qua các thẻ (`tag`) trong kho `git`
+* Chấp nhận các biến môi trường dùng để điều chỉnh và lựa chọn phiên bản:
+  Sử dụng chỉ một tập tin `PKGBUILD` bạn có thể biên dịch được nhiều phiên
+  bản khác nhau của gói. Trong hỗ trợ nguyên thuỷ của `ArchLinux` bạn
+  phải điều chỉnh tập tin `PKGBUILD` với phiên bản thích hợp mới có thể
+  tạo gói mới được.
+* Được sử dụng chủ yếu với kho [buildsystem][] của `TheSLinux`, nhưng vẫn
+  có thể sử dụng độc lập nhờ `s-makepkg` có thể đọc các thông tin biến
+  môi trường.
+* Yêu cầu các gói được viết tuân theo chuẩn mô tả trong nhánh [TheBigBang][].
+
+Còn nhiều điểm chi tiết hơn bạn có thể xem ngay bên trong mã nguồn của
+kịch bản [s-run.sh][].
+
+## Cài đặt `s-makepkg`
+
+Hiện chưa có sẵn gói cho `s-makepkg` do các quy ước chưa được thống nhất.
+Bạn cần cài đặt `s-makepkg` một cách thủ công như dưới đây.
+
+Dưới đây là hướng dẫn cài đặt `s-makepkg` trên các hệ thống `ArchLinux`
+hoặc `TheSLinux`.
+
+    #!sh
+    ## Tài khoản bình thường ##
+
+    # Tải về kho `buildystem` nếu bạn chưa tải trước đây
+    $ git clone git://github.com/TheSLinux/buildsystem.git theslinux-buildsystem
+
+    $ cd theslinux-buildsystem
+
+    # Chuyển đến nhánh `_utils` và lấy về các thay đổi mới nhất
+    $ git checkout _utils
+    $ git pull --rebase
+
+    # Chuyển đến thư mục `_utils`
+    $ cd _utils/
+
+    ## Tài khoản root
+
+    # Dùng `make` để cài đặt. Gõ lệnh `make` để liệt kê các mục
+    $ sudo make uninstall install
+
+    # Chạy thử để chắc rằng `s-makepkg` đã được cài đặt
+    $ s-run which s-makepkg
+
+Sau bước cuối cùng, bạn sẽ thấy hiện ra đường dẫn `/usr/bin/s-makepkg`
+chứng tỏ việc cài đặt thành công. Tuy nhiên, hãy khoan mừng vội: Bạn cần
+phải cài đặt thêm bản `pacman` được điều chỉnh cho `TheSLinux`. Hãy theo
+dõi phần tiếp theo.
+
+## Cài đặt `pacman`
+
+Phần này có ích khi bạn muốn dùng `s-makepkg` trên `ArchLinux`.
+Nếu đang dùng `TheSLinux` thì trên máy bạn đã có sẵn phiên bản `pacman`
+đặc biệt, và bạn có thể bỏ qua phần này.
+
+`TheSLinux` các thế hệ đầu tiên sử dụng phiên bản `4.1.x` của `pacman`
+làm chương trình quản lý gói chính. Một số điều chỉnh được thực hiện
+để `pacman` làm việc với `s-makepkg`. Vì thế, nếu đang dùng `ArchLinux`
+bạn cần cài đặt phiên bản `pacman` đặc biệt như sau đây.
+
+    #!sh
+    # Thực `clone` như ở trong hướng dẫn cài `s-makepkg`
+    # Chuyển đến nhánh `pacman` và cập nhật
+    $ git checkout pacman
+    $ git pull --rebase
+
+    # Chuyển đến thư mục `pacman` và biên dịch
+    $ cd pacman
+    $ s-makepkg --skipchecksums
+
+Sau khi việc biên dịch thành công, bạn sẽ có được gói `pacman-*` bên trong
+thư mục hiện hành `pacman`. Bạn có thể cài gói này vào hệ thống bằng lệnh
+
+    ## Tài khoản `root`
+    $ pacman -U pacman-*
+
+Bây giờ, bạn có phiên bản `pacman` nóng hổi, có thể dùng phối hợp với
+`s-makepkg` để biên dịch bất kỳ gói nào của `TheSLinux`.
+
+## Sử dụng thế nào
+
+Trong phần cài đặt `pacman` bạn đã có một ví dụ của việc dùng `s-makepkg`.
+Nói chung, cách thực hiện để tạo gói `foobar` như sau đây
+
+1. Chuyển đến nhánh `foobar`
+2. Dùng lệnh `git pull --rebase` để lấy mã nguồn mới nhất của gói
+3. Chuyển đến thư mục `foobar` (thư mục này tồn tại theo quy định
+   cho các gói của `TheSLinux`)
+4. Gõ lệnh `s-makepkg` hoặc `s-makepkg --skipchecksums` để biên dịch gói
+
+`s-makepkg` sẽ tự động xác định phiên bản và số hiệu biên dịch từ các thông
+tin của kho `git` mà bạn đã tải về _(bằng lệnh `git clone`)_. Trong
+trường hợp cần thiết, bạn có thể  bỏ qua việc xác định phiên bản tự động
+này bằng cách dùng các biến môi trường được mô tả trong phần tiếp theo.
+
+## Biến môi trường
+
+Nếu bạn đang dùng [buildsystem][] và tuân theo các quy định của [TheBigBang][]
+thì các biến môi trường dưới đây được xác định tự động. Bạn chỉ quan tâm
+tới những biến này chỉ trong một số trường hợp đặc biệt; nhưng trước hết,
+hãy tham khảo các đề nghị trong [TheBigBang][].
+
+* **`PACKAGE_TAG`** : Chỉ ra chính xác gói cùng với phiên bản sẽ được tạo ra.
+
+* **`PACKAGE_REF_TAG`** : Chỉ ra phiên bản tham khảo của gói đã biên dịch
+  trước đó. Số hiệu biên dịch sẽ được tính tự động dựa trên giá trị tham khảo.
+  Phiên bản tham khảo phải tồn tại như một thẻ (`tag`) hợp lệ
+  trong kho `git`.
+
+* **`PACKAGE_BASE`** : Chỉ ra tên gói cần biên dịch. Điều này là cần thiết
+  khi thư mục hiện hành không có tên trùng với tên gói,
+  hoặc khi bạn đang làm việc với các nhánh không cùng tên với gói.
+
+* **`PACKAGE_FEATURE`** : Chỉ ra `tính năng` đặc biệt của gói. Giá trị của
+  biến này sẽ được đính kèm với tên gói cuối cùng.
+
+* **`PACKAGE_VERSION`** : Chỉ ra phiên bản của gói
+
+* **`PACKAGE_RELEASE`** : Chỉ ra số hiệu phiên dịch
+
+## Ví dụ
+
+Biên dịch gói `linux-api-headers` phiên bản `3.2.44`, sử dụng số hiệu
+biên dịch `100`
+
+    #!sh
+    $ git checkout linux-api-headers
+    $ cd linux-api-headers
+    $ PACKAGE_TAG="linux-api-headers-3.2.44-100" s-makepkg
+
+    # Kết quả: gói `linux-api-headers-3.2.44-100.tar.xz`
+
+Biên dịch gói `linux-api-headers` phiên bản `3.2.44`, sử dụng số hiệu
+biên dịch do `s-makepkg` tự động xác định
+
+    #!sh
+    $ git checkout linux-api-headers
+    $ cd linux-api-headers
+    $ PACKAGE_REF_TAG="linux-api-headers-3.2.44-100" s-makepkg
+
+    # Kết quả: gói `linux-api-headers-3.2.44-???.tar.xz`, ở đây
+    # `???` là số hiệu thay đổi tùy theo sự xác định của `s-makepkg`
+
+Nếu đang thử nghiệm tính năng `new-feature` mới cho gói `geany`, bạn có thể
+sử dụng biến `PACKAGE_FEATURE` để tạo gói `geany-new-feature` như sau
+
+    #!sh
+    $ git checkout geany
+    PACKAGE_FEATURE="new-feature" s-makepkg
+
+Kết quả sau cùng bạn sẽ thu được gói `geany-new-feature` và gói này sẽ
+xung đột với gói `geany`: bạn không thể cài hai gói này cùng lúc.
+
+Các biến môi trường còn lại được dùng khi bạn cần chỉ ra con số cụ thể
+cho tên gói (ví dụ `linux-api-headers`), số phiên bản (ví dụ `3.2.44`)
+hoặc số hiệu biên dịch (ví dụ `100`). Việc này không thật sự cần thiết
+nếu bạn tuân theo các quy chuẩn của [TheBigBang][], và có thể thay thế
+bằng cách dùng các biến `PACKAGE_TAG` hoặc `PACKAGE_REF_TAG` như trên.
+
+## Cách tính số hiệu biên dịch
+
+Trong gói `TheSLinux` tạo ra, con số cuối cùng trong tập tin gói được
+gọi là `số hiệu biên dịch` (hay `release number`). Chi tiết về cách tính
+tự động con số này được mô tả chi tiết trong hàm [_get_next_tag_from_tag][]
+có trong kịch bản [s-run.sh][]. Nói một cách tóm tắt, đó là số xác nhận
+(`commits`) xảy ra giữa hai thời điểm
+
+1. Thời điểm hiện tại (`HEAD`)
+2. Thời điểm thẻ tham khảo `PACKAGE_REF_TAG` được tạo ra
+
+Sơ đồ minh họa có thể tìm thấy ở [_get_next_tag_from_tag][].
+
+## Hỗ trợ. Góp ý. Báo lỗi {#support}
+
+Vui lòng báo các lỗi theo [hướng dẫn chung](/bugs/). Các câu hỏi,
+thảo luận vui lòng dùng nhóm thư [theslinux-hackers](/lists/#all).
+
+Thông tin mới nhất về `s-makepkg` có thể tìm thấy [ở trang Github][_utils.home].
+
+## Tác giả
+
+`s-makepkg` được viết bởi Huỳnh Kỳ Anh.
+`s-makepkg` là một phần của `TheSLinux`.
+
+## Giấy phép
+
+`s-makepkg` được phân phối theo giấy phép [GPLv2][]. Việc sử dụng,
+phân phối, chỉnh sửa,... `s-makepkg` phải được thực hiện dưới các quy định
+của giấy phép đã chỉ ra.
+
+[buildsystem]: https://github.com/theslinux/buildsystem
+[TheBigBang]: https://github.com/TheSLinux/buildsystem/tree/TheBigBang
+[_utils.home]: https://github.com/TheSLinux/buildsystem/commits/_utils
+[s-run.sh]: https://github.com/TheSLinux/buildsystem/blob/_utils/_utils/run.sh
+[_get_next_tag_from_tag]: https://github.com/TheSLinux/buildsystem/blob/24223fa8bdd0fd09c53444dd249f92a67bf42eae/_utils/run.sh#L594
+[GPLv2]: http://www.gnu.org/licenses/gpl-2.0.html

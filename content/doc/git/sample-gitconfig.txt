@@ -1,0 +1,52 @@
+# Purpose: Sample configuration for git client
+# Author : Anh K. Huynh
+# License: Fair license
+# Date   : Somedays (MLTR)
+
+[user]
+
+name = Ky-Anh Huynh
+email = kyanh@viettug.org
+signingkey = 503CDEA5
+
+[color]
+
+branch = auto
+diff = auto
+status = auto
+
+[alias]
+
+pu = push
+pl = pull
+ci = commit
+di = diff --color-words
+st = status -uno
+stt = status
+co = checkout
+br = branch
+lg = log -p
+logf = log --follow
+lol = log --graph --decorate --pretty=oneline --abbrev-commit
+lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+ls = ls-files
+mg = merge
+
+[color "branch"]
+
+current = white
+local = magenta
+remote = cyan
+
+[color "diff"]
+
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+
+[color "status"]
+
+added = yellow
+changed = green
+untracked = cyan
