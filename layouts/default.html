@@ -17,6 +17,9 @@
             metas << "<strong>Thẻ:</strong> " \
                       + valid_tags.map{|t| link_for_tag(t, "/tags/") }.join(", ")
           end
+          if @item[:author] or @item[:authors]
+            metas << "<strong>Tác giả:</strong> #{item[:author] ||@item[:authors]}"
+          end
           if @item[:origin]
             metas << "<strong>Bài gốc:</strong> <a href=\"#{@item[:origin]}\">#{@item[:origin]}</a>"
           end
