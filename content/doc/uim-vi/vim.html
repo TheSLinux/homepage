@@ -113,6 +113,10 @@ thái toàn cục `^ Shift` hoặc `Alt Z`.
 
 ### Kiểu nhập m17n-vi-telex {#m17n-vi-telex}
 
+`m17n` là thư viện các kiểu nhập -- xuất, được thiết kế để dùng cho nhiều
+`framework` khác nhau. Khả năng này là đặc điểm nổi trội của thư viện `m17n`.
+Bạn có thể dùng nó với `ibus`, `scim`, `fcitx` hay `uim`.
+
 Trong phiên bản `1.6.4` của `m17n`, người dùng tiếng Việt có thể dùng
 [phiên bản 1.17 của kiểu nhập m17n-vi-telex][m17n-vi-telex]. Kiểu nhập
 này có thể dùng với `ibus`, `scim`, `fcitx`, `uim`. Tuy có quy tắc dùng
@@ -131,8 +135,22 @@ nhiều bộ gõ, chẳng hạn `Alt Z` trong `UniKey`. Do phím `\` đi _cứng
 trong mã nguồn của `m17n-vi-telex` bạn không cấu hình để lựa chọn
 phím khác được.
 
+`m17n-vi-telex` (và cả bản `-vni`) còn có tham số để thay đổi tác dụng
+của phím `backspace`. Biến này là `backspace-is-undo`, có giá trị mặc
+định không dùng để xóa ký tự vừa mới nhập; khi có giá trị khác, biến
+này làm phím `Backspace` có tác dụng `Undo`. Ví dụ, nhập vào `quais^`
+_(ta tạm dùng `^` để chỉ phím `Backspace`)_ thì khi với tác dụng xóa,
+bạn sẽ được `quá`, còn tác dụng `Undo` sẽ cho ra `quai` _(Như vậy `Undo`
+ở đây là bỏ đi dấu sắc vừa thêm)_.
+
+Tuy nhiên, tham số trên không dễ điều chỉnh. Lý do là các giao diện điều
+chỉnh cấu hình của các `framework` như `ibus`, `scim` không đưa ra cách
+để can thiệp thay đổi biến trong `m17n`. Bạn cần phải thay đổi từ trong
+mã nguồn hoặc chỉnh sửa trực tiếp trên tập tin `vi-telex.mim` hay
+`vi-vni.mim` trên hệ thống _(điều này rất không nên làm)_.
+
 _(Các lưu ý về phím xóa dấu và phím thoát trong phần này cũng có giá
-trị đối với kiểu nhập `m17n-vi-vni`).
+trị đối với kiểu nhập `m17n-vi-vni`.)_
 
 ## Kiểu xuất: Truyền thống và IPA {#om-traditional-ipa}
 
@@ -167,17 +185,19 @@ Có vài điều thú vị với `Unikey`
 
 ### m17n-vi-{telex,vni} {#om-m17n-vi-telex-vni}
 
-Bộ nhập `m17n-vi-telex` được thiết kế cứng với phần xuất của nó
-trong mã nguồn, không có các tùy chọn để thay đổi kiểu xuất như `Unikey`.
-Dù có xu hướng tuân theo các quy tắc truyền thống, `m17n-vi-telex`
-không được điều chỉnh để chỉnh một số lỗi chính tả thông dụng. Ví dụ,
-trong khi để có `hòa` bạn có thể gõ `hoaf` hay `hofa`, thì để có `hoàng`
-bạn chỉ có thể _bỏ dấu sau âm n_, tức là phải nhập vào `hoanfg` hay `hoangf`.
+Theo mặc định, kiểu xuất của `m17n-vi-{telex,vni}` là kiểu truyền thống,
+bỏ dấu `hòa` thay vì `hoà`, cho dù bạn nhập vào `hofa` hay `hoaf`.
+Tuy nhiên, `m17n-vi-telex` không có kèm các bước điều chỉnh và kiểm tra,
+nên để có được đúng chữ `hoàng` bạn phải lựa chọn vị trí bỏ dấu thích hợp,
+đó là phải _bỏ dấu sau âm n_: phải nhập vào `hoanfg` hay `hoangf`, còn
+nếu nhập vào `hoafng` thì chỉ được `hòang` mà thôi.
 
-Do được thiết kế để dùng chung với nhiều `framework` khác nhau, kiểu nhập
-này không có các tùy chọn tác động lên kiểu xuất. Ta sẽ nói rõ hơn
-trong phần sau. Đây cũng là đặc điểm nổi trội của thư viện `m17n`. Bạn
-có thể dùng `ibus`, `scim`, `fcitx` hay `uim`, thì vẫn có hỗ trợ của `m17n.`
+Để chuyển qua kiểu bỏ dấu theo `IPA`, bạn phải điều chỉnh biến `tone-mark-on-last`
+thành giá trị khác không. Như đã nói ở phần trên, thật không may là để  lựa
+chọn kiểu xuất truyền thống hoặc `IPA` bạn chỉ có thể điều chỉnh từ mã nguồn
+của gói `m17n-database`, hoặc điều chỉnh trực tiếp tập tin `vi-telex.mim`
+hay `vi-vni.mim` trên máy bạn. Các `framework` như `ibus`, `scim`,... hiện
+nay không có các tùy chọn thay thế cho việc chỉnh trực tiếp này.
 
 ## Vài nhận xét
 
@@ -204,6 +224,9 @@ các kiểu nhập cho người Việt, trong khi bản thân người Việt v�
 hoay tìm một cách tốt nhất cho bộ nhập - xuất của mình. Chắc chắn sẽ
 khó khăn khi yêu cầu sự giúp đỡ từ đội `m17n` bởi vì sự thiếu thống
 nhất trong chính những người sử dụng sản phẩm đó :)
+
+Các tham số bí ẩn của `m17n-vi-{telex,vni}` để điều chỉnh cho việc nhập,
+xuất rất thú vị. Tác giả bài viết này chỉ thấy chúng khi đọc qua mã nguồn:)
 
 `Bogo`[^bogo] là bộ nhập - xuất xử lý tiếng Việt mới mẻ và năng động.
 Tuy nhiên, hiện nay `Bogo` vẫn chịu ảnh hưởng của `Unikey` trong việc phân
