@@ -1,0 +1,271 @@
+---
+title: Tiếng Việt trên máy Linux
+tags: ['vietnamese', 'scim', 'uim', 'unikey', 'uim', 'telex', 'vni']
+author: Huỳnh Kỳ Anh
+---
+
+* TOC
+{: toc}
+
+## Mở đầu {#intro}
+
+Nếu bạn để ý thì tên tập tin của trang này là `vim`, là viết tắt của
+`Vietnamese Input Method`. Tác giả dùng `vim` để  gợi nhớ lại cuộc
+chiến giữa hai dòng trình soạn thảo khuynh đảo trong thế giới `Linux`
+là `(x)emacs` và `vi(m)`. Cách xử lý các vấn đề tiếng Việt trong máy tính
+tuy không mang dáng dấp của `cuộc chiến`, nhưng nó đã trải qua những
+thời kỳ `lộn xộn`. Rốt cuộc cho đến tận năm 2013 này vẫn có người dùng
+`tiến hóa` và người khác thì dùng `tiến hoá`.
+
+Bài viết này không nhằm mục đích kết thúc cuộc chiến. Mục đích là tóm
+tắt lại các đặc điểm kỹ thuật và đặc điểm sử dụng của các kiểu gõ
+tiếng Việt trên máy tính Linux hiện nay. _(Không tính đến thế giới Windows
+vì nó còn lộn xộn hơn gấp nhiều lần.)_
+
+## Thuật ngữ {#term}
+
+Trong bài này ta phân biệt hai từ **kiểu nhập (gõ)** và **kiểu xuất**.
+Khi nói tới `kiểu nhập`, đó là cách sử dụng các tổ hợp phím trên máy tính
+của người dùng để làm đầu vào cho phần mềm xử lý. Còn `kiểu xuất` nói tới
+cách phần mềm xử lý thông tin do người dùng đưa vào.
+_(Việc dùng từ **kiểu gõ** không phân biệt hai vấn đề cơ bản là **nhập**
+và **xuất** trong việc xử lý tiếng Việt, nên sẽ ít được dùng trong bài này.
+Trong khi đó, ta nói tới **bộ gõ** để chỉ các phần mềm hỗ trợ cả hai khâu
+nhập -- xuất, như UniKey, Scim, Ibus,...)_
+
+Ví dụ với cùng kiểu nhập `Telex`, khi người dùng nhập vào từ bàn phím tổ
+hợp `hoas` thì một số kiểu xuất cho ra `hóa`, trong khi số khác cho ra `hoá`.
+
+## Kiểu nhập Telex và VNI {#telex-vni}
+
+Phải nói rằng còn có các kiểu nhập khác, như `VIQR` đã có từ trước năm 1975,
+hay `VISCII` và `VIQR` ([RFC1456][], 1993). Ở đây chỉ nói tới hai kiểu nhập
+_được cho là phổ biến_ là `Telex` và `VNI`.
+
+Hai kiểu nhập `Telex`, `VNI` do [Hồ Thành Việt][HTV] sáng tạo vào năm 1987
+_([nguồn dẫn][VNI])_. Bạn có thể tìm thấy đầy đủ mô tả về hai kiểu này
+trong tài liệu [VNI][]. Ngoài các định quen thuộc, có hai điểm có thể bạn
+chưa biết
+
+1. **Về phím thoát `\`**: Nhằm ngăn chặn tác dụng thêm dấu. Ví dụ, việc
+  gõ vào `hoa\s` sẽ cho ra `hoas` vì phím thoát đã chặn tác dụng của việc
+  thêm dấu bằng phím `s`.
+
+2. **Về phím xóa dấu `z`**: Sau khi một trong các dấu huyền, sắc, hỏi, ngã,
+  nặng vừa được nhập vào, phím `z` sẽ hủy bỏ dấu đó. Ví dụ, bình thường
+  khi nhập vào `hoaf` được thì bạn sẽ có `hòa`, nhưng nếu gõ `hoafz` thì
+  sẽ ra `hoa` mà thôi. Lưu ý là phím `z` chỉ xóa dấu _vừa nhập vào_, cho
+  nên nếu gõ `hoafnz` thì bạn sẽ được `hoànz` chứ không phải là `hoan`.
+  Phím xóa dấu `z` không nhằm xóa các dấu mũ như `ă`, `â`
+
+Nếu tuân theo chặt chẽ các quy tắc của Hồ Thành Việt, bạn sẽ thấy yêu cầu
+bắt buộc gõ dấu ngay sau nguyên âm. Ví dụ, phải gõ `hoafn` để có `hòan`,
+còn nếu gõ `hoanf` thì sẽ được `hoanf`. Với các dấu mũ cũng tương tự.
+
+Nhiều bộ gõ đã bổ sung thêm các kiểu nhập khác để cho việc nhập tiện hơn.
+Ví dụ: cho phép thêm dấu ở vị trí bất kỳ, thậm chí cho phép dấu gõ trước
+hoặc sau khi tất cả  các âm đã nhập vào _(chẳng hạn gõ `duongwf` để được
+`dường`.)_ Trong khi việc này không ảnh hưởng đến kết quả xuất, việc bổ sung
+thêm nhiều quy tắc sẽ một chút khó khăn về mặt kỹ thuật đối với người
+lập trình vào bảo trì bộ gõ.
+
+Đối với **người dùng** tiếng Việt, `Telex` cho phép gõ (nhập) nhanh nhưng
+lại gây khó khăn khi trong tài liệu có thêm nhiều các từ kỹ thuật hoặc
+các từ tiếng Anh, Pháp,... Cách nhập `VNI` do sử dụng bàn phím số để thêm
+các dấu nên việc gõ các từ tiếng Anh tiện hơn, nhưng bù lại các ngón tay
+phải di chuyển xa hơn so với kiểu đánh `Telex`. Đây cũng là một lý do
+để xuất hiện kiểu bỏ dấu thanh và dấu mũ sau khi tất cả các âm đã nhập vào.
+
+Trong khi kiểu `VNI` khá ổn định thì kiểu nhập `Telex` lại có nhiều biến
+thể như thấy trong các phần tiếp sau đây.
+
+### Kiểu nhập Telex trong Unikey {#unikey-telex}
+
+[Unikey][] là bộ gõ mã nguồn mở[^unikey] của tác giả Phạm Kim Long .
+Phần lõi của bộ gõ này, gọi là `Unikey Engine` có vai trò xử lý dữ liệu nhập,
+đang được dùng để hỗ trợ tiếng Việt trong nhiều `framework` trên Linux,
+bao gồm `ibus`, `scim`, `fcitx`. Chẳng hạn, `ibus-unikey` _(do Lê Quốc Tuấn
+phát triển và bảo trì)_ dùng một phiên bản điều chỉnh của `unikey engine`.
+Phần lõi này thực tế là một phần của chương trình `x-unikey` của cùng
+tác giả.
+
+Kiểu nhập trong lõi `Unikey` là biến thể của kiểu `Telex` gốc. Ngoài các
+định nghĩa của Hồ Thành Việt, tác giả Phạm Kim Long bổ sung thêm các quy
+tắc cho việc nhập `w`, `[`, `]`, `{`, `}` _(xuất ra `ư`, `ơ`, `ư`, `Ơ`, `Ư`)_.
+Có thể xem các định nghĩa này trong [mã nguồn][Unikey.Telex]. Các bổ sung
+này được thêm `cứng` trong mã nguồn, không điều chỉnh được qua các tùy chọn,
+nên trong khi nhiều người thấy nó có ích một số người khác lại thấy phiền
+_(chẳng hạn đối với người dùng `TeX` phải gõ nhiều ký tự `{` và `}`.)_
+
+Sau này trong `x-unikey-1.0.4`, tác giả đã thêm vào kiểu nhập mới
+`SimpleTelex` [^unikeywin], bỏ đi các quy tắc nhập cho `[`, `]`, `{`, `}`.
+Kiểu này gần với `Telex` gốc nhất so với các kiểu nhập còn lại của `Unikey`.
+
+Khi phát triển `scim-unikey` và `ibus-unikey`, Lê Quốc Tuấn _(và Lê Kiến Trúc)_
+đã bổ sung thêm biến thể `SimpleTelex2`. Đây là kiểu lai giữa hai kiểu nhập
+`Telex` _(của `Unikey`)_ và `SimpleTelex`: nó không có các định nghĩa cho
+`[`, `]`,... nhưng có quy tắc nhập dùng phím `w`, ví dụ, khi gõ `uow`
+sẽ được `ươ` _(ở `Telex gốc`, bạn phải gõ `uwow` để có cùng kết quả.)_
+
+Các kiểu nhập `Telex` trong `Unikey` đều hỗ trợ phím `z` để xóa dấu vừa
+nhập vào. Bộ gõ không có phím thoát `\` do đã có tìm điều chỉnh trạng
+thái toàn cục `^ Shift` hoặc `Alt Z`.
+
+### Kiểu nhập m17n-vi-telex {#m17n-vi-telex}
+
+`m17n` là thư viện các kiểu nhập -- xuất, được thiết kế để dùng cho nhiều
+`framework` khác nhau. Khả năng này là đặc điểm nổi trội của thư viện `m17n`.
+Bạn có thể dùng nó với `ibus`, `scim`, `fcitx` hay `uim`.
+
+Trong phiên bản `1.6.4` của `m17n`, người dùng tiếng Việt có thể dùng
+[phiên bản 1.17 của kiểu nhập m17n-vi-telex][m17n-vi-telex]. Kiểu nhập
+này có thể dùng với `ibus`, `scim`, `fcitx`, `uim`. Tuy có quy tắc dùng
+phím `w` để xuất ra `ư`, nhưng kiểu này không có các quy tắc tiện lợi
+như `Telex` của `Unikey`, ví dụ người dùng vẫn phải nhập vào `uwow` khi
+muốn ra kết quả `dường như`.
+
+Kiểu nhập `m17n-vi-telex` có phím xóa dấu `z` và cả phím thoát `\`.
+Điều đáng kể ở đây là `\` sẽ không chỉ có tác dụng tạm thời, mà nó có
+tác dụng chuyển đổi qua lại giữa hai kiểu xuất tiếng Việt -- trực tiếp
+_(tiếng Anh)_. Ví dụ, khi đang gõ tiếng Việt, nếu bạn dùng phím thoát
+thì bộ gõ bắt đầu xuất ra màn hình chính xác các ký tự mà bạn nhập vào:
+gõ `hoas` sẽ được `hoas` chứ không phải là `hóa` hay `hoá`.
+Việc dùng phím thoát cũng giống như cách dùng tổ hợp tắt bộ gõ trong
+nhiều bộ gõ, chẳng hạn `Alt Z` trong `UniKey`. Do phím `\` đi _cứng_
+trong mã nguồn của `m17n-vi-telex` bạn không cấu hình để lựa chọn
+phím khác được.
+
+`m17n-vi-telex` (và cả bản `-vni`) còn có tham số để thay đổi tác dụng
+của phím `backspace`. Biến này là `backspace-is-undo`, có giá trị mặc
+định không dùng để xóa ký tự vừa mới nhập; khi có giá trị khác, biến
+này làm phím `Backspace` có tác dụng `Undo`. Ví dụ, nhập vào `quais^`
+_(ta tạm dùng `^` để chỉ phím `Backspace`)_ thì khi với tác dụng xóa,
+bạn sẽ được `quá`, còn tác dụng `Undo` sẽ cho ra `quai` _(Như vậy `Undo`
+ở đây là bỏ đi dấu sắc vừa thêm)_.
+
+Tuy nhiên, tham số trên không dễ điều chỉnh. Lý do là các giao diện điều
+chỉnh cấu hình của các `framework` như `ibus`, `scim` không đưa ra cách
+để can thiệp thay đổi biến trong `m17n`. Bạn cần phải thay đổi từ trong
+mã nguồn hoặc chỉnh sửa trực tiếp trên tập tin `vi-telex.mim` hay
+`vi-vni.mim` trên hệ thống _(điều này rất không nên làm)_.
+
+_(Các lưu ý về phím xóa dấu và phím thoát trong phần này cũng có giá
+trị đối với kiểu nhập `m17n-vi-vni`.)_
+
+## Kiểu xuất: Truyền thống và IPA {#om-traditional-ipa}
+
+Kiểu truyền thống đặt dấu như trong chữ `HÒA`, kiểu mới đặt dấu huyền
+lệch sau một tí, thành ra `HOÀ`; ta tạm gọi kiểu mới là kiểu `IPA`
+do có mối liên hệ với các quy tắc phiên âm [IPA][].
+Bạn có thể xem mô tả khá chi tiết về hai kiểu trên [trang wiki][vnaccents].
+
+Việc lựa chọn giữa hai kiểu xuất này mang tính cá nhân, vì hiện nay vẫn
+còn các tranh cãi giữa các nhà ngôn ngữ _(và các nhà khác.)_ Bản thân
+tác giả bài viết này thích kiểu gõ truyền thống hơn, do nó có liên quan
+tới các tiêu chuẩn thẩm mỹ. Bạn có thể xem bài phân tích khá hay trong
+[bài báo của Nguyễn Đức Dân][sgtt].
+
+### Unikey {#om-unikey}
+
+Bộ gõ `Unikey` và cả phần lõi của nó cho phép người dùng lựa chọn giữa
+hai kiểu xuất `HÒA` và `HOÀ`. Cùng với bộ kiểm tra chính tả, `Unikey`
+giúp người dùng kiểm soát được nhiều lỗi bỏ dấu và lỗi chính tả phổ biến.
+
+Có vài điều thú vị với `Unikey`
+
+* Khi bật khả năng kiểm soát chính tả, rất khó để bạn gõ những từ
+  như `quần soọc` hay `boòng boong` :)
+* Ngay cả khi tắt đi phần kiểm soát lỗi chính tả, thì ở bất kỳ kiểu xuất
+  nào của `Unikey`, bạn không thể gõ `hòang` một cách tự nhiên; bởi vì
+  `Unikey` luôn cố chỉnh lại từ đó _(mặc dù vô nghĩa)_ thành `hoàng`.
+* Bộ xử lý của `Unikey` vượt qua các khoảng trắng và nhớ khá dai. Ví dụ,
+  sau khi gõ `bong d` bạn có thể dùng phím `Backspace` để xóa phím nhập `d`,
+  xóa phím nhập `_` _(khoảng trắng)_ rồi gõ thêm `o` để thêm mũ cho âm `o`,
+  để cuối cùng có `bông`.
+
+### m17n-vi-{telex,vni} {#om-m17n-vi-telex-vni}
+
+Theo mặc định, kiểu xuất của `m17n-vi-{telex,vni}` là kiểu truyền thống,
+bỏ dấu `hòa` thay vì `hoà`, cho dù bạn nhập vào `hofa` hay `hoaf`.
+Tuy nhiên, `m17n-vi-telex` không có kèm các bước điều chỉnh và kiểm tra,
+nên để có được đúng chữ `hoàng` bạn phải lựa chọn vị trí bỏ dấu thích hợp,
+đó là phải _bỏ dấu sau âm n_: phải nhập vào `hoanfg` hay `hoangf`, còn
+nếu nhập vào `hoafng` thì chỉ được `hòang` mà thôi.
+
+Để chuyển qua kiểu bỏ dấu theo `IPA`, bạn phải điều chỉnh biến `tone-mark-on-last`
+thành giá trị khác không. Như đã nói ở phần trên, thật không may là để  lựa
+chọn kiểu xuất truyền thống hoặc `IPA` bạn chỉ có thể điều chỉnh từ mã nguồn
+của gói `m17n-database`, hoặc điều chỉnh trực tiếp tập tin `vi-telex.mim`
+hay `vi-vni.mim` trên máy bạn. Các `framework` như `ibus`, `scim`,... hiện
+nay không có các tùy chọn thay thế cho việc chỉnh trực tiếp này.
+
+## Vài nhận xét
+
+Không rõ các quy tắc nhập `Telex` và `VNI` do Hồ Thành Việt sáng tạo có
+được đưa vào chuẩn `RFC` như `VIQR` hay không. Tuy nhiên, thành quả của
+ông rất đáng ghi nhận.
+
+`Unikey` đã đặt ra các ngoại lệ cho quy tắc `Telex` của mình, từ đó
+phát sinh thêm các quy tắc thứ cấp `SimpleTelex` và `SimpleTelex2` trong
+khi đã có thêm hỗ trợ gõ tắt với `macro`, cho thấy các khó khăn và thiếu
+đồng bộ về kỹ thuật trong vấn đề xử lý tiếng việt của lõi `Unikey Engine`.
+Ngoài `ibus` và `scim`, lõi này còn được dùng trong [fcitx-unikey][] do
+lập trình viên Trung Quốc _(chủ yếu là  Weng Xuetian)_ phát triển.
+Việc tác giả Phạm Kim Long không duy trì độc lập một nguồn của lõi gây
+nhiều khó khăn ghi tìm lại nguồn gốc và sự phát triển của lõi này trong
+các dẫn xuất `ibus-unikey`, `scim-unikey`, và `fctix-unikey` và có thể
+là `foobar-unikey` sắp tới.
+
+Kiểu nhập _(và xuất)_ của `m17n-vi-telex` rất hay ở chỗ nó tuân theo
+chặt chẽ các quy tắc của `Telex` gốc. Kiểu xuất này do người nước ngoài
+quản lý, và qua đó phản ánh vài điều: việc chuẩn hóa cơ bản về kiểu nhập
+giúp cho các lập trình viên ngoại quốc dễ dàng bảo trì và phát triển
+các kiểu nhập cho người Việt, trong khi bản thân người Việt vẫn loay
+hoay tìm một cách tốt nhất cho bộ nhập - xuất của mình. Chắc chắn sẽ
+khó khăn khi yêu cầu sự giúp đỡ từ đội `m17n` bởi vì sự thiếu thống
+nhất trong chính những người sử dụng sản phẩm đó :)
+
+Các tham số bí ẩn của `m17n-vi-{telex,vni}` để điều chỉnh cho việc nhập,
+xuất rất thú vị. Tác giả bài viết này chỉ thấy chúng khi đọc qua mã nguồn:)
+
+`Bogo`[^bogo] là bộ nhập - xuất xử lý tiếng Việt mới mẻ và năng động.
+Tuy nhiên, hiện nay `Bogo` vẫn chịu ảnh hưởng của `Unikey` trong việc phân
+chia ra các kiểu nhập và vấn còn trong giai đoạn phát triển.
+Tác giả rất hy vọng ở `engine` này sẽ mang lại thay đổi mới trong tương lai.
+
+## Cảm ơn
+
+Tác giả gửi lời cảm ơn chân thành đến
+
+* nhà văn **Hồ Trung Tú**,
+* bạn **lewtds**, **CMPITG** của đội phát triển [bogo][],
+* các thành viên của **ArchLinuxVn**: `Dynamo`, `stk`, `n0bawk`, `luffy`.
+
+Tác giả không có ý định viết bài này lúc ban đầu. Trong quá trình phát
+triển tự điển các kiểu gõ cho [uim-vi](woman), tác giả đã hỏi và có được
+ý kiến của rất nhiều người. Dù tốn rất nhiều thời gian nhưng tác giả
+thấy cần có một bài để ghi lại _những điều đã biết_ để các bạn đi sau
+dễ tìm thấy hơn, cho dù bài viết này tất nhiên không hoàn thiện, và trên
+hết là để ghi nhận sự giúp đỡ chân thành của các bạn.
+
+## Ghi chú. TODO
+
+Các phần sẽ viết thêm: `Bogo`, `xtelex`, `uim`, `uim-vi`
+
+[^bogo]: Tác giả chưa có điều kiện xem xét các phiên bản mới nhất của bộ gõ này.
+
+[^unikey]: Thực tế từ, phiên bản 3.1, tác giả chỉ công bố mã nguồn của từng phiên bản.
+
+[^unikeywin]: Trong khi đó, ở  phiên bản `Unikey 4.0 Rc2` dành cho người dùng Windows, tác giả thêm vào khả năng cho phép người dùng tự định nghĩa kiểu gõ mới. Do không có sẵn kiểu `SimpleTelex` trên Windows, người dùng phải tự nạp kiểu nhập `Telex` vào rồi xóa đi các quy tắc không cần thiết.
+
+[RFC1456]: http://tools.ietf.org/html/rfc1456
+[HTV]: http://vi.wikipedia.org/wiki/Hồ_Thành_Việt
+[VNI]: http://vi.wikipedia.org/wiki/VNI
+[Unikey]: http://unikey.org/
+[Unikey.Telex]: https://github.com/mrlequoctuan/ibus-unikey/blob/b7163254b67ef9d5f5caf3f9023b2c8ba6f5a541/ukengine/inputproc.cpp#L100
+[m17n-vi-telex]: http://cvs.savannah.gnu.org/viewvc/m17n-db/MIM/vi-telex.mim?revision=1.17&root=m17n&view=markup
+[IPA]: http://www.langsci.ucl.ac.uk/ipa/
+[vnaccents]: http://vi.wikipedia.org/wiki/Quy_tắc_đặt_dấu_thanh_trong_tiếng_Việt
+[sgtt]: http://sgtt.vn/Khoa-giao/135799/Viet-i-hay-viet-y.html
+[bogo]: https://github.com/BoGoEngine/bogo
+[fcitx-unikey]: https://github.com/fcitx/fcitx-unikey
