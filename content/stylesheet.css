@@ -11,16 +11,18 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:link,
 a:visited {
-  color: #f30;
+  color: #062270;
 }
 
 a:hover {
-  color: #f90;
+  color: #fff;
+  background-color: #133CAC;
+  text-decoration: none;
 }
 
 #main {
@@ -39,6 +41,7 @@ a:hover {
   line-height: 40px;
 
   letter-spacing: -1px;
+  color: #44036F;
 }
 
 #main p {
@@ -91,11 +94,10 @@ a:hover {
 
 #sidebar h2 a:link,
 #sidebar h2 a:visited {
-  color: blue;
+  color: #44036F;
 }
 
 #sidebar h2 a:hover {
-  color: #f90;
 }
 
 #sidebar ul {
@@ -111,31 +113,38 @@ a:hover {
 }
 
 code {
-  color: green;
+  color: #007929;
+  border: 0px solid #6D89D5;
 }
 
 pre {
-  color: #fff;
-  background-color: black;
+  color: #062270;
+  background-color: #fff;
   padding: 1em;
   font-family: monospace;
+  border: 1px solid #062270;
   overflow-x: auto;
 }
 
+pre pre {
+  border: 0px solid #062270;
+}
+
 pre code {
-  color: #fff;
+  color: #062270;
   font-family: monospace;
 }
 
 pre.license {
-  color: #000;
+  color: #2B4281;
   background-color: transparent;
   font-size: 11px;
   font-family: normal;
+  border: 1px solid #2B4281;
 }
 
 pre.license b {
-  color: green;
+  color: #007929;
   font-size: 11px;
   font-family: normal;
 }
@@ -193,4 +202,36 @@ table.CodeRay td.code {
 }
 .blackchancery {
     font-family: "BlackChancery", Verdana, Tahoma;
+}
+
+/* theslinux patches */
+
+h2, h3 {
+  color: #6A0AAB;
+}
+
+#sidebar h2 {
+
+}
+
+#sidebar a,
+#sidebar a:link,
+#sidebar a:visited {
+  text-decoration: none;
+  color: #6A0AAB;
+}
+
+#sidebar a:hover {
+  text-decoration: underline;
+  color: #6A0AAB;
+  background-color: #fff;
+}
+
+#markdown-toc a {
+  text-decoration: none;
+}
+
+#markdown-toc a:link,
+#markdown-toc a:visited {
+  color: #007929;
 }
