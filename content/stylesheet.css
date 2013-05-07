@@ -235,3 +235,8 @@ h2, h3 {
 #markdown-toc a:visited {
   color: #007929;
 }
+
+#markdown-toc a:hover {
+  text-decoration: none;
+  color: #fff;
+}
