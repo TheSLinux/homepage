@@ -41,7 +41,7 @@ a:hover {
   line-height: 40px;
 
   letter-spacing: -1px;
-  color: #44036F;
+  color: #0B5FA5;
 }
 
 #main p {
@@ -85,7 +85,7 @@ a:hover {
 
   font-size: 13px;
 
-  color: #333;
+  color: #043C6B;
 
   letter-spacing: 1px;
 
@@ -94,7 +94,7 @@ a:hover {
 
 #sidebar h2 a:link,
 #sidebar h2 a:visited {
-  color: #44036F;
+  color: #043C6B;
 }
 
 #sidebar h2 a:hover {
@@ -209,7 +209,7 @@ table.CodeRay td.code {
 /* theslinux patches */
 
 h2, h3 {
-  color: #6A0AAB;
+  color: #043C6B;
 }
 
 #sidebar h2 {
@@ -220,7 +220,7 @@ h2, h3 {
 #sidebar a:link,
 #sidebar a:visited {
   text-decoration: none;
-  color: #6A0AAB;
+  color: #043C6B;
 }
 
 #sidebar a:hover {
