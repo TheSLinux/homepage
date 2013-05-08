@@ -113,8 +113,9 @@ a:hover {
 }
 
 code {
-  color: #007929;
+  color: #0B5FA5;
   border: 0px solid #6D89D5;
+  border-bottom: 1px dashed #6D89D5;
 }
 
 pre {
@@ -133,6 +134,7 @@ pre pre {
 pre code {
   color: #062270;
   font-family: monospace;
+  border: 0px solid #fff;
 }
 
 pre.license {
