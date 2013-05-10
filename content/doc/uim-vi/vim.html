@@ -108,7 +108,7 @@ Khi phát triển `scim-unikey` và `ibus-unikey`, Lê Quốc Tuấn _(và Lê K
 sẽ được `ươ` _(ở `Telex gốc`, bạn phải gõ `uwow` để có cùng kết quả.)_
 
 Các kiểu nhập `Telex` trong `Unikey` đều hỗ trợ phím `z` để xóa dấu vừa
-nhập vào. Bộ gõ không có phím thoát `\` do đã có tìm điều chỉnh trạng
+nhập vào. Bộ gõ không có phím thoát `\` do đã có phím điều chỉnh trạng
 thái toàn cục `^ Shift` hoặc `Alt Z`.
 
 ### Kiểu nhập m17n-vi-telex {#m17n-vi-telex}
@@ -137,7 +137,7 @@ phím khác được.
 
 `m17n-vi-telex` (và cả bản `-vni`) còn có tham số để thay đổi tác dụng
 của phím `backspace`. Biến này là `backspace-is-undo`, có giá trị mặc
-định không dùng để xóa ký tự vừa mới nhập; khi có giá trị khác, biến
+định `0` dùng để xóa ký tự vừa mới nhập; khi có giá trị khác, biến
 này làm phím `Backspace` có tác dụng `Undo`. Ví dụ, nhập vào `quais^`
 _(ta tạm dùng `^` để chỉ phím `Backspace`)_ thì khi với tác dụng xóa,
 bạn sẽ được `quá`, còn tác dụng `Undo` sẽ cho ra `quai` _(Như vậy `Undo`
