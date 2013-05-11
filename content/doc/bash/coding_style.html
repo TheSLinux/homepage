@@ -1,0 +1,195 @@
+---
+title: Làm đẹp mã nguồn trog Bash
+tags: ['bash', 'shell', 'dev', 'draft']
+author: Huỳnh Kỳ Anh
+origin: http://dragula.org/projects/fs/wiki/Bash_Coding_Style
+---
+
+* TOC
+{:toc}
+
+## Mục đích {#purpose}
+
+Tạo ra các kịch bản `Bash` đơn giản, dễ nhìn, dễ bảo trì,
+tuân theo các quy định của `Bash 4`.
+
+Các quy tắc trình bày trong tài liệu này được chấp nhận và phát triển
+bởi đội phát triển `TheSLinux`.
+
+## Tab. Khoảng trắng {#tab-space}
+
+Không dùng `Tab` mà hãy thay thế `Tab` bởi hai khoảng trắng.
+
+Tuy `Tab` giảm kích thước tập tin nhưng cách thể hiện ký tự `Tab` tùy
+thuộc _nhiều_ vào thiết lập trên trình soạn thảo, và nhiều trường hợp
+không thể chỉ dùng `Tab` để canh mã nguồn cho đẹp
+
+Đối với các kịch bản dùng `Tab` đã có, tạm thời để nguyên `Tab` cho tới
+khi có sự hay đổi đáng kể hay có lý do hợp lý để chuyển qua khoảng trắng
+
+Không chấp nhận các khoảng trắng thừa ở cuối dòng
+
+## Pipe {#pipe}
+
+Có hai dạng `Pipe` phổ biến là dạng `inline` và dạng `riêng dòng`. Trừ khi
+đoạn mã `inline` thật sự ngắn, trong hầu hết các trường hợp hãy đặt mỗi
+`pipe` ở riêng một dòng mới. Ví dụ
+
+    Đây là dạng pipe inline "$(ls -la /foo/ | grep /bar/)"
+
+    # Sau đây là dạng inline được tách hẳn ra các dòng
+    _foobar="$( \
+      ls -la /foo/ \
+        | grep /bar/ \
+        | awk '{print $NF}')"
+
+Đối với `pipe` riêng dòng, cách tách dòng giống ví dụ cuốig ở trên
+
+    cat /path/to/my/file \
+    | while read _line; do
+        # do something
+      done \
+    | wc -l
+
+Lưu ý ta luôn dùng một khoảng trắng ngay sau dấu `pipe` `|`, và tiếp
+theo đó là nội dung của `pipe`. Không bao giờ đặt dấu `|` ở cuối dòng.
+
+## Tên biến {#var-name}
+
+Tên biến đặt theo phạm vi tác dụng của nó.
+
+Đối với biến có thể chấp nhận giá trị từ bên ngoài _(môi trường)_ hoặc
+có phạm vi sử dụng trong toàn chương trình, tên biến được viết hoa hoàn toàn.
+
+Đối với các biến còn lại, tên biến chỉ gồm các chữ thường hoặc số, được
+**bắt đầu** bằng dấu gạch chân (`_`).
+
+Đối với tất cả các biến, có thể sử dụng các tiền tố phân biệt, ví dụ,
+dùng `_d` hay `DIR_` để chỉ thư mục, dùng `_f` hay `F_` để chỉ tập tin,
+dùng `_ds` để chỉ danh sách thư mục,...
+
+Đối với các biến chỉ được sử dụng trong định nghĩa một hàm, tất cả các biến
+được liệt kê _(khai báo)_ nhờ `local`. Ví dụ
+
+    D_ROOT="${D_ROOT:-}"
+
+    _my_def() {
+      local _d_tmp="/tmp/"
+      local _f_a=
+      local _f_b=
+
+      local _f_x= _f_y=     # không nên làm
+    }
+
+Mặc dùng có thể dùng `local` một lần để khai báo nhiều biến, nhưng cách làm
+này không được khuyến khích. Mỗi biến nên dùng với phép khai báo `local` riêng.
+
+Ngoài ra, không chấp nhận cách đặt tên kiểu _lưng lạc đà_. Ví dụ,
+tên `_d_foo_bar` là hợp lệ, còn tên `_dFooBar` thì không.
+
+## Tên hàm {#func-name}
+
+Các hàm có thể dùng từ bên ngoài có tên gồm chữ cái và số. Các hàm chỉ
+dùng bên trong chương trình có tên gồm toàn chữ thường, bắt đầu bằng
+dấu gạch chân (`_`).
+
+Có thể sử dụng dấu gạch ngang (`-`) trong tên các hàm.
+
+## Kiểm soát lỗi {#error-handle}
+
+Tất cả các thông báo lỗi được ghi vào `STDERR`. Không dùng `STDOUT`
+để nhận thông báo lỗi. Sử dụng các hàm riêng để gửi các thông báo tới
+các thiết bị xuất, không được dùng trực tiếp `echo`.
+
+Một hàm hoặc chương trình không kiểm soát lỗi của hàm hay chương trình khác.
+Mỗi hàm hoặc chương trình phải tự kiểm soát các lỗi và phát sinh các
+thông báo lỗi cần thiết.
+
+    _my_def() {
+      call_to_def
+      if [[ $? -ge 1 ]]; then
+        echo >&2 "call_to_def has some error"     # sai
+        _error "call_to_def has some error"       # sai
+        return 1
+      fi
+    }
+
+Trong ví dụ trên, hàm `_my_def` tự đặt ra các kiểm soát lỗi cho hàm bên
+ngoài `call_to_def`. Cách hợp lý là như sau
+
+    _my_def() {
+      call_to_def || return 1
+    }
+
+Sử dụng `PIPESTATUS` _(đây là một mảng)_ để kiểm soát lỗi của một dãy `pipe`,
+không được giả định lỗi của một dãy `pipe` chỉ phụ thuộc vào trong `pipe`
+cuối cùng của dãy.
+
+    foobar_command | grep -q 'FooBar'
+    if [[ $? -ge 1 ]]; then
+      _error "FooBar not found in the output of foobar_command"
+      return 1
+    fi
+
+Việc kiểm tra như trên thực tế chỉ kiểm soát lỗi của lệnh `grep`, mà không
+kiểm soát được trạng thái của lệnh `foobar_command`. Cách làm đúng như sau
+
+    foobar_command | grep -q 'FooBar'
+    if [[ ${PIPESTATUS[0]} -ge 1 \
+        || ${PIPESTATUS[1]} -ge 1 ]]; then
+      _error "FooBar not found in the output of foobar_command"
+      return 1
+    fi
+
+Xem thêm các bình luận và ví dụ ở [s-run-pipe-error][].
+
+## Cẩn thận với $? {#last-return-code}
+
+Rất cẩn thận khi dùng `$?`. Biến này chỉ lưu trữ giá trị trả về của lệnh
+cuối cùng ngay trước sự xuất hiện của nó. Nếu trước đó là một dãy `pipe`
+thì chỉ kết quả trả về bởi `pipe` cuối cùng được lưu trong `$?`. Trong
+một phép gán thì kết quả trả về luôn bằng `0`.
+
+    local _foo="$(command_not_found; exit 127)"
+    if [[ $? -ge 1 ]]; then                       # sai rồi
+      _error "Something wrong that never happens"
+    fi
+
+Cách dùng đúng phải như sau
+
+    local _foo=
+
+    _foo="$(command_not_found; exit 127)"
+    if [[ $? -ge 1 ]]; then
+      _error "Something wrong that never happens"
+    fi
+
+Đối với các `pipe` xem thêm trong [kiểm soát lỗi](#error-handle).
+
+Một lỗi trong cách dùng `$?` được mô tả ở [last-return-bad-use][].
+
+## Chú thích {#comments}
+
+Mỗi kịch bản nếu không tuân theo các quy định nào khác, phải gồm phần
+mô tả ở các dòng đầu tiên, để chỉ ra `Mục đích`, `Tác giả`, `Ngày tháng` bắt đầu
+viết kịch bản, `Giấy phép` và các thông tin cần thiết khác.
+
+Tất cả các hàm được mô tả theo cách tương tự, trong đó chỉ rõ phần `Input`
+và `Output` của hàm.
+
+## Điều cấm kỵ {#forbidden}
+
+Không dùng hàm `eval`.
+
+Không bao giờ dùng `[` dạng đơn. Dùng `[[` được cung cấp sẵn trong `Bash`.
+
+Không bao giờ dùng phép xả với ``. Sử dụng `$(foobar)` để thay thế.
+
+## Đọc thêm {#read-more}
+
+Bạn có thể tham khảo thêm ở  <http://wiki.bash-hackers.org/scripting/style>,
+tuy nhiên chỉ các quy tắc được nêu ra ở đây là chính thức được dùngg trong
+đội phát triển `TheSLinux`.
+
+[s-run-pipe-error]: https://github.com/TheSLinux/buildsystem/commit/9f4824ed9e5506cd97d477dfa4c7dbf5697c7fa6
+[last-return-bad-use]: http://dragula.org/blogs/675.html
