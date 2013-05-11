@@ -32,7 +32,8 @@ lược bỏ đi, để tạo nên `uim-vi`.
 * Các kiểu gõ tiếng Việt:
   `xtelex`, `xvni` _(chính thức được hỗ trợ và phát triển bởi `TheSLinux`)_,
   `m17n-vi-telex`, `m17n-vi-vni` _(sử dụng các bảng của thư viện [m17n][])_,
-  `viqr` _(theo mô tả trong [VIQR][])_.
+  `viqr` _(theo mô tả trong [VIQR][])_,
+  cùng các phiên bản [IPA](../vim#om-traditional-ipa) tương ứng.
 * Cấu hình:
   Khả năng thay đổi kiểu gõ cho từng ứng dụng hoặc từng khu vực trên màn hình.
   Thay đổi được các phím tắt thông qua giao diện đồ họa hoặc qua tập tin cấu hình.
@@ -51,8 +52,6 @@ Các tiện ích có ích cho người dùng cuối đi kèm trong `uim(-vi)`:
 ## Kiểu gõ `xtelex` và `xvni` {#xtelex}
 
 Đây là hai kiểu gõ được hỗ trợ và phát triển chính thức bởi `TheSLinux`.
-Kiểu gõ này **đang được hoàn thiện**, và **có thể bạn gặp nhiều lỗi**
-khi sử dụng `xtelex` và `xvni`.
 
 Được phát triển tiếp từ sản phẩm gốc của [Trần Thạch Anh][myquartz]
 dành cho `scim`, hai kiểu gõ này thực chất là một bộ tự điển các tổ hợp
@@ -65,7 +64,8 @@ Cách tiếp cận này có các đặc điểm sau
 
 1. Thay đổi và phát triển kiểu gõ dễ dàng, trực quan;
 2. Thêm bớt các ngoại lệ đơn giản và mau chóng;
-3. Chỉ cần am hiểu về tiếng Việt là có thể phát triển bảng `xtelex` và `xvni`.
+3. Chỉ cần am hiểu về tiếng Việt là có thể phát triển bảng `xtelex` và `xvni`;
+4. Không tích hợp bộ kiểm tra chính tả và các khả năng mở rộng khác.
 
 ## Vấn đề thường gặp
 
