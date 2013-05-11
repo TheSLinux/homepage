@@ -42,10 +42,10 @@ Phải nói rằng còn có các kiểu nhập khác, như `VIQR` đã có từ 
 hay `VISCII` và `VIQR` ([RFC1456][], 1993). Ở đây chỉ nói tới hai kiểu nhập
 _được cho là phổ biến_ là `Telex` và `VNI`.
 
-Hai kiểu nhập `Telex`, `VNI` do [Hồ Thành Việt][HTV] sáng tạo vào năm 1987
-_([nguồn dẫn][VNI])_. Bạn có thể tìm thấy đầy đủ mô tả về hai kiểu này
-trong tài liệu [VNI][]. Ngoài các định quen thuộc, có hai điểm có thể bạn
-chưa biết
+Kiểu nhập `VNI` do [Hồ Thành Việt][HTV] sáng tạo vào năm 1987 _([nguồn dẫn][VNI])_,
+còn kiểu nhập `Telex` do [Nguyễn Văn Vĩnh][NVV] nghĩ ra trong những năm 1920 - 1930.
+Bạn có thể tìm thấy đầy đủ mô tả về hai kiểu này trong tài liệu [VNI][] và [Telex][].
+Ngoài các định quen thuộc, có hai điểm có thể bạn chưa biết
 
 1. **Về phím thoát `\`**: Nhằm ngăn chặn tác dụng thêm dấu. Ví dụ, việc
   gõ vào `hoa\s` sẽ cho ra `hoas` vì phím thoát đã chặn tác dụng của việc
@@ -86,8 +86,7 @@ Phần lõi của bộ gõ này, gọi là `Unikey Engine` có vai trò xử lý
 đang được dùng để hỗ trợ tiếng Việt trong nhiều `framework` trên Linux,
 bao gồm `ibus`, `scim`, `fcitx`. Chẳng hạn, `ibus-unikey` _(do Lê Quốc Tuấn
 phát triển và bảo trì)_ dùng một phiên bản điều chỉnh của `unikey engine`.
-Phần lõi này thực tế là một phần của chương trình `x-unikey` của cùng
-tác giả.
+Phần lõi này thực tế là một phần của chương trình `x-unikey` _(của Phạm Kim Long)_.
 
 Kiểu nhập trong lõi `Unikey` là biến thể của kiểu `Telex` gốc. Ngoài các
 định nghĩa của Hồ Thành Việt, tác giả Phạm Kim Long bổ sung thêm các quy
@@ -201,9 +200,8 @@ nay không có các tùy chọn thay thế cho việc chỉnh trực tiếp này
 
 ## Vài nhận xét
 
-Không rõ các quy tắc nhập `Telex` và `VNI` do Hồ Thành Việt sáng tạo có
-được đưa vào chuẩn `RFC` như `VIQR` hay không. Tuy nhiên, thành quả của
-ông rất đáng ghi nhận.
+Không rõ các quy tắc nhập `VNI` do Hồ Thành Việt sáng tạo có được đưa vào
+chuẩn `RFC` như `VIQR` hay không. Tuy nhiên, thành quả của ông rất đáng ghi nhận.
 
 `Unikey` đã đặt ra các ngoại lệ cho quy tắc `Telex` của mình, từ đó
 phát sinh thêm các quy tắc thứ cấp `SimpleTelex` và `SimpleTelex2` trong
@@ -248,6 +246,10 @@ thấy cần có một bài để ghi lại _những điều đã biết_ để 
 dễ tìm thấy hơn, cho dù bài viết này tất nhiên không hoàn thiện, và trên
 hết là để ghi nhận sự giúp đỡ chân thành của các bạn.
 
+## Bình luận. Góp ý
+
+Vui lòng trao đổi trên [các nhóm thư](/lists/) của `TheSLinux`.
+
 ## Ghi chú. TODO
 
 Các phần sẽ viết thêm: `Bogo`, `xtelex`, `uim`, `uim-vi`
@@ -269,3 +271,5 @@ Các phần sẽ viết thêm: `Bogo`, `xtelex`, `uim`, `uim-vi`
 [sgtt]: http://sgtt.vn/Khoa-giao/135799/Viet-i-hay-viet-y.html
 [bogo]: https://github.com/BoGoEngine/bogo
 [fcitx-unikey]: https://github.com/fcitx/fcitx-unikey
+[Telex]: http://vi.wikipedia.org/wiki/Telex
+[NVV]: http://tuoitre.vn/Van-hoa-Giai-tri/400033/Nho-%E2%80%9Cnguoi-Nam-moi%E2%80%9D-dau-tien.html
