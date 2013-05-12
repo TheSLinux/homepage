@@ -142,7 +142,8 @@ Tuy nhiên, tham số trên không dễ điều chỉnh. Lý do là các giao di
 chỉnh cấu hình của các `framework` như `ibus`, `scim` không đưa ra cách
 để can thiệp thay đổi biến trong `m17n`. Bạn cần phải thay đổi từ trong
 mã nguồn hoặc chỉnh sửa trực tiếp trên tập tin `vi-telex.mim` hay
-`vi-vni.mim` trên hệ thống _(điều này rất không nên làm)_.
+`vi-vni.mim` trên hệ thống _(điều này rất không nên làm)_, hoặc
+sử dụng chương trình [m17n-im-config][].
 
 _(Các lưu ý về phím xóa dấu và phím thoát trong phần này cũng có giá
 trị đối với kiểu nhập `m17n-vi-vni`.)_
@@ -188,10 +189,10 @@ nên để có được đúng chữ `hoàng` bạn phải lựa chọn vị tr�
 nếu nhập vào `hoafng` thì chỉ được `hòang` mà thôi.
 
 Để chuyển qua kiểu bỏ dấu theo `IPA`, bạn phải điều chỉnh biến `tone-mark-on-last`
-thành giá trị khác không. Như đã nói ở phần trên, thật không may là để  lựa
-chọn kiểu xuất truyền thống hoặc `IPA` bạn chỉ có thể điều chỉnh từ mã nguồn
-của gói `m17n-database`, hoặc điều chỉnh trực tiếp tập tin `vi-telex.mim`
-hay `vi-vni.mim` trên máy bạn. Các `framework` như `ibus`, `scim`,... hiện
+thành giá trị khác `0`. Như đã nói ở phần trên, để làm điều này bạn can
+thiệp trực tiếp và mã nguồn `m17n-database`, hoặc điều chỉnh trực tiếp
+tập tin `vi-telex.mim` hay `vi-vni.mim` trên máy bạn hoặc dùng chương
+trình [m17n-im-config][]. Các `framework` như `ibus`, `scim`,... hiện
 nay không có các tùy chọn thay thế cho việc chỉnh trực tiếp này.
 
 ## Vài nhận xét
@@ -275,3 +276,4 @@ gian xuất hiện của những biến thể này.
 [fcitx-unikey]: https://github.com/fcitx/fcitx-unikey
 [Telex]: http://vi.wikipedia.org/wiki/Telex
 [NVV]: http://tuoitre.vn/Van-hoa-Giai-tri/400033/Nho-%E2%80%9Cnguoi-Nam-moi%E2%80%9D-dau-tien.html
+[m17n-im-config]: http://ftp.de.debian.org/debian/pool/main/m/m17n-im-config/m17n-im-config_0.9.0.orig.tar.gz
