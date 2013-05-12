@@ -56,41 +56,7 @@ Các tiện ích có ích cho người dùng cuối đi kèm trong `uim(-vi)`:
 
 ## Vấn đề thường gặp {#faq}
 
-Những vấn đề dưới đây chủ yếu liên quan tới chương trình gốc `uim`.
-Có lẽ bạn nên đọc ở [phần này trước][126-uim-vi].
-
-1. **Chọn kiểu gõ nào:** Bạn có thể chọn một trong các kiểu gõ `m17n-vi-telex`,
-  `m17n-vi-vni`, `xtelex`, `xvni`, `viqr` (và cách gõ trực tiếp).
-  Danh sách đầy đủ các kiểu gõ được hỗ trợ tìm thấy trong phần `Global Settings`
-  `/` `Enable Input Methods` khi chạy chương trình `uim-setup`.
-  Xem thêm mô tả trong [126-uim-vi](../126-uim-vi/).
-
-2. **Tạm thời tắt bộ gõ như thế nào**: Xem [126-uim-vi][].
-
-3. **Chuyển đổi qua lại giữa các kiểu gõ thế nào**: Xem [126-uim-vi][].
-
-4. **Đổi lại các phím tắt và kiểu gõ mặc định như thế nào**:
-  Sử dụng chương trình `uim-setup` và tìm đến phần `Global Settings`.
-
-5. **Khi chạy uim-setup, chương trình bị dừng đột ngột, chắc là bị lỗi**:
-  Bạn sao lưu và xóa thư mục **~/.uim.d/** và chạy lại chương trình
-  `uim-setup`. Nếu vẫn bị lỗi, hay liên hệ và báo với đội phát triển
-  theo các chỉ dẫn trong phần [Hỗ trợ](#support).
-
-8. **Khi tôi gõ _w_ thì không hiện ra _ư_**: Nhiều bộ gõ đặt ra các
-  luật riêng so với định nghĩa ban đầu [VNI], ví dụ khi gõ _w_ hoặc _[_
-  thì sẽ in ra _ư_. Trong kiểu gõ `XTelex` thì không có các hỗ trợ này.
-  Tạm thời, nếu muốn có chữ _ư_ khi gõ _w_, hãy dùng `m17n-vi-telex`.
-  Xem thêm [XTelex][].
-
-7. **Trong các bộ gõ tôi biết tôi gõ _thế này_ để được _thế này_ nhưng**
-  **trong `uim-vi` tôi không làm được như vậy**: Mỗi bộ gõ có đặc điểm
-  riêng và cách tiếp cận riêng. Bạn hãy mô tả chi tiết các phím mà bạn
-  đã gõ và kết quả bạn mong muốn để đội phát triển `TheSLinux` có thể
-  xác định, phân loại lỗi và cân nhắc thêm, bớt tính năng vào `uim-vi`.
-
-6. **Tôi không muốn dùng uim-setup**: Bạn có thể sử dụng `scim` hoặc `ibus`
-  thay cho `uim-vi`. Hiện tại bạn phải biên dịch các gói này từ mã nguồn.
+Xem trong [FAQ](/doc/uim-vi/faq/#uim).
 
 ## Hỗ trợ. Góp ý. Báo lỗi {#support}
 
@@ -125,5 +91,4 @@ của nó phải được thực hiện dưới những quy định của giấy
 [GPLv2]: http://www.gnu.org/licenses/gpl-2.0.html
 [IPA]: IPA (http://www.ipa.go.jp/)
 [XTelex]: /doc/uim-vi/xtelex/
-[126-uim-vi]: /doc/uim-vi/126-uim-vi/#faq
 [myquartz]: https://code.google.com/p/scim-tables-vietnamese-ext/
