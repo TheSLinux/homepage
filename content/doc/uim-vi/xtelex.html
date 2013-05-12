@@ -1,0 +1,83 @@
+---
+title: Kiểu gõ XTelex, XVNI
+tags: ['vietnamese', 'xtelex', 'xvni', 'uim']
+---
+
+1. Toc
+{:toc}
+
+## Mô tả ngắn
+
+Đây thực chất không phải là bộ gõ hay kiểu gõ gì mới. Bạn vẫn sử dụng
+kiểu nhập `Telex` hay `VNI` quen thuộc. Việc đặt ra tên mới `XTelex`
+và `XVNI` nhằm phân biệt các đặc điểm kỹ thuật và một số đặc điểm sử dụng.
+
+`XTelex` _(và `XVNI`)_ được phát triển từ sản phẩm của [Trần Thạch Anh][myquartz]
+dành cho `scim`, bao gồm tự điển các tổ hợp để sinh ra các từ _(hoặc phần
+của từ)_ tiếng Việt. Đội phát triển `TheSLinux` đã tinh chỉnh, thu gọn
+và viết các hỗ trợ cần thiết để dùng các tự điển này với `uim`.
+
+## Đặc điểm kỹ thuật
+
+Trong khi một số bộ gõ tiếng Việt khác cố gắng trừu tượng hóa các cách
+gõ tiếng Việt trong máy tính và triển khai theo các quy tắc lập trình,
+`xtelex` và `xvni` là mô tả trực quan các tổ hợp như [ví dụ][xtelex.src].
+Cách tiếp cận này có các đặc điểm sau
+
+1. Thay đổi và phát triển kiểu gõ dễ dàng, trực quan;
+2. Thêm bớt các ngoại lệ đơn giản và mau chóng;
+3. Chỉ cần am hiểu về tiếng Việt là có thể phát triển bảng `xtelex` và `xvni`;
+4. Chỉ chấp nhận các tổ hợp _có thể có ý nghĩa_. Ví dụ, khi nhập vào
+  `<Space>uow</Space>` thì bộ gõ vẫn giữ nguyên như vậy, lý do là trong
+  tiếng Việt thì `ươ` hay `uơ` không có nghĩa. Tuy nhiên, nếu người dùng
+  nhập vào `<Space>uown<Space>` thì sẽ xuât hiện `ươn` trên màn hình.
+
+Tuy nhiên, các tiếp cận trên cũng có những điểm không hay
+
+4. Không tích hợp bộ kiểm tra chính tả và các khả năng mở rộng khác;
+5. Dễ thiếu sót một số tổ hợp, do con số tổ hợp tương đối lớn (trên `1000` tổ hợp);
+6. Tốn bộ nhớ lưu trữ các tổ hợp so với các cách tiếp cận thiên về lập trình.
+
+Về khía cạnh lập trình: Toàn bộ các tổ hợp `XVNI` được sinh tự động từ
+các tổ hợp `XTelex`. Do đó, chỉ cần quản lý và điều chỉnh cho bảng `XTelex`
+như bạn thấy trong [mã nguồn](#source). Ngoại trừ một số ngoại lệ,
+kiểu bỏ dấu mới `-IPA` cũng được sinh tự động từ kiểu bỏ dấu truyền thống.
+
+## Đặc điểm sử dụng
+
+Dưới đây là các điểm mà người sử dụng cần biết
+
+1. `XTelex` và `XVNI` hỗ trợ cách bỏ dấu truyền thống (`hòa`),
+  trong khi `XTelex-IPA` và `XVNI-IPA` hỗ trợ kiểu bỏ dấu mới (`hoà`);
+
+2.  Khuyến khích việc nhập dấu sau nguyên âm cuối cùng hoặc sau từ. Ví dụ, các
+  cách nhập dấu `hoafng`, `hoangf`, `hoanfg` được khuyến khích, nhưng cách
+  nhập dấu `hofang` không được hoan nghênh, vì `XTelex` không có cơ chế
+  chỉnh lỗi một phần cho kiểu bỏ dấu này;
+
+3. Ngoại các quy định cơ bản của kiểu nhập dấu `XTelex` và `XVNI`
+  đã biết, không có thêm các ngoại lệ như [Unikey](/doc/uim-vi/vim/#unikey-telex).
+  Ví dụ, không định nghĩa `w`, `[`, `]`,...; khi người dùng nhập các ký tự
+  này thì sẽ xuất hiện trên màn hình y như vậy thay vì `ư`, `ơ`,... như
+  trong Unikey;
+
+4. Có các tổ hợp gõ nhanh, ví dụ `uown` sẽ thành `ươn`, `uowsc` sẽ thành `ước`;
+
+5. Kiểm soát lỗi trong một số từ đặc biệt hoặc khó gõ. Ví dụ
+  `thuở`, `quần soọc`, `boòng boong`, `rơ moóc`,...
+
+6. Không hỗ trợ phím thoát `\` và  phím xóa dấu `z`. Lý do cho việc này
+  là bạn có thể cấu hình phím thoát và xóa dấu trong `uim` bằng chương
+  trình `uim-setup` _(mặc dù việc này khá phức tạp và khó hiểu)_, và
+  việc hạn chế các ngoại lệ sẽ giúp bạn gõ nhanh hơn trong các tài liệu
+  kỹ thuật, lập trình.
+
+## Mã nguồn. Báo lỗi. Góp ý {#source}
+
+Mã nguồn của `XTelex` và `XVNI` có ở [Github][].
+
+Để báo lỗi, góp ý, vui lòng dùng [các nhóm thư của `TheSLinux`](/lists/).
+
+[myquartz]: https://code.google.com/p/scim-tables-vietnamese-ext/
+[xtelex.src]: https://github.com/TheSLinux-forks/myquartz-scim2uim/blob/master/src/Telex.txt.in
+[Github]: https://github.com/TheSLinux-forks/myquartz-scim2uim

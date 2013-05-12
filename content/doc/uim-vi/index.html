@@ -1,0 +1,41 @@
+---
+title: Tiếng Việt trong TheSLinux
+tags: ['vietnamese', 'im', 'uim']
+---
+
+* Toc
+{:toc}
+
+## Liên kết nhanh
+
+1. [Bắt đầu nhanh như thế nào](126-uim-vi/#faq) _(dễ)_
+2. [Thiết lập mặc định của uim-vi trong TheSLinux](126-uim-vi/) _(dễ)_
+3. [Mô tả các kiểu gõ mặc định XTelex và XVNI](xtelex/) _(cần đọc, trung bình)_
+4. Vấn đề hay gặp [khi dùng uim](woman/#faq) và [khi dùng uim-vi](126-uim-vi/#faq) _(dễ, vừa phải)_
+5. [Chi tiết kỹ thuật và sử dụng về uim](woman/) _(khó, dài)_
+6. [Bàn về các hỗ trợ tiếng Việt trong Linux](vim/) _(khó, dài)_
+7. [Giúp đỡ, hỗ trợ, báo lỗi ở đâu](woman#support)
+
+## Thuật ngữ cần biết
+
+Mặc dù từ hay dùng là `kiểu gõ`, `bộ gõ`, bạn cần phân biệt hai quá
+trình: _nhập_ vào dữ liệu từ bàn phím, và _xử lý_ dữ liệu nhập vào
+để thể hiện từ tiếng Việt trên màn hình.
+
+* `Kiểu nhập dấu`, `kiểu nhập`: Cách bạn nhập các ký tự từ bàn phím
+  để gõ tiếng Việt. Ví dụ, nhập vào `hoas` hay `hoa1` để có `hóa`;
+
+* `Kiểu xuất`: Cách đặt dấu thanh vào các nguyên âm, ví dụ kiểu truyền
+  thống thì viết `hòa`, trong khi kiểu mới thì viết `hoà`.
+  Kiểu mới còn gọi là kiểu `IPA`.
+  Xem chi tiết trong [bài về tiếng Việt trong Linux](../vim/);
+
+* `Bộ gõ`: dùng để chỉ phần mềm cung cấp cách _nhập_ và _thể hiện_
+  tiếng Việt trên máy tín;
+
+* `Kiểu gõ`: chỉ  chung cả `kiểu nhập` và `kiểu xuất`.
+
+Lưu ý là việc dùng từ `kiểu bỏ dấu` vẫn có thể gây nhầm lẫn. Lý do là
+ngoài vấn đề về vị trí của dấu thanh trong từ tiếng Việt, còn vấn đề về
+cách người dùng _nhập các phím_ để có dấu tiếng Việt. Do đó, việc dùng
+từ `kiểu bỏ dấu` không được hoan nghênh.

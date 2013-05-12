@@ -1,0 +1,90 @@
+---
+title: Profile mặc định cho uim-vi
+tags: ['uim', 'vietnamese', 'profile', '126']
+origin: https://github.com/TheSLinux-forks/126-uim-vi
+---
+
+`126-uim-vi` cung cấp các thiết lập mặc định để gõ tiếng Việt trong
+`TheSLinux` sử dụng [uim-vi](../woman/).
+
+Tên gói để cài đặt là `126-uim-vi`.
+
+----
+
+1. TOC
+{:toc}
+
+## Đặc điểm {#specs}
+
+Các đặc điểm sử dụng do `profile` này cung cấp như sau
+
+0. **Đối tượng** sử dụng: Người dùng `Telex`, thường xuyên gõ tiếng Việt
+  và tiếng Anh trong cùng tài liệu. Với người dùng `VNI`, xem thêm
+  hướng dẫn điều chỉnh [VNI](#VNI-users).
+1. Các kiểu gõ _(nhập, xuất)_ được bật: `XTelex` và `XVNI`. Đây là
+  hai kiểu gõ truyền thống, ví dụ sẽ cho ra `hòa` thay vì `hoà`.
+  Để sử dụng kiểu bỏ dấu mới, bạn cần thay đổi để chọn kiểu `IPA`.
+  Ngoài ra, còn có nhiều kiểu gõ khác ở trạng thái ẩn: các kiểu gõ
+  `Telex`, `VNI` cung cấp bởi thư viện `m17n`, kiểu gõ `VIQR`,...
+  Bạn có thể xem đầy đủ danh sách này khi dùng chương trình `uim-setup`
+  và đến phần `Global Settings` `/` `Edit enabled input methods`.
+2. Kiểu gõ mặc định: **trực tiếp** _(tức nhập thế nào trên màn hình sẽ xuất
+  hiện như thế đó; hay còn gọi là kiểu gõ tiếng Anh)_
+3. **Các phím tắt**
+    31. Chuyển đổi qua lại giữa hai kiểu gõ `XTelex` và `XVNI`:
+        Tổ hợp `Ctrl Alt \`.
+    32. Chuyển đổi qua lại giữa kiểu gõ `XTelex` (hoặc `XVNI`) và
+        kiểu gõ trực tiếp: Tổ hợp `Ctrl Alt Space`.
+    33. Tạm thời chuyển **trạng thái** của một kiểu gõ: Tổ hợp `Super Escape`
+        _(Phím `Super` là phím có lá cờ trên bàn phím; còn gọi là phím `Windows`.)_
+    34. Xóa chữ hoặc dấu: phím `Backspace`. Tùy vào trạng thái của bộ gõ
+        là đã hoàn thành một chữ hoặc đang ở trạng thái dò tìm mà tác dụng
+        của phím `Backspace` khác nhau. Bạn nên thử nghiệm gõ vào
+        `hoanf<Backspace>` và `hoanfg<Space><Backspace>` để thấy được
+        sự khác biệt.
+4. Các chi tiết khác
+    41. Trạng thái mặc định cho các kiểu gõ: Bật
+    42. Không hiện bảng mô tả các khả năng xuất _(khi nhập vào chẳng hạn
+        ký tự `a`, chương trình biết rằng có nhiều chữ tiếng Việt bắt đầu
+        hay sử dụng `a` này, ví dụ, `á`, `ăn`,...; việc liệt kê các khả
+        năng nhiều khi có ích, nhưng lại gây phiền mắt)_
+    43. Trên khay hệ thống _(chạy nhờ chương trình `uim-systray`)
+        hiện hai biểu tượng, một để chỉ kiểu gõ đang dùng, và một để chỉ
+        trạng thái của kiểu gõ.
+    44. Không hỗ trợ phím thoát `\` và phím bỏ dấu `z` như trong các bộ
+        gõ khác _(tuy nhiên, có thể cấu hình bằng `uim-setup` để hỗ trợ
+        hai chức năng này)_
+    45. Chỉ  hỗ trợ kiểm tra chính tả  một phần. Xem thêm trong [XTelex][].
+
+## Câu hỏi hay gặp {#faq}
+
+1. **Làm thế nào để bật bộ gõ lên**: Khi bật một chương trình mới,
+  gộ gõ mặc định sẽ tắt. Để bật bộ gõ lên, bạn nhấn tổ hợp phím
+  `Ctrl Alt \` để chuyển đến bộ gõ đầu tiên là `XTelex`.
+  Bạn cũng có thể dùng chuột để chọn bộ gõ từ khay hệ thống.
+
+2. **Tạm thời tắt bộ gõ như thế nào**: Có hai cách:
+  chuyển qua kiểu gõ `trực tiếp` _(tổ hợp hím: `Ctrl Alt Space`)_ hoặc
+  thay đổi trạng thái của bộ gõ _(tổ hợp phím: `Super Escape`)_
+  _(phím tắt **Super** là phím có lá cờ `Windows` trên bàn phím.)_
+
+3. **Chuyển đổi qua lại giữa các bộ gõ thế nào**: Sử dụng phím tắt
+  `Ctrl Alt \`. Mỗi lần sử dụng phím tắt này bạn sẽ chuyển qua bộ
+  gõ mới, với các thiết lập mặc định của bộ gõ đó. Điều đó có nghĩa là
+  các ghi nhớ cho trạng thái của bộ gõ _(đang bật hoặc tắt)_ sẽ bị mất đi.
+  Từ khóa: `input method switching`
+
+Nhiều câu hỏi khác có trong [woman](../woman#faq).
+
+## Người dùng VNI {#VNI-users}
+
+Người dùng `VNI` có thể sử dụng `Profile` này với một chút điều chỉnh,
+bằng cách chọn `VNI` là kiểu gõ nằm đầu tiên trong danh sách các bộ gõ
+được bật. Để làm điều này, theo các bước sau
+
+1. Bật chương trình `uim-setup` và chọn đến phần `Global Settings`
+2. Chọn đến phần `Edit enabled input methods` rồi dùng phím mũi tên
+  để di chuyển `XVNI` lên đầu sanh sách. Sau đó chọn `Close`.
+3. Chọn `Apply` và rồi chọn `OK` để hoàn tất.
+
+[XTelex]: /doc/uim-vi/xtelex/

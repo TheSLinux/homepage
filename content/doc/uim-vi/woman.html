@@ -12,17 +12,22 @@ tags: ['uim', 'vietnamese', 'telex', 'vni', 'woman']
 kiểu gõ `telex` và `vni` truyền thống. `uim-vi` là một bản tinh chỉnh
 của bản gốc `uim`, với các cài đặt thuận lợi cho người dùng tiếng Việt.
 
+Các kiểu gõ được hỗ trợ và phát triển bởi `TheSLinux` là `XTelex` và `XVNI`.
+Ngoài ra còn có các kiểu gõ `Telex` và `VNI` hỗ trợ bởi thư viện `m17n`.
+Xem mô tả chi tiết trong [XTelex và XVNI](/doc/uim-vi/xtelex/)
+và trong bài [bàn về tiếng Việt trên máy tính](/doc/uim-vi/vim/).
+
 ## Cài đặt
 
-Hiện tại chưa có sẵn các gói cho `uim-vi`. Bạn cần biên dịch các gói
-`m17n-db-vi` và `uim-vi` từ mã nguồn nhờ [s-makepkg](/doc/s-makepkg/woman/).
+Các gói cần cài đặt: `m17n-db-vi`, `uim-vi`, `uim-vi-xtelex`.
+Để biên dịch các gói này từ mã nguồn, sử dụng [s-makepkg](/doc/s-makepkg/woman/).
 
 ## Đặc điểm
 
 Về mặt **kỹ thuật** `uim` không được thiết kế theo mô hình `server` -- `client`
 như `ibus` hay `scim`. Đi kèm `uim` là một bộ thông dịch `Scheme` nhỏ
 gọn dùng để viết các phần mở rộng, các kiểu nhập. Từ sản phẩm gốc `uim`,
-những bộ gõ và điều chỉnh không thuận tiện cho người dùng Việt Nam được
+những kiểu gõ và điều chỉnh không thuận tiện cho người dùng Việt Nam được
 lược bỏ đi, để tạo nên `uim-vi`.
 
 Đối với **người dùng**, `uim(-vi)` có các đặc điểm như sau đây.
@@ -49,47 +54,20 @@ Các tiện ích có ích cho người dùng cuối đi kèm trong `uim(-vi)`:
 2. `uim-systray`: Thể hiện biểu tượng trên khay hệ thống,
   dùng để thể hiện kiểu gõ đang sử dụng và trạng thái của kiểu gõ (tắt, mở).
 
-## Kiểu gõ `xtelex` và `xvni` {#xtelex}
+## Vấn đề thường gặp {#faq}
 
-Đây là hai kiểu gõ được hỗ trợ và phát triển chính thức bởi `TheSLinux`.
-
-Được phát triển tiếp từ sản phẩm gốc của [Trần Thạch Anh][myquartz]
-dành cho `scim`, hai kiểu gõ này thực chất là một bộ tự điển các tổ hợp
-để sinh ra các từ (hoặc một phần của từ) tiếng Việt.
-
-Trong khi một số bộ gõ tiếng Việt khác cố gắng trừu tượng hóa các cách
-gõ tiếng Việt trong máy tính và triển khai theo các quy lập trình,
-`xtelex` và `xvni` là mô tả trực quan các tổ hợp như [ví dụ][xtelex].
-Cách tiếp cận này có các đặc điểm sau
-
-1. Thay đổi và phát triển kiểu gõ dễ dàng, trực quan;
-2. Thêm bớt các ngoại lệ đơn giản và mau chóng;
-3. Chỉ cần am hiểu về tiếng Việt là có thể phát triển bảng `xtelex` và `xvni`;
-4. Không tích hợp bộ kiểm tra chính tả và các khả năng mở rộng khác.
-
-## Vấn đề thường gặp
-
-Các hướng dẫn dưới đây đúng với cài đặt **mặc định** của `TheSLinux`.
+Những vấn đề dưới đây chủ yếu liên quan tới chương trình gốc `uim`.
+Có lẽ bạn nên đọc ở [phần này trước][126-uim-vi].
 
 1. **Chọn kiểu gõ nào:** Bạn có thể chọn một trong các kiểu gõ `m17n-vi-telex`,
-  `m17n-vi-vni`, `xtelex`, `xvni`, `viqr` (và cách gõ trực tiếp). Nếu bạn
-  đã từng sử dụng các kiểu gõ khác trước đây, bạn cần chút thời gian để
-  làm quen với một trong các kiểu gõ này.
+  `m17n-vi-vni`, `xtelex`, `xvni`, `viqr` (và cách gõ trực tiếp).
+  Danh sách đầy đủ các kiểu gõ được hỗ trợ tìm thấy trong phần `Global Settings`
+  `/` `Enable Input Methods` khi chạy chương trình `uim-setup`.
+  Xem thêm mô tả trong [126-uim-vi](../126-uim-vi/).
 
-2. **Tạm thời tắt bộ gõ như thế nào**: Sử dụng phím tắt **Super Escape**
-  (phím tắt **Super** là phím có lá cờ `Windows` trên bàn phím của bạn).
-  Khi dùng phím tắt này, bộ gõ hiện tại sẽ tạm thời ngắt và thay vào đó
-  là kiểu trực tiếp _(để gõ tiếng Anh)_, hoặc _ngược lại_.
-  Bạn có thể cấu hình lại `uim` bằng chương trình `uim-setup` để chuyển
-  đổi giữa hai kiểu gõ tức thì. Từ khóa: `input method toggle`
+2. **Tạm thời tắt bộ gõ như thế nào**: Xem [126-uim-vi][].
 
-3. **Chuyển đổi qua lại giữa các bộ gõ thế nào**: Sử dụng phím tắt
-  **Ctrl Alt \\**. Mỗi lần sử dụng phím tắt này bạn sẽ chuyển qua bộ
-  gõ mới, với các thiết lập mặc định của bộ gõ đó. Điều đó có nghĩa là
-  các ghi nhớ cho trạng thái của bộ gõ _(đang bật hoặc tắt)_ sẽ bị mất đi.
-  Mặc dù cách này cũng có thể dùng để tạm thời tắt bộ gõ, nhưng đúng như
-  câu hỏi, bạn chỉ dùng phím tắt này khi thật sự cần chuyển đổi giữa
-  các kiểu gõ mà thôi. Từ khóa: `input method switching`
+3. **Chuyển đổi qua lại giữa các kiểu gõ thế nào**: Xem [126-uim-vi][].
 
 4. **Đổi lại các phím tắt và kiểu gõ mặc định như thế nào**:
   Sử dụng chương trình `uim-setup` và tìm đến phần `Global Settings`.
@@ -101,10 +79,9 @@ Các hướng dẫn dưới đây đúng với cài đặt **mặc định** c�
 
 8. **Khi tôi gõ _w_ thì không hiện ra _ư_**: Nhiều bộ gõ đặt ra các
   luật riêng so với định nghĩa ban đầu [VNI], ví dụ khi gõ _w_ hoặc _[_
-  thì sẽ in ra _ư_. Trong kiểu gõ `xtelex` thì không có các hỗ trợ này.
-  Tạm thời nếu muốn có chữ _ư_ khi gõ _w_, bạn hãy thử với `m17n-vi-telex`.
-  Trong tương lai, `uim-vi` sẽ thêm các hỗ trợ để người dùng có thể
-  thêm các định nghĩa gõ tắt tùy ý.
+  thì sẽ in ra _ư_. Trong kiểu gõ `XTelex` thì không có các hỗ trợ này.
+  Tạm thời, nếu muốn có chữ _ư_ khi gõ _w_, hãy dùng `m17n-vi-telex`.
+  Xem thêm [XTelex][].
 
 7. **Trong các bộ gõ tôi biết tôi gõ _thế này_ để được _thế này_ nhưng**
   **trong `uim-vi` tôi không làm được như vậy**: Mỗi bộ gõ có đặc điểm
@@ -136,7 +113,7 @@ của [Trần Thạch Anh][myquartz].
 ## Giấy phép
 
 `uim(-vi)` được phân phối theo giấy phép [BSD mới][newBSD].
-Bộ gõ `xtelex` và `xvni` được phân phối theo giấy phép [GPLv2][].
+Bộ gõ `XTelex` và `XVNI` được phân phối theo giấy phép [GPLv2][].
 Việc sử dụng, phân phối, chỉnh sửa `uim` và `uim-vi` cùng các thành phần
 của nó phải được thực hiện dưới những quy định của giấy phép đã chỉ ra.
 
@@ -147,5 +124,5 @@ của nó phải được thực hiện dưới những quy định của giấy
 [newBSD]: http://opensource.org/licenses/BSD-3-Clause
 [GPLv2]: http://www.gnu.org/licenses/gpl-2.0.html
 [IPA]: IPA (http://www.ipa.go.jp/)
-[myquartz]: https://code.google.com/p/scim-tables-vietnamese-ext/
-[xtelex]: https://github.com/TheSLinux-forks/myquartz-scim2uim/blob/master/src/Telex.txt.in
+[XTelex]: /doc/uim-vi/xtelex/
+[126-uim-vi]: /doc/uim-vi/126-uim-vi/#faq
