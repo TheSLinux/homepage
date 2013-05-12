@@ -242,3 +242,10 @@ h2, h3 {
   text-decoration: none;
   color: #fff;
 }
+
+hr {
+  height: 0px;
+  color: #ccc;
+  padding: 0px;
+  margin: 0px;
+}
