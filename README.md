@@ -26,3 +26,18 @@
 
    Before creating new pull request you need to review your changes locally
    by using the `view` or `watch` options provided by `Nanoc`.
+
+## Requirements
+
+   The following `Ruby` gems are required to build source files with `nanoc`
+   and to view the output with `nanoc view`.
+
+      asdf
+      coderay
+      git
+      kramdown
+      nanoc
+      kramdown
+      fssm
+      coderay
+      nokogiri
