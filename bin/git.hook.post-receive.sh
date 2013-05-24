@@ -14,6 +14,8 @@ _D_VAR="$HOME/var/theslinux-home/"
 _F_LOCK="$HOME/var/theslinux-home.lock"
 _D_WWW="$HOME/static/www/theslinux.org/"
 _D_OUTPUT="$_D_VAR/output/"
+_F_ARCHIVE="$_D_WWW/theslinux.org.tgz"
+_S_BERLIOS="kyanh@shell.berlios.de"
 
 msg() {
   echo ":: $*"
@@ -102,6 +104,32 @@ _create_www() {
   rsync -rap --delete $_D_OUTPUT/ $_D_WWW/ --exclude="*.tgz"
 }
 
+# NOTE: Should be invoked after (create_www)
+_create_archive() {
+  cd $_D_VAR/ || die "Couldn't switch to $_D_VAR/"
+
+  msg "Creating local archive for Tuxfamily"
+  tar --transform="s,^output,theslinux.org," -czf $_F_ARCHIVE output/
+  chmod 644 $_F_ARCHIVE
+}
+
+_sync() {
+  msg "Updating home page theslinux.berlios.de"
+  ssh -o ConnectTimeout=3 $_S_BERLIOS
+  if [[ $? -ge 1 ]]; then
+    msg "=============================================="
+    msg "Error happened when updating pages on Berlios."
+    msg "This is often due to bad ssh settings on Berlios.de"
+    msg "This is *not* an error at your side. Please contact"
+    msg "sysadmin to resolve this problem -- theslinux.org."
+    msg "=============================================="
+    return 1
+  else
+    msg "All pages have been updated."
+    msg "Thank you for your contribution. You make TheSLinux live!"
+  fi
+}
+
 # NOTE: Never use (die) in this method
 _lock_start() {
   if [[ ! -f "$_F_LOCK" ]]; then
@@ -142,6 +170,8 @@ _main() {
   _build
   _fix_perm
   _create_www
+  _create_archive
+  _sync
 }
 
 _lock_start
