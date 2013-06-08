@@ -72,13 +72,13 @@ _update() {
         'Rules' \
         '*.rb' \
         'layouts/*' \
-        'config.yaml'
+        'config.yaml' \
+        'etc/apache.rewrite.conf'
 }
 
 _fetch_apache_configuration() {
   msg "Updating Apache configuration. Nginx requires manual edit"
-  git show "core:etc/apache.rewrite.conf" \
-    > $_D_OUTPUT/.htaccess
+  mv "etc/apache.rewrite.conf" "$_D_OUTPUT/.htaccess"
 }
 
 _update_myself() {
