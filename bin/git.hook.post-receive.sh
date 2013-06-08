@@ -75,6 +75,12 @@ _update() {
         'config.yaml'
 }
 
+_fetch_apache_configuration() {
+  msg "Updating Apache configuration. Nginx requires manual edit"
+  git show "core:etc/apache.rewrite.conf" \
+    > $_D_OUTPUT/.htaccess
+}
+
 _update_myself() {
   msg "Do nothing"
 }
@@ -168,6 +174,7 @@ _main() {
   _setup
   _update || die "Something wrong happened during updating process"
   _build
+  _fetch_apache_configuration
   _fix_perm
   _create_www
   _create_archive
