@@ -73,6 +73,7 @@ _update() {
         '*.rb' \
         'layouts/*' \
         'config.yaml' \
+        'content/stylesheet.css' \
         'etc/apache.rewrite.conf'
 }
 
