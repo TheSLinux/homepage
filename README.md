@@ -32,7 +32,7 @@
    The following `Ruby` gems are required to build source files with `nanoc`
    and to view the output with `nanoc view`.
 
-      asdf
+      adsf
       coderay
       git
       kramdown
