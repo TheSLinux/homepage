@@ -131,10 +131,14 @@ _fix_news_page() {
 
   # In the year 2013 we are still using the `news/index.hml` for items
   if [[ "$(date +%Y)" == "2013" ]]; then
-    mkdir -p $_D_OUTPUT/output/news/2013/
-    ln -s ../index.html output/news/2013/index.html
+    mkdir -p "$_D_OUTPUT/news/2013/"
+    pushd "$_D_OUTPUT/news/2013/"
+    ln -s "../index.html" "index.html"
+    popd
   else # we now use contents/news/<year>.html to save items
-    ln -s "$(date +%Y)/index.html" output/news/index.html
+    pushd "$_D_OUTPUT/news/"
+    ln -s "$(date +%Y)/index.html" "index.html"
+    popd
   fi
 }
 
