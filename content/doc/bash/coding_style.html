@@ -137,7 +137,7 @@ kiểm soát được trạng thái của lệnh `foobar_command`. Cách làm đ
     foobar_command | grep -q 'FooBar'
     if [[ ${PIPESTATUS[0]} -ge 1 \
         || ${PIPESTATUS[1]} -ge 1 ]]; then
-      _error "FooBar not found in the output of foobar_command"
+      _error "'foobar_command' failed or 'FooBar' not found"
       return 1
     fi
 
