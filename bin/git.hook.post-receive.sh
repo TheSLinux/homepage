@@ -75,6 +75,8 @@ _update() {
         'config.yaml' \
         'content/stylesheet.css' \
         'etc/apache.rewrite.conf'
+
+  [[ "$(date +%Y)" == "2013" ]] || rm -f "contents/news/index.html"
 }
 
 _fetch_apache_configuration() {
@@ -118,6 +120,22 @@ _create_archive() {
   msg "Creating local archive for Tuxfamily"
   tar --transform="s,^output,theslinux.org," -czf $_F_ARCHIVE output/
   chmod 644 $_F_ARCHIVE
+}
+
+# See also https://github.com/TheSLinux/homepage/commit/ \
+#   27372a4e26d67bd63c0d4e25fd2ebc1ddb791112
+_fix_news_page() {
+  msg "'news' page: Add a trick to have per-year support"
+  msg "See also https://github.com/TheSLinux/homepage/commit/"
+  msg "   .... 27372a4e26d67bd63c0d4e25fd2ebc1ddb791112"
+
+  # In the year 2013 we are still using the `news/index.hml` for items
+  if [[ "$(date +%Y)" == "2013" ]]; then
+    mkdir -p $_D_OUTPUT/output/news/2013/
+    ln -s ../index.html output/news/2013/index.html
+  else # we now use contents/news/<year>.html to save items
+    ln -s "$(date +%Y)/index.html" output/news/index.html
+  fi
 }
 
 _sync() {
@@ -175,6 +193,7 @@ _main() {
   _setup
   _update || die "Something wrong happened during updating process"
   _build
+  _fix_news_page
   _fetch_apache_configuration
   _fix_perm
   _create_www
