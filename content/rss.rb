@@ -13,15 +13,23 @@
 
 require "rss"
 require "git"
+require "date"
 
+$this_year = Date.today.strftime("%Y").to_i
 $repo = Git.open("./")
-$object = "./content/news/index.html"
+
+# Because `ruby-git` doesn't the `--follow` option, we need this trick
+# See my feature request https://github.com/schacon/ruby-git/issues/82
+#
+# NOTE: this changes require the `post-receive` githook to be updated
+$object = "./content/news/#{$this_year == 2013 ? "index" : $this_year}.html"
 
 rss = RSS::Maker.make("2.0") do |maker|
+  first_object = $repo.log(1).object($object).first
   maker.channel.author = "TheSLinux"
-  maker.channel.updated = $repo.log(1).object($object).first.date
+  maker.channel.updated = first_object.nil? ? Time.now : first_object.date
   maker.channel.about = "http://theslinux.org/news/rss/"
-  maker.channel.title = "TheSLinux - news"
+  maker.channel.title = "TheSLinux - news #{$this_year}"
   maker.channel.description = "News from TheSLinux"
   maker.channel.link = "http://theslinux.org/news/"
 
@@ -32,6 +40,7 @@ rss = RSS::Maker.make("2.0") do |maker|
     .each do |c|
       next unless c.message.to_s.match(/^news: /)
       maker.items.new_item do |item|
+        item.link = "https://github.com/TheSLinux/homepage/commit/#{c.sha}"
         item.updated = c.date
         item.title = "#{c.message.split(/[\r\n]/).first}"
         item.description = "#{<<-EOF}"
