@@ -6,10 +6,10 @@
 # Date   : 2013 April 13th
 # License: GPL v2
 # Usage  :
-#   Every time a new commit is made on `contents/news/index.html`
+#   When a new commit is pushed on `contents/news/index.html`
 #   the feed will be updated. However, the commit subject must be
 #   started by `news: ` to be recorded by our script. This is to help
-#   we fix some typo error in the old pages.
+#   us to fix some typo error in the old pages.
 
 require "rss"
 require "git"
