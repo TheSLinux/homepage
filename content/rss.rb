@@ -18,10 +18,10 @@ require "date"
 $this_year = Date.today.strftime("%Y").to_i
 $repo = Git.open("./")
 
-# Because `ruby-git` doesn't the `--follow` option, we need this trick
+# Because `ruby-git` doesn't have the `--follow` option, we need this trick
 # See my feature request https://github.com/schacon/ruby-git/issues/82
 #
-# NOTE: this changes require the `post-receive` githook to be updated
+# NOTE: this change requires the `post-receive` githook to be updated
 $object = "./content/news/#{$this_year == 2013 ? "index" : $this_year}.html"
 
 rss = RSS::Maker.make("2.0") do |maker|
