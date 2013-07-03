@@ -3,38 +3,79 @@ title: Vị trí trong đội phát triển
 tags: ['dev', 'hacker', 'rank']
 ---
 
-_(Trang này sẽ cập nhật thường xuyên)_
-
 Các nhóm công việc *chính* trong dự án `TheSLinux`.
 Bạn có thể tham gia vào một hoặc nhiều công việc liệt kê dưới đây.
 Mỗi nhóm đều cần nhiều người nên bạn hãy mạnh dạn liên hệ để tham gia.
 
-1. Quản lý kênh tin, tổ chức các sự kiện
-  _(`Facebook`, `Twitter`, các nhóm thư)_
-  * Tình nguyện: `luffy`, `z1y`, `NgoHuy`
-  * Yêu cầu: `social network`, kỹ năng viết, điều phối sự kiện
-2. Hệ thống đóng gói và biên dịch gói:
-  Đây là nhóm công việc _khổng lồ_ , tiêu tốn nhiều thời gian, sức lực.
-  * Tình nguyện: `z1y`, `NgoHuy`, `n0bawk`
-  * Kỹ năng cơ bản: `git`, `Ruby`, `nokogiri`, `Bash`, `Python`
-3. Viết và quản lý tài liệu hướng dẫn, trang chủ.
-  Công việc tuy có vẻ _buồn nhạt_ nhưng rất quan trọng vì thiếu
-  các tài liệu thì sẽ chẳng có người dùng nào quan tâm tới `TheSLinux`.
-  * Tình nguyện: `mrtuxhdb`, `z1y`
-  * Kỹ năng: `git`, `nanoc`, `markdown`, `kramdown`
-4. Kiểm tra và triển khai giải pháp an toàn _(ví dụ cho `kernel`,
-  `firefox`)_. Các máy trạm `TheSLinux` vận hành an toàn và trôi chảy
-  hay không, là phụ thuộc vào các thiết kế từ nhóm này.
-  * Tình nguyện: _(chưa có)_
-  * Kỹ năng: _(***)_
-5. Quản lý chất lượng, phiên bản
-  _(khi nào nâng cấp, các tính năng cần thêm vào, bỏ đi,...)_.
-  Tuy đơn giản nhưng nếu không làm tốt sẽ dẫn tới nhiều rắc rối ở
-  phía người dùng.
-  * Tình nguyện: _(chưa có)_
-  * Kỹ năng: `git`, quản lý phiên bản phần mềm
-6. Quản lý dịch vụ và máy phục vụ dự án
-  _(`server`, cài đặt nhóm thư, quản lý cấu hình,...)_
-  Dành cho các bạn ham thích nghề `sysadmin` và mong muốn thực tập thêm.
-  * Tình nguyện: `z1y`
-  * Kỹ năng: `sysadmin`, `puppet`, `Bash`, `laziness`
+1. TOC
+{:toc}
+
+## Quản lý kênh tin, tổ chức các sự kiện {#community}
+
+* Tình nguyện: `luffy` _(`Facebook`, nhóm thư)_, `NgoHuy` _(nhóm thư)_,
+  `z1y` _(`twitter`)_
+* Kỹ năng: `social network`, kỹ năng viết, điều phối sự kiện,
+  sử dụng được hệ thống tài liệu của dự án [như ở  đây](#documentation)
+* _Việc 1:_ Quản lý cách kênh tin `Facebook`, `Twitter`, các nhóm thư,
+  mục đích chính là: gửi các thông báo quan trọng khi cần thiết,
+  làm cầu nối giữa người dùng và người phát triển,
+  đảm bảo các bài viết phá rối được điều chỉnh nhanh nhất
+* _Việc 2:_ Phối hợp tổ chức các buổi `offline`, sự kiện
+* Liên kết: [facebook](https://facebook.com/theslinux),
+  [twitter](https://twitter.com/theslinux), [nhóm thư](/lists/)
+
+## Hệ thống đóng gói {#buildsystem}
+
+Đây là nhóm công việc _khổng lồ_ , tiêu tốn nhiều thời gian, sức lực.
+Do số lượng lớn các gói, nên càng nhiều người tham gia vào hệ thống này
+càng tốt để chia sẻ và cải tiến công việc.
+
+* Tình nguyện: `z1y`, `NgoHuy`, `n0bawk`
+* Kỹ năng cơ bản: `git`, `Ruby`, `nokogiri`, `Bash`, `Python`
+* _Việc 1:_ Thiết kế và phát triển hệ thống đóng gói
+  _Việc 2:_ Chuyển đổi hệ thống biên dịch gói `ABS` _(của `ArchLinux`)_
+    qua hệ thống của `TheSLinux`, theo các tiêu chuẩn mới
+* _Việc 3:_ Duy trì và cập nhật các gói phần mềm
+* _Việc 4:_ Đóng gói, công bố các gói công cộng
+* Mã nguồn: <http://github.com/theslinux/buildystem>
+* Workflow: `fork - pull - request` dựa trên hệ thống `Github`
+
+## Viết, quản lý tài liệu hướng dẫn, trang chủ {#documentation}
+
+Công việc rất quan trọng vì thiếu các tài liệu thì sẽ chẳng có người
+dùng nào quan tâm tới `TheSLinux`.
+
+* Tình nguyện: `mrtuxhdb`, `z1y`
+* Kỹ năng: `git`, `nanoc`, `markdown`, `kramdown`
+* Toàn bộ mã nguồn trang chủ và các tài liệu được viết theo các quy
+  định của hệ thống `nanoc` _(xem liên kết tới mã nguồn)_. Hầu hết
+  các tài liệu được thực hiện bằng tiếng Việt.
+* Mã nguồn: <http://github.com/theslinux/homepage>
+* Workflow: `pull - request`, các bạn nắm được các nguyên tắc cơ bản
+  của hệ thống tài liệu có thể `commit` trực tiếp vào kho chính
+  nằm trên máy dịch vụ riêng của dự án
+
+## Kiểm tra và triển khai giải pháp an toàn {#security}
+
+Ví dụ cho `kernel`, `firefox`_. Các máy trạm `TheSLinux` vận hành an toàn
+và trôi chảy hay không, là phụ thuộc vào các thiết kế từ nhóm này.
+
+* Tình nguyện: _(chưa có)_
+* Kỹ năng: _(***)_
+
+## Quản lý chất lượng, phiên bản {#qa}
+
+Khi nào nâng cấp, các tính năng cần thêm vào, bỏ đi,...; kiểm tra, thử
+nghiệm các tính năng và cài đặt, ...
+Những việc này nếu không làm tốt sẽ dẫn tới nhiều rắc rối ở phía người dùng.
+
+* Tình nguyện: _(chưa có)_
+* Kỹ năng: `git`, quản lý phiên bản phần mềm
+
+## Quản lý hạ tầng phục vụ dự án {#infrastructure}
+
+Dự án có các `server`, các dịch vụ để tạo ra trang web, nhóm thư,...
+Dành cho các bạn ham thích nghề `sysadmin` và mong muốn thực tập thêm.
+
+* Tình nguyện: _(chưa có)_
+* Kỹ năng: `sysadmin`, `puppet`, `Bash`, `laziness`
