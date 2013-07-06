@@ -186,29 +186,23 @@ EOF
   # @purpose: print license text
   # @author : Anh K. Huynh
   # @date   : 2013 Feb 05
-  def license_text(name = "CC BY-ND")
+  def license_text(name = "CC BY-SA")
     texts = case name
-      when "CC BY-SA"
-        ["This page is published under the license <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC BY-SA 2.0</a>.",
+      when nil, "CC BY-SA"
+        ["Trang này là một phần của <b>TheSLInux</b>,",
+         " và được phân phối với giấy phép <a href=\"http://creativecommons.org/licenses/by-sa/3.0/vn\">CC BY-SA 3.0</a>.",
          "",
-         "You are free:",
+         "Bạn được <b>Sao chép</b>, <b>Chia sẻ</b>, <b>Phân phối</b> trang này dưới điều kiện sau:",
          "",
-         "  (1) to Share — to copy, distribute and transmit the work,",
-         "  (2) to Remix — to adapt the work,",
-         "  (3) sto make commercial use of the work",
-         "",
-         "under the following conditions:",
-         "",
-         "  (1) Attribution — You must attribute the work in the manner",
-         "      specified by the author or licensor <em>(but not in any way",
-         "      that suggests that they endorse you or your use of the work)</em>",
-         "  (2) Share Alike — If you alter, transform, or build upon this work,",
-         "      you may distribute the resulting work only under the same",
-         "      or similar license to this one."
+         "(1) Bạn phải ghi tên tác giả <b>TheSLinux</b> và giấy phép; tuy nhiên <b>không</b>",
+         "    được hàm ý tác giả  trao trang này hay quyền sử dụng trang này cho bạn;",
+         "(2) Nếu bạn sử dụng, chuyển đổi, hoặc xây dựng dự án từ nội dung được chia sẻ này,",
+         "    bạn phải áp dụng giấy phép này hoặc giấy phép khác có các điều khoản tương tự",
+         "    như giấy phép này cho dự án của bạn."
         ]
       when false
         []
-      when nil # "CC BY-ND 3.0"
+      when "CC BY-ND 3.0"
         ["Trang này là một phần của <b>TheSLinux</b>,",
          "  và được phân phối với giấy phép <a href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">CC BY-NC-ND 3.0</a>.",
          "",
