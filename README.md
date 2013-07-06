@@ -43,17 +43,17 @@ use `cherry-pick` if you want to use any `core` feature on your branch.
 The following `Ruby` gems are required to build source files with `nanoc`
 and to view the output with `nanoc view`.
 
-   adsf
-   coderay
-   git
-   kramdown
-   nanoc
-   kramdown
-   fssm
-   coderay
-   nokogiri
-   guard
-   guard-nanoc
+    adsf
+    coderay
+    git
+    kramdown
+    nanoc
+    kramdown
+    fssm
+    coderay
+    nokogiri
+    guard
+    guard-nanoc
 
 ## Example. Other notes
 
@@ -61,4 +61,4 @@ The `guard` gem is an useful to watch your source directory; if there is
 any change `guard` will invoke `nanoc compile` to build your source.
 Please take a look at the example in
 
-   ./bin/example-start-local-nanoc-stuff.sh
+    ./bin/example-start-local-nanoc-stuff.sh
