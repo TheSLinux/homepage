@@ -189,7 +189,7 @@ EOF
   def license_text(name = "CC BY-SA")
     texts = case name
       when nil, "CC BY-SA"
-        ["Trang này là một phần của <b>TheSLInux</b>,",
+        ["Trang này là một phần của <b>TheSLinux</b>,",
          " và được phân phối với giấy phép <a href=\"http://creativecommons.org/licenses/by-sa/3.0/vn\">CC BY-SA 3.0</a>.",
          "",
          "Bạn được <b>Sao chép</b>, <b>Chia sẻ</b>, <b>Phân phối</b> trang này dưới điều kiện sau:",
