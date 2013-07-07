@@ -43,17 +43,10 @@ use `cherry-pick` if you want to use any `core` feature on your branch.
 The following `Ruby` gems are required to build source files with `nanoc`
 and to view the output with `nanoc view`.
 
-    adsf
-    coderay
-    git
-    kramdown
-    nanoc
-    kramdown
-    fssm
-    coderay
-    nokogiri
-    guard
-    guard-nanoc
+    adsf coderay git kramdown nanoc kramdown \
+    fssm coderay nokogiri guard guard-nanoc
+
+Please note that you need `Ruby-1.9` or higher.
 
 ## Example. Other notes
 
