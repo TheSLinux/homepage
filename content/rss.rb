@@ -31,7 +31,7 @@ rss = RSS::Maker.make("2.0") do |maker|
   maker.channel.about = "http://theslinux.org/about/"
   maker.channel.title = "TheSLinux - news #{$this_year}"
   maker.channel.description = "News from TheSLinux"
-  maker.channel.link = "http://theslinux.org/news/"
+  maker.channel.link = "http://theslinux.org/news/#{$this_year}/"
 
   $repo \
     .log(20) \
