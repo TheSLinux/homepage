@@ -1,0 +1,97 @@
+---
+title: Chỉ dẫn dành cho sysadmin
+tags: ['dev', 'sysadmin', 'guidelines']
+---
+
+* TOC
+{:toc}
+
+## Mô tả ngắn {#description}
+
+Dự án `TheSLinux` có nhiều máy chủ  _(máy phục vụ)_ cho các mục đích
+khác nhau. _Đội quản lý hạ tầng_ sẽ cài đặt, theo dõi, quản lý và phát
+triển các máy này, đảm bảo cho công việc của dự án thông suốt.
+
+Các ý tưởng chính của hạ tầng này như sau
+
+1. Đối với hệ thống tài liệu, trang chủ, chỉ sử dụng nội dung tĩnh, lưu
+   trên nhiều máy tạo thành các `mirror` khác nhau.
+   Nội dung thường thay đổi sẽ được cập nhật thông qua `cronjob`.
+2. Hệ thống phân tán tốt nhất là ... `email`. Các vấn đề cần trao đổi,
+   bình luận sẽ sử dụng `email` và các dịch vụ lưu trữ làm cơ sở.
+3. Thay đổi trên hệ thống được quản lý tập trung nhờ `puppet` hoặc `chef`,
+   và được theo dõi nhờ `git` và `email`.
+
+## Thành viên {#members}
+
+Danh sách các thành viên của đội hạ tầng theo thứ tự `ABC` của `nickname`.
+
+1. [icy](https://github.com/vanhonit)
+2. [vanhonit](https://github.com/vanhonit) _(từ 9/7/2013)_
+
+## Công việc
+
+Xem ở [trang Github][github]. Các `ticket` hoặc tài liệu dành cho đội hạ
+tầng sẽ dùng nhãn `infrastructure`. Riêng phần tài liệu có thể gắn thêm
+nhãn `sysadmin` hoặc `dev` khi cần thiết.
+
+## Workflow {#workflow}
+
+Khi thực hiện thay đổi trên hệ thống, quy trình làm việc cơ bản như sau.
+
+1. Chuẩn bị tài liệu, kịch bản cho các thay đổi. Một số thay đổi cần
+   các lệnh trực tiếp, nhưng hầu hết có thể thể hiện được ở dạng kịch bản.
+2. Tài liệu, kịch bản sẽ được xem xét _(review)_ bởi các thành viên trong
+   đội hạ tầng. Nếu thay đổi được thực hiện qua `puppet` hay `chef`,
+   cần thực hiện thay đổi qua nhánh riêng _(`feature branch`)_.
+4. Xác định thời gian bắt đầu thực hiện thay đổi, thời gian `downtime`
+   của các dịch vụ liên quan, thông báo trên các kênh của dự án.
+3. Sau khi được xác nhận, các thay đổi sẽ được thực hiện trực tiếp trên
+   máy, với các kết quả xuất được lưu lại để tham khảo. Các nhánh trên kho
+   sẽ được trộn với nhánh chính.
+5. Sau khi thay đổi được thực hiện, thông báo kết quả, các cải tiến, tính
+   năng mới thêm vào hoặc bớt đi để người dùng được biết. Các bài học
+   đáng chú ý cần được lưu lại để giúp người đi sau
+
+## Kỹ năng. Dễ hay khó {#skills}
+
+`sysadmin` không phải là người ngồi gõ lọc cọc các lệnh và khi xong rồi
+thì quẳng máy đó đi chơi. Một công việc hiệu quả, lâu dài đòi hỏi bạn
+phải suy nghĩ nhiều, học hỏi nhiều. Dưới đây là các kỹ năng cơ bản
+
+1. Sử dụng `Bash` cho công việc hằng ngày. Mặc dùng `Bash` đơn giản, nhưng
+   sự đơn giản đó có thể [giết bạn một cách bất ngờ][bash-danger].
+   Hãy thường xuyên xem lại các tài liệu về `Bash`, chẳng hạn ở [BashHacker][].
+2. Học `Puppet` hoặc `Chef`. Trong giai đoạn đầu, hệ thống của `TheSLinux`
+   sẽ dùng `puppet`.
+3. Học ít nhất một ngôn ngữ lập trình như `Ruby`, `Python`.
+4. Tiếp cận ít nhất một trong các phần mềm hay kỹ thuật phân tán
+   như _hệ thống tập tin phân tán_, _hệ thống dữ liệu phân tán_,...
+5. Học cách chia sẻ hoàn toàn những kiến thức của bạn với người khác.
+6. Học cách viết tài liệu sử dụng `nanoc` như mô tả ở  dự án về tài liệu
+     ở  <http://theslinux.org/theslinux/homepage/>.
+7. Luôn chuẩn bị cho tình huống xấu nhất. Không được giả định hay thừa
+   nhận kết quả theo bất kỳ chiều hướng nào.
+
+Công việc `sysadmin` không hề đơn giản như nhiều bạn nghĩ. Nếu bạn xác
+định đi theo con đường này, hãy thực hiện theo các lời khuyên và chú ý
+ở trên, coi như là các bước đi đầu tiên để đạt thành quả.
+
+## Lỗi lầm {#human-errors}
+
+Nếu chưa có lỗi lầm nào, thì hẳn bạn không phải là con người :)
+
+Khi vô tình hay cố ý gây ra sự cố nào đối với hệ thống hạ tầng của dự án,
+hãy luôn nhớ các điều sau
+
+1. Các lỗi đối với hệ thống thường gây ảnh hưởng tới nhiều người khác;
+2. Việc khắc phục lỗi quan trọng hơn chỉ trích và tìm ra người gây lỗi;
+3. Việc khắc phục lỗi bắt buộc phải có thông tin về nguyên nhân gốc,
+   vì thế, bỏ qua các cú sốc tâm lý để mô tả lại những sự kiện có thể
+   góp phần gây ra lỗi;
+4. Rút ra bài học kinh nghiệm cho lần sau. Thông báo đầy đủ về sự cố
+   cho thành viên và cộng đồng, và chân thành xin lỗi hoặc thừa nhận lỗi.
+
+[BashHacker]: http://wiki.bash-hackers.org/
+[bash-danger]: http://dragula.viettug.org/blogs/675.html
+[github]: https://github.com/TheSLinux/gs/issues?labels=infrastructure&page=1&state=open
