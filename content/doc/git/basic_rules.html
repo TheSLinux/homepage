@@ -1,0 +1,66 @@
+---
+title: Vài quy tắc cơ bản cho git
+tags: ['git', 'programming']
+origin: http://archlinuxvn.org/vn/author-guide/#git
+---
+
+0. Suy nghĩ hai lần trước khi dùng `rebase` _(hay `git pull --rebase`)_.
+   Do `rebase` sẽ thay đổi mốc thời gian và `#hashstring` của `commit`,
+   nên nếu các `commit` của bạn đã được gửi đến một trong các kho xa
+   _(`remote`)_ thì quy tắc là **KHÔNG ĐƯỢC DÙNG REBASE**. Nếu phân vân,
+   hãy dùng `merge` như là cách an toàn nhất, dù kết quả của `merge`
+   nhiều khi rất lộn xộn, khó coi.
+
+1. `Pull` trước khi `push`. Điều này có nghĩa là, nếu bạn không có xác nhận
+   vào kho `git` của trang chủ trong một thời gian tương đối dài _(một ngày chẳng hạn)_,
+   bạn nên chạy `git pull --rebase` để lấy về các thay đổi mới nhất từ kho trước khi
+   bạn bắt đầu soạn hay chỉnh bài. Lý do cho việc này rất đơn giản: Vì kho
+   do nhiều người tham gia chỉnh sửa, nên có khi điều bạn muốn thay đổi
+   đã có người khác làm rồi, và bạn không cần gây thêm rắc rối :big_smile:
+
+2. Nếu bạn có địa chỉ hai kho khác nhau, ví dụ khi bạn có tài khoản Github
+   thì thường bạn sẽ cần ít nhất hai kho: [một kho chính][mirror] và
+   kho là nhân bản do bạn tạo ra, ví dụ <https://github.com/***/home>
+   _(ở đây các dấu sao đại diện cho `nickname` của bạn ở `Github`)_. Trường
+   hợp này bạn cần `rebase` theo kiểu riêng, ví
+
+       $ git remote add main \
+            git@github.com:theslinux/homepage.git
+       $ git co master
+       $ git rebase main/master master # hoặc
+       $ git merge  main/master
+
+   Nhớ rằng, `pull` và `rebase` cần thường xuyên thực hiện để đảm bảo
+   rằng bạn không lệch pha so với người khác.
+
+9. Khi xác nhận thay đổi với `git commit`, bạn cần có chú thích tương đối
+   ngắn gọn, nhưng *không nên quá ngắn gọn* (trừ trường hợp các thay đổi
+   nhỏ, không đáng kể.)
+   * Nên dùng tiếng Anh cho chú thích (do một số chương trình `git client`
+     có thể không làm việc với tiếng Việt)
+   * Bạn có thể theo dõi cách cung cấp chú thích bằng cách theo dõi cách
+     của người khác: từ dòng lệnh gõ `git log` để xem; hoặc
+   * Từ giao diện đồ họa chạy chương trình `gitg`
+   * Nếu phải chú thích trên nhiều dòng, thì dòng đầu tiên là tóm tắt,
+     sau đó là một dòng trắng, và sau đó là các chú thích khác. Ví dụ
+
+         git commit -m'Short message
+
+         Long message goes here
+
+         * description 1
+         * description 2'
+
+     Lưu ý rằng đây là những quy ước phổ biến khi làm việc với `git`.
+     Xem thêm nhiều hướng dẫn có ích trong bài của [tbaggery-2008][].
+
+10. Hãy xác nhận từng tập tin, từng thay đổi thay vì xác nhận nhóm các thay đổi.
+    Ví dụ, nếu bạn thực hiện thay đổi cho ba bài viết `A`, `B`, `C`, thì
+    đừng nên dùng lệnh `git commit -a ...` mà nên xác nhận cho từng bài viết
+    `git A -m'...'`, `git B -m'...'`. Điều này đặc biệt có ích khi các bài
+    viết `A`, `B`, `C` ít liên quan với nhau. Lợi ích của việc xác nhận
+    từng phần là việc trộn (`merging`) và tách (`git cherry-pick`) sẽ
+    đơn giản và ít lỗi hơn rất nhiều.
+
+[mirror]: https://github.com/theslinux/homepage/
+[tbaggery-2008]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
