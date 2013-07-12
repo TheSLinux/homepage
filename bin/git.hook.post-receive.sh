@@ -94,11 +94,11 @@ _build() {
   msg "Cleaning up the old files"
   nanoc prune --yes
   msg "Rebuilding the static pages"
-  nanoc \
-    || {
-         msg "Something wrong happened when building the pages."
-         die "Please contact the system administrator for support."
-       }
+  nanoc | grep -v "output/tags/"
+  if [[ ${PIPESTATUS[0]} -ge 1 ]]; then
+    msg "Something wrong happened when building the pages."
+    die "Please contact the system administrator for support."
+  fi
 }
 
 _fix_perm() {
