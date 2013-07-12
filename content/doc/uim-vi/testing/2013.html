@@ -1,0 +1,74 @@
+---
+title: Cài đặt uim-vi trên ArchLinux
+tags: ['vietnamese', 'im', 'uim', 'testing']
+authors: z1y, luffy
+origin: http://pastebin.com/r7s1nkL4
+---
+
+Bài này mô tả cách cài đặt gói `uim-vi`, dành cho các bạn muốn thử nghiệm
+gói này trên `ArchLinux`. Trong `TheSLinux` các gói này được cài mặc định
+và bạn không phải điều chỉnh phức tạp như sau đây.
+
+* Toc
+{:toc}
+
+## Tải về các gói sau
+
+Bạn có thể dùng các kịch bản `wget` có sẵn
+
+* [Dành cho máy 32 bit](/doc/uim-vi/testing/wget32.txt)
+* [Dành cho máy 64 bit](/doc/uim-vi/testing/wget64.txt)
+
+Các gói cần cài bao gồm:
+
+* 126-uim-vi
+* m17n-db-vi
+* m17n-lib
+* uim-vi
+* uim-vi-xtelex
+
+và bạn sẽ phải gỡ bỏ một số gói gây xung đột trên hệ thống, ví dụ gói
+`m17n-db` hoặc `m17n-lib`.
+
+## Cài đặt
+
+Dùng `pacman` để cài các gói đã tải về; có thể chấp nhận gỡ bỏ các gói
+gây xung đội như đã nói.
+
+    # pacman -U *.pkg.tar.gz
+
+Sau đó, vào thư mục `$HOME` và liên kết tới `profile` mặc định
+
+    $ cd $HOME/
+    $ mkdir -pv ~/.uim.d/ && cd ~/.uim.d/
+    $ ln -s /usr/share/theslinux/126/uim.d/customs/ # OR
+    $ cp -r /usr/share/theslinux/126/uim.d/customs/ ./customs
+
+_(dòng cuối cùng áp dụng với người dùng `VNI` muốn chỉnh cấu hình)_.
+
+Sau đó thêm vào `/etc/profile`, `$HOME/.xprofile` hoặc bất cứ nơi nào mà bạn biết.
+
+    export GTK_IM_MODULE='uim'
+    export QT_IM_MODULE='uim'
+    export XMODIFIERS='@im=uim'
+
+Bạn cần chạy nền hai ứng dụng `uim-systray` và `uim-xim` để có thể có thanh
+hiển thị trạng thái và để gõ được tiếng Việt trên `xterm` chẳng hạn. Bạn có
+thể thêm vào `$HOME/.xinitrc`:
+
+    uim-xim &
+    uim-systray &
+
+Đối với người dùng `QT(4)`, cần chạy chương trình `qtconfig-qt4` và lựa
+chọn kiểu nhập mặc định là `uim`.
+
+## Thiết lập mặc định
+
+Xem ở <http://theslinux.org/doc/uim-vi/126-uim-vi/> . Người dùng `VNI`
+cần một chút thay đổi để chọn kiểu gõ mặc định _(lưu ý là khi dùng liên
+kết tượng trưng thì bạn không thay đổi cấu hình `uim` bằng cách dùng `uim-setup`
+được, do các tập tin cấu hình đặt ở chế độ *chỉ đọc*.)_
+
+## Câu hỏi, hỗ trợ
+
+Trao đổi trên các nhóm thư, kênh `irc` hoặc ở `github`.

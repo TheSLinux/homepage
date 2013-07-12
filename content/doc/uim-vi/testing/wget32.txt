@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Purpose: Download testing `uim-vi` packages
+# Author : Anh K. Huynh
+# License: Fair license
+# Date   : 2013 July 12th
+
+wget https://raw.github.com/TheSLinux/homepage/master/content/security/pgp_security.pub
+
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/126-uim-vi-1.0.0-2-any.pkg.tar.xz
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/126-uim-vi-1.0.0-2-any.pkg.tar.xz.asc
+
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-db-vi-1.6.4-8-any.pkg.tar.xz
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-db-vi-1.6.4-8-any.pkg.tar.xz.asc
+
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-xtelex-1.4.0-2-any.pkg.tar.xz
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-xtelex-1.4.0-2-any.pkg.tar.xz.asc
+
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-i686.pkg.tar.xz
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-i686.pkg.tar.xz.asc
+
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-37-i686.pkg.tar.xz
+wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-37-i686.pkg.tar.xz.asc
