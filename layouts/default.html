@@ -29,6 +29,11 @@
           if @item[:translators] or @item[:translator]
             metas << "<strong>Người dịch:</strong> #{item[:translators] ||@item[:translator]}"
           end
+
+          parent_post = File.dirname(@item.identifier)
+          if parent_post != "/" and not @item[:virtual]
+            metas << "<strong>Bài mẹ:</strong> <a href=\"#{parent_post}\">#{parent_post}</a>"
+          end
         %>
         <% if not metas.empty? %>
         <p>
