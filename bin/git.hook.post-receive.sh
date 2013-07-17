@@ -117,7 +117,7 @@ _create_www() {
 _create_archive() {
   cd $_D_VAR/ || die "Couldn't switch to $_D_VAR/"
 
-  msg "Creating local archive for Tuxfamily"
+  msg "Creating local archive for Berlios.de"
   tar --transform="s,^output,theslinux.org," -czf $_F_ARCHIVE output/
   chmod 644 $_F_ARCHIVE
 }
