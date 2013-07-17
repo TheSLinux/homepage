@@ -21,6 +21,7 @@
 # Date   : 2013 July 3rd
 # Note   : This is only an example script. Use at your own risk
 
+[[ ! -f /etc/profile.d/rvm.sh ]] || source /etc/profile.d/rvm.sh
 [[ -f "Guardfile" ]] || { echo >&2 ":: Error: No Guardfile found"; exit 1; }
 rvm use ruby-2.0
 { ruby -v | grep -q 2.0 ; } || { echo >&2 ":: Error: Not Ruby-2 found"; exit 1; }
