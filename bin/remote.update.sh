@@ -81,9 +81,6 @@ tuxfamily_archlinuxvn() {
       -rap --delete "$_D_TMP/archlinuxvn.org/" \
       --exclude="irclog*" $_D_DEST/ \
     || die "Can't synchronize files from the variant directory to $_D_DEST"
-
-  msg "Fixing file permission"
-  chmod 700 $_D_DEST/irclogs/
 }
 
 tuxfamily_theslinux() {
