@@ -15,7 +15,7 @@ err() {
 }
 
 die() {
-  err "[$(hostname -f)] $*"
+  echo >&2 "[$(hostname -f)] $*"
   exit 1
 }
 
