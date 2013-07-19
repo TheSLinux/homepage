@@ -143,7 +143,7 @@ _fix_news_page() {
 }
 
 _sync() {
-  msg "Updating home page theslinux.tuxfamily.org (m4.theslinux.org))"
+  msg "Updating home page theslinux.tuxfamily.org (m4.theslinux.org)"
   ssh -o ConnectTimeout=3 "tuxfamily_theslinux" "tuxfamily_theslinux"
 
   msg "Updating home page theslinux.berlios.de"
