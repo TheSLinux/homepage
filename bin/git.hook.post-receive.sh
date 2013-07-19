@@ -143,20 +143,14 @@ _fix_news_page() {
 }
 
 _sync() {
+  msg "Updating home page theslinux.tuxfamily.org (m4.theslinux.org))"
+  ssh -o ConnectTimeout=3 "tuxfamily_theslinux" "tuxfamily_theslinux"
+
   msg "Updating home page theslinux.berlios.de"
   ssh -o ConnectTimeout=3 "$_S_BERLIOS" "berlios_theslinux"
-  if [[ $? -ge 1 ]]; then
-    msg "=============================================="
-    msg "Error happened when updating pages on Berlios."
-    msg "This is often due to bad ssh settings on Berlios.de"
-    msg "This is *not* an error at your side. Please contact"
-    msg "sysadmin to resolve this problem -- theslinux.org."
-    msg "=============================================="
-    return 1
-  else
-    msg "All pages have been updated."
-    msg "Thank you for your contribution. You make TheSLinux live!"
-  fi
+
+  msg "All pages have been updated."
+  msg "Thank you for your contribution. You make TheSLinux live!"
 }
 
 # NOTE: Never use (die) in this method
