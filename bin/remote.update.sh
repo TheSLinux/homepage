@@ -110,7 +110,7 @@ tuxfamily_theslinux() {
 }
 
 _update() {
-  local _cmd="$SSH_ORIGINAL_COMMAND"
+  local _cmd="${SSH_ORIGINAL_COMMAND:-$1}"
   case "$_cmd" in
     "berlios_theslinux")      ;;
     "tuxfamily_archlinuxvn")  ;;
@@ -121,6 +121,6 @@ _update() {
   "$_cmd"
 }
 
-_update
+_update $*
 
 : Nothing lasts forever
