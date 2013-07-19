@@ -144,7 +144,7 @@ _fix_news_page() {
 
 _sync() {
   msg "Updating home page theslinux.berlios.de"
-  ssh -o ConnectTimeout=3 $_S_BERLIOS
+  ssh -o ConnectTimeout=3 "$_S_BERLIOS" "berlios_theslinux"
   if [[ $? -ge 1 ]]; then
     msg "=============================================="
     msg "Error happened when updating pages on Berlios."
