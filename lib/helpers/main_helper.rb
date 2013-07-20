@@ -202,7 +202,7 @@ EOF
         ]
       when false
         []
-      when "CC BY-ND 3.0"
+      when "CC BY-NC-ND 3.0"
         ["Trang này là một phần của <b>TheSLinux</b>,",
          "  và được phân phối với giấy phép <a href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">CC BY-NC-ND 3.0</a>.",
          "",
