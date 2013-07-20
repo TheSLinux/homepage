@@ -126,13 +126,13 @@ EOF
   # @purpose: Provide a hash of all tags and tags' counter
   # @return : Hash {:tag => :counter} (Sorted by :counter)
   # @author : Anh K. Huynh
-  # @note   : Selected tags are matched the pattern /^[a-z0-9]+$/
+  # @note   : Valid tag matches /^[a-z0-9]+[a-z0-9-]*[a-z0-9]$/
   def all_tags
     tags = {}
     @items.find_all.each do |p|
       if p[:tags] and p[:tags].is_a?(Array)
         p[:tags].map(&:to_s).map(&:downcase).uniq.select do |tag|
-          tag.match(/^[a-z0-9]+$/)
+          tag.match(/^[a-z0-9]+[a-z0-9-]*[a-z0-9]$/)
         end.each do |tag|
           tags[tag] = 0 unless tags[tag]
           tags[tag] += 1
