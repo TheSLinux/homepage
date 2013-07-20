@@ -34,7 +34,7 @@ die() {
 _setup() {
   if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
     source "$HOME/.rvm/scripts/rvm"
-    rvm use ruby1.9
+    rvm use default
   else
     die "rvm not found. We need ruby1.9"
   fi
