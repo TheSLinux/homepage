@@ -142,6 +142,20 @@ _fix_news_page() {
   fi
 }
 
+# NOTES:
+#
+# Tuxfamily doesn't allow us to record the $SSH_ORIGINAL_COMMAND env.
+# variable. We need to use another key pair, and add new configuration
+# in ~/.ssh/config, like this
+#
+#   Host tuxfamily_theslinux
+#     User kyanh
+#     Port 22
+#     Hostname ssh.tuxfamily.org
+#     IdentityFile ~/.ssh/tuxfamily_theslinux
+#
+# I couldn't figure out how/why Tuxfamily can disable the variable.
+#
 _sync() {
   msg "Updating home page theslinux.tuxfamily.org (m4.theslinux.org)"
   ssh -o ConnectTimeout=3 "tuxfamily_theslinux" "tuxfamily_theslinux"
