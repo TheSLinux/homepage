@@ -10,9 +10,9 @@ license: CC BY-NC-ND 3.0
 > **Chú ý**:
 Trong bài này, `MITM` là viết tắt cho `Man-In-The-Middle`, còn `CA` là
 cho `Certificate Authority`. Nội dung bài viết **không mô tả chính xác**
-phương pháp được dùng trongn kết nối `HTTPS` và của `VeriSign`. Mục
-đích của bài này là minh họa các ý tưởng cơ bản của cách mã hóa một
-chiều dùng cặp chìa khóa, cách tấn công `MITM` và cách vô hiệu tấn công
+phương pháp được dùng trong kết nối `HTTPS` và của `VeriSign`. Mục
+đích của bài này là minh họa các ý tưởng cơ bản của cách mã hóa dùng
+chìa khóa công khai, cách tấn công `MITM` và cách vô hiệu tấn công
 đó nhờ sử dụng `CA`.
 
 1. TOC
@@ -56,7 +56,7 @@ họ _(`B` xanh)_ để mã hóa thư thành dạng mà chỉ có họ mới gi�
 khóa riêng tư _(`B` hồng)_.
 
 Bản chất của mã hóa một chiều là không có cơ chế nào cho phép khôi
-phục chìa khóa riêng tư thì chìa khóa công cộng. Chìa khóa công cộng chỉ
+phục chìa khóa riêng tư từ chìa khóa công cộng. Chìa khóa công cộng chỉ
 có ích để mã hóa thông tin, để đảm bảo rằng sau khi mã hóa thì chỉ có
 một người giữa chìa khóa riêng tư mới đọc được.
 
