@@ -109,12 +109,39 @@ tuxfamily_theslinux() {
     || die "Can't synchronize files from the variant directory to $_D_DEST"
 }
 
+l00s5r.theslinux.org() {
+  local _D_TMP="$HOME/tmp/"
+  local _D_DEST="/home/theslinux.org/www/"
+  local _F_SRC="theslinux.org.tgz"
+
+  cd "$_D_DEST" || die "Can't switch to $_D_DEST"
+  cd "$_D_TMP" || die "Can't switch to $_D_TMP"
+
+  msg "Downloading $_F_SRC from theslinux.org"
+  rm -rf "$_D_TMP/$_F_SRC" "$_D_TMP/theslinux.org/" \
+    || die "Can't clean up the old file $_F_SRC"
+  wget \
+      "http://m0.theslinux.org/$_F_SRC?$(date +%s)" \
+      -O $_F_SRC -o /dev/null \
+    || die "Can't download source file from m0.theslinux.org"
+
+  msg "Extracting $_F_SRC"
+  tar -xzf $_F_SRC
+
+  msg "Synchronizing files"
+  rsync \
+      -rap --delete "$_D_TMP/theslinux.org/" \
+      $_D_DEST/ \
+    || die "Can't synchronize files from the variant directory to $_D_DEST"
+}
+
 _update() {
   local _cmd="${SSH_ORIGINAL_COMMAND:-$1}"
   case "$_cmd" in
     "berlios_theslinux")      ;;
     "tuxfamily_archlinuxvn")  ;;
     "tuxfamily_theslinux")    ;;
+    "l00s5r.theslinux.org")   ;;
     *) die "Unknown command '$_cmd'" ;;
   esac
 
