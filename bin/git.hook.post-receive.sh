@@ -164,7 +164,7 @@ _sync() {
   ssh -o ConnectTimeout=3 "$_S_BERLIOS" "berlios_theslinux"
 
   msg "Updating home page m3.theslinux.org"
-  ssh -o ConnectTimeout=3 "l00s5r.theslinux.org" "l00s5r.theslinux.org "
+  ssh -o ConnectTimeout=3 "l00s5r.theslinux.org" "l00s5r.theslinux.org"
 
   msg "All pages have been updated."
   msg "Thank you for your contribution. You make TheSLinux live!"
