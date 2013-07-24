@@ -225,7 +225,8 @@ _main() {
   _sync
 }
 
-_lock_start
 _send_commit_message "$@"
+
+_lock_start
 _main
 _lock_end
