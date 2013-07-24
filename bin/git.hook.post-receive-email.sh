@@ -232,7 +232,7 @@ generate_email_header()
 	# Generate header
 	cat <<-EOF
 	To: $recipients
-	Subject: ${emailprefix}$projectdesc $refname_type $short_refname ${change_type}d. $describe
+	Subject: ${emailprefix}$projectdesc $refname_type $short_refname ${change_type}d.
 	MIME-Version: 1.0
 	Content-Type: text/plain; charset=utf-8
 	Content-Transfer-Encoding: 8bit
