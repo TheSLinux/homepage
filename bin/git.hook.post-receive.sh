@@ -6,6 +6,7 @@
 # Author : Anh K. Huynh
 # License: GPL v3
 
+export OLD_GIT_DIR="${GIT_DIR}"
 unset GIT_DIR
 export HOME=/home/git
 export LANG=en_US.UTF-8
@@ -203,6 +204,14 @@ _lock_end() {
   rm -f "$_F_LOCK"
 }
 
+# Send emails to the lists, using
+#   1. Default hook from the `git/contrib` package
+#   2. Global configuration in `~/.gitconfig` (list name, prefix, ...)
+_send_commit_message() {
+  msg "Sending commit message(s) to mailing lists"
+  GIT_DIR="$OLD_GIT_DIR" $HOME/hooks/defaults/post-receive-email "$@"
+}
+
 _main() {
   _update_myself
   _setup
@@ -217,5 +226,6 @@ _main() {
 }
 
 _lock_start
+_send_commit_message "$@"
 _main
 _lock_end
