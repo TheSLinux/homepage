@@ -465,7 +465,7 @@ generate_delete_branch_email()
 	echo "       was  $oldrev"
 	echo ""
 	echo $LOGBEGIN
-	git show -s --pretty=oneline $oldrev
+	git diff-tree --encoding=UTF-8 -s --pretty=oneline $oldrev
 	echo $LOGEND
 }
 
@@ -541,11 +541,11 @@ generate_atag_email()
 		# performed on them
 		if [ -n "$prevtag" ]; then
 			# Show changes since the previous release
-			git rev-list --pretty=short "$prevtag..$newrev" | git shortlog
+			git shortlog --encoding=UTF-8 "$prevtag..$newrev"
 		else
 			# No previous tag, show all the changes since time
 			# began
-			git rev-list --pretty=short $newrev | git shortlog
+			git shortlog --encoding=UTF-8 "$newrev"
 		fi
 		;;
 	*)
@@ -565,7 +565,7 @@ generate_delete_atag_email()
 	echo "       was  $oldrev"
 	echo ""
 	echo $LOGBEGIN
-	git show -s --pretty=oneline $oldrev
+	git diff-tree --encoding=UTF-8 -s --pretty=oneline $oldrev
 	echo $LOGEND
 }
 
@@ -611,7 +611,7 @@ generate_general_email()
 	echo ""
 	if [ "$newrev_type" = "commit" ]; then
 		echo $LOGBEGIN
-		git show --no-color --root -s --pretty=medium $newrev
+		git diff-tree --encoding=UTF-8 --root -s --pretty=oneline $newrev
 		echo $LOGEND
 	else
 		# What can we do here?  The tag marks an object that is not
@@ -630,7 +630,7 @@ generate_delete_general_email()
 	echo "       was  $oldrev"
 	echo ""
 	echo $LOGBEGIN
-	git show -s --pretty=oneline $oldrev
+	git diff-tree --encoding=UTF-8 -s --pretty=oneline $oldrev
 	echo $LOGEND
 }
 
