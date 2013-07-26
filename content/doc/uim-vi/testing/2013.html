@@ -12,7 +12,7 @@ và bạn không phải điều chỉnh phức tạp như sau đây.
 * Toc
 {:toc}
 
-## Tải về các gói sau
+## Tải về các gói sau {#download}
 
 Bạn có thể dùng các kịch bản `wget` có sẵn, hoặc đơn giản là đọc nội dung
 các kịch bản sau đây để biết cần tải về các gói gì.
@@ -33,9 +33,9 @@ Các gói cần cài bao gồm:
 * uim-vi-xtelex
 
 và bạn sẽ phải gỡ bỏ một số gói gây xung đột trên hệ thống, ví dụ gói
-`m17n-db` hoặc `uim`.
+`m17n-db` hoặc `uim`. Xem thêm [phần kiểm tra](#notes).
 
-## Cài đặt
+## Cài đặt {#install}
 
 Dùng `pacman` để cài các gói đã tải về; có thể chấp nhận gỡ bỏ các gói
 gây xung đội như đã nói.
@@ -51,7 +51,8 @@ Sau đó, vào thư mục `$HOME` và liên kết tới `profile` mặc định
 
 _(dòng cuối cùng áp dụng với người dùng `VNI` muốn chỉnh cấu hình)_.
 
-Sau đó thêm vào `/etc/profile`, `$HOME/.xprofile` hoặc bất cứ nơi nào mà bạn biết.
+Thêm vào `/etc/profile`, `$HOME/.xprofile` hoặc bất cứ nơi nào mà bạn biết
+các dòng thiết lập biến môi trường
 
     export GTK_IM_MODULE='uim'
     export QT_IM_MODULE='uim'
@@ -59,7 +60,7 @@ Sau đó thêm vào `/etc/profile`, `$HOME/.xprofile` hoặc bất cứ nơi nà
 
 Bạn cần chạy nền hai ứng dụng `uim-systray` và `uim-xim` để có thể có thanh
 hiển thị trạng thái và để gõ được tiếng Việt trên `xterm` chẳng hạn. Bạn có
-thể thêm vào `$HOME/.xinitrc`:
+thể thêm vào `$HOME/.xinitrc` _(hoặc `$HOME/.xprofile`)_:
 
     uim-xim &
     uim-systray &
@@ -67,19 +68,44 @@ thể thêm vào `$HOME/.xinitrc`:
 Đối với người dùng `QT(4)`, cần chạy chương trình `qtconfig-qt4` và lựa
 chọn kiểu nhập mặc định là `uim`.
 
-## Chú ý
+_(Một số bạn không sử dụng `systray` thì không cần dùng `uim-systray`.)_
+
+## Chú ý {#notes}
 
 Bạn cần gỡ bỏ hoặc tạm thời ngắt các bộ gõ khác có trên máy tính để có
-thể sử dụng bộ gõ `uim-vi`. Tốt nhất sau khi cài đặt thì bạn nên đăng
-nhập lại để bộ gõ mới có tác dụng toàn cục.
+thể sử dụng bộ gõ `uim-vi`. Hãy kiểm tra rằng trên hệ thống của bạn có
+đúng danh sách các gói như sau đây
 
-## Thiết lập mặc định
+    $ pacman -Q | grep -e 'm17|uim'
+    126-uim-vi
+    m17n-db-vi
+    m17n-lib
+    uim-vi
+    uim-vi-xtelex
+
+Nếu xuất hiện các gó lạ, ví dụ `scim-m17n`, `m17n-db`, bạn cần gỡ các gói
+này và có thể phải thực hiện lại các bước cài đặt `uim-vi` từ ban đầu.
+
+Sau khi cài đặt bạn nên đăng nhập lại để bộ gõ mới có tác dụng toàn cục.
+Từ trên chế độ dòng lệnh, bạn có thể thực hiện lệnh kiểm tra như sau
+
+    $ uim-sh -e enabled-im-list ; env |grep =uim
+    (xtelex xvni direct)
+    QT_IM_MODULE=uim
+    XMODIFIERS=@im=uim
+    GTK_IM_MODULE=uim
+
+Kết quả liệt kê ba kiểu nhập `xtelex`, `xvni` và trực tiếp, và sau đó
+là các biến môi trường cần cho `uim-vi`. Nếu kết quả không khớp bạn cần
+kiểm tra lại các bước bạn đã thực hiện.
+
+## Thiết lập mặc định {#settings}
 
 Xem ở <http://theslinux.org/doc/uim-vi/126-uim-vi/> . Người dùng `VNI`
 cần một chút thay đổi để chọn kiểu gõ mặc định _(lưu ý là khi dùng liên
 kết tượng trưng thì bạn không thay đổi cấu hình `uim` bằng cách dùng `uim-setup`
 được, do các tập tin cấu hình đặt ở chế độ *chỉ đọc*.)_
 
-## Câu hỏi, hỗ trợ
+## Câu hỏi, hỗ trợ {#support}
 
 Trao đổi trên các nhóm thư, kênh `irc` hoặc ở `github`.
