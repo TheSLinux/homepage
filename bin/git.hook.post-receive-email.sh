@@ -199,10 +199,7 @@ generate_email()
 	# Email parameters
 	# The email subject will contain the best description of the ref
 	# that we can build from the parameters
-	describe=$(git describe $rev 2>/dev/null)
-	if [ -z "$describe" ]; then
-		describe=$rev
-	fi
+	describe="$(git log --pretty="format:%h %s" $rev -1)"
 
 	generate_email_header
 
@@ -232,7 +229,7 @@ generate_email_header()
 	# Generate header
 	cat <<-EOF
 	To: $recipients
-	Subject: $projectdesc $refname_type $short_refname ${change_type}d
+	Subject: $projectdesc $refname_type $short_refname ${change_type}d $describe
 	MIME-Version: 1.0
 	Content-Type: text/plain; charset=utf-8
 	Content-Transfer-Encoding: 8bit
