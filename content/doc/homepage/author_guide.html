@@ -1,0 +1,57 @@
+---
+title: Viết, chỉnh bài cho trang chủ
+tags: ['home', 'git']
+---
+
+Toàn bộ nội dung của trang chủ <http://theslinux.org> được đặt ở kho
+trên Github. Để thêm, thay đổi bài viết nào, bạn theo các chỉ dẫn sau
+
+* TOC
+{:toc}
+
+## Chỉ dẫn về cách làm việc
+
+0. Học sử dụng Git, sử dụng phần giúp đỡ của `Github` và nhớ
+  tuân theo [vài quy tắc cơ bản khi dùng git](/doc/git/basic_rules/).
+
+1. Tạo tài khoản trên `Github` vào tạo nhân bản (`fork`) của kho
+  [homepage][]. Nội dung thêm mới hay chỉnh sửa của bạn *cần* được thực
+  hiện trên nhánh riêng bắt đầu từ nhánh `master` _(với tập tin có đuôi
+  `.html`) hoặc nhánh `core` _(các tập tin `.rb`).
+
+2. Cài đặt `Ruby` _(phiên bản `>= 1.9`)_ cùng với các `gem` được cho
+  trong [danh sách gói cần thiết][requirements]. Để bắt đầu một phiên
+  làm việc, thử xem qua [kịch bản mẫu][example.session].
+
+3. Tìm hiểu cách dùng `nanoc` qua các bài viết sẵn có. Thực hiện thêm,
+  sửa bài viết và gửi xác nhận lên kho của bạn ở `Github`, rồi thực hiện
+  tạo `pull request` _(yêu cầu nhập kết quả công việc vào kho chính của
+  dự án)_.
+
+4. Do các `pull request` không được xử lý ngay lập tức, bạn cần chờ đợi,
+  và giữ nguyên hiện trạng của các `commit` trên `pull request` đã tạo ra.
+
+## Chỉ dẫn về nội dung
+
+1. Không đưa và mã nguồn các tập tin mã nguồn các tập tin nhị phân như
+  hình ảnh, tập tin thi hành, ... Để sử dụng những tập tin này, bạn cần
+  tải lên dịch vụ thứ ba hoặc nhờ đội quản lý dự án tải giúp lên kho của
+  dự án. Lý do là các tập tin hình ảnh, nhị phân thường lớn và không thể
+  sử dụng các chương trình `diff` để theo dõi các thay đổi của chúng
+
+2. Một số bạn có quyền truy cập vào kho chính của dự án _(không nằm trên
+  Github)_. Hãy rất cẩn thận trước khi bạn gửi xác nhận vào kho này, vì
+  các thay đổi sẽ có thay đổi gần như tức thời trên trang chủ và tất cả
+  các `mirror` của nó.
+
+## Chỉ dẫn về giấy phép
+
+Các bài viết trên trang web được phân phối theo giấy phép mặc định là
+`CC BY-SA`, là một giấy phép *tự do*, cho phép người khác thay đổi,
+phân phối lại. Trong trường hợp sử dụng giấy phép riêng, bạn có thể
+chỉ ra bằng cách dùng thẻ `license`. Xem ví dụ trong bài
+[HTTPS-MITM-Attack](/doc/security/https_mitm_attack/).
+
+[homepage]: https://github.com/TheSLinux/homepage
+[requirements]: https://github.com/TheSLinux/homepage#requirements
+[example.session]: https://github.com/TheSLinux/homepage/blob/master/bin/example-start-local-nanoc-stuff.sh
