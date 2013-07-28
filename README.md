@@ -38,6 +38,11 @@ should not be updated by non-privileged developers. Because there are
 some mergences that causes very bad and messy logs, please consider to
 use `cherry-pick` if you want to use any `core` feature on your branch.
 
+*Important notes*: Since 2013 July 28th, the two branches are divergent
+and you can't merge them. The only way to get `core` feature is to use
+`cherry-pick`. However, you should not do that unless you really mean
+what you are going to do.
+
 ## Requirements
 
 The following `Ruby` gems are required to build source files with `nanoc`
@@ -62,3 +67,6 @@ any change `guard` will invoke `nanoc compile` to build your source.
 Please take a look at the example in
 
     ./bin/example-start-local-nanoc-stuff.sh
+
+This command normally generates so many output from `Guard` and `nanoc`.
+You may skip all or most of them by using some known redirections.
