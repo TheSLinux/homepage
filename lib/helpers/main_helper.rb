@@ -198,7 +198,7 @@ EOF
          "(1) Bạn phải ghi tên tác giả <b>TheSLinux</b> và giấy phép; tuy nhiên <b>không</b>",
          "    được hàm ý tác giả trao trang này hay quyền sử dụng trang này cho bạn;",
          "(2) Nếu bạn sử dụng, chuyển đổi, hoặc xây dựng dự án từ trang này,",
-         "    bạn phải áp dụng giấy phép BY-SA hoặc giấy phép có các điều khoản"
+         "    bạn phải áp dụng giấy phép BY-SA hoặc giấy phép có các điều khoản",
          "    tương tự như giấy phép By-SA cho dự án của bạn."
         ]
       when false
