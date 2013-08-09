@@ -5,19 +5,43 @@
 # License: Fair license
 # Date   : 2013 July 12th
 
-wget https://raw.github.com/TheSLinux/homepage/master/content/security/pgp_security.pub
+wget -c https://raw.github.com/TheSLinux/homepage/master/content/security/pgp_security.pub
 
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/126-uim-vi-1.0.0-2-any.pkg.tar.xz
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/126-uim-vi-1.0.0-2-any.pkg.tar.xz.asc
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/126-uim-vi-1.0.0-2-any.pkg.tar.xz
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/126-uim-vi-1.0.0-2-any.pkg.tar.xz.asc
 
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-db-vi-1.6.4-8-any.pkg.tar.xz
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-db-vi-1.6.4-8-any.pkg.tar.xz.asc
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-db-vi-1.6.4-8-any.pkg.tar.xz
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-db-vi-1.6.4-8-any.pkg.tar.xz.asc
 
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-xtelex-1.4.0-2-any.pkg.tar.xz
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-xtelex-1.4.0-2-any.pkg.tar.xz.asc
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz.asc
 
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-i686.pkg.tar.xz
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-i686.pkg.tar.xz.asc
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-i686.pkg.tar.xz
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-i686.pkg.tar.xz.asc
 
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-37-i686.pkg.tar.xz
-wget http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-37-i686.pkg.tar.xz.asc
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-37-i686.pkg.tar.xz
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-37-i686.pkg.tar.xz.asc
+
+cat <<\EOF
+========================================================================
+                                WARNING
+========================================================================
+
+You should verify the packages using GnuPG
+
+  gpg --import pgp_security.pub
+  for f in *.asc; do gpg --verify $f || break; done
+
+After verifying packages (no error found!) you can install them with
+
+  pacman -U *{any,x86_64}.pkg.tar.xz
+  # pacman -U *{any,i686}.pkg.tar.xz
+
+We have great support, but don't forget to check this link before asking
+
+  http://theslinux.org/doc/uim-vi/testing/2013/#notes
+
+Now I'm retired. Have fun, guy.
+
+========================================================================
+EOF
