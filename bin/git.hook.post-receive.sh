@@ -33,19 +33,8 @@ die() {
 }
 
 _setup() {
-  if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-    source "$HOME/.rvm/scripts/rvm"
-    rvm use default
-  else
-    die "rvm not found. We need ruby1.9"
-  fi
-
-  # source $HOME/bin/ssh-agent.sh >/dev/null 2>&1 \
-  #   || die "Can't load ssh configuration"
-  #
-  # msg "Testing ssh connection (skipped)"
-  # [[ $? -eq 0 ]] || die "Can't make connect to remote server ssh.tuxfamily.org"
-
+  { ruby -v | grep -q 'ruby 2.0' ; } \
+  || die "Unable to find Ruby >= 2.0"
   cd $_D_VAR || die "Can't switch to directory $_D_VAR"
 }
 
