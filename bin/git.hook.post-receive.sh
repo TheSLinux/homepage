@@ -35,6 +35,11 @@ die() {
 _setup() {
   { ruby -v | grep -q 'ruby 2.0' ; } \
   || die "Unable to find Ruby >= 2.0"
+
+  export rvm_path="/home/rvm/.rvm"
+  source "${rvm_path}/scripts/rvm"
+  rvm use default 1>&2
+
   cd $_D_VAR || die "Can't switch to directory $_D_VAR"
 }
 
