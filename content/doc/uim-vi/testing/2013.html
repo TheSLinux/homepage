@@ -53,8 +53,9 @@ Sau đó, vào thư mục `$HOME` và liên kết tới `profile` mặc định
 
 Thêm các biến môi trường sau đây vào `/etc/profile`, hoặc `$HOME/.xprofile`,
 `$HOME/.xinitrc` _(hoặc bất cứ nơi nào mà bạn biết, tùy vào cấu hình chương
-trình quản lý cửa sổ của bạn; ví dụ, `fluxbox` sẽ bỏ qua thiết lập trong
-`~/.profile`)_
+trình quản lý cửa sổ của bạn; ví dụ, `openbox` bỏ qua thiết lập trong
+`~/.profile`, và bạn cần đặt các biến vào phần đầu của tập tin `autostart.sh`
+có trong thư mục `~/.config/openbox/`.)_
 
     export GTK_IM_MODULE='uim'
     export QT_IM_MODULE='uim'
