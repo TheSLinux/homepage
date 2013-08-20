@@ -19,8 +19,8 @@ wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-xtelex-1.4.2-
 wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz
 wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz.asc
 
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-36-x86_64.pkg.tar.xz
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-36-x86_64.pkg.tar.xz.asc
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-41-x86_64.pkg.tar.xz
+wget -c http://mirror-fpt-telecom.fpt.net/theslinux/testing/uim-vi-1.8.5-41-x86_64.pkg.tar.xz.asc
 
 cat <<\EOF
 ========================================================================
