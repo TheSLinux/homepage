@@ -6,42 +6,39 @@ tags: ['email', 'list']
 * TOC
 {:toc}
 
-Các nhóm thư được cung cấp bởi <http://freelists.org>.
+Để tham gia nhóm thư bạn cần [đăng ký nhờ lệnh email](#mailreg).
 
-Để tham gia nhóm thư bạn cần đăng ký thông qua giao diện web của nhóm đó,
-hoặc [đăng ký bằng email](#mailreg), hoặc [sử dụng mẫu đăng ký nhanh](#fastoption).
-
-Sau khi đăng ký bạn có thể gửi email tới địa chỉ của nhóm thư và tất cả các
-thành viên sẽ nhận được. Khi gửi thư bạn cần chú ý [các quy tắc chung](#rules).
+Sau khi đăng ký bạn có thể gửi email tới địa chỉ của nhóm thư và tất cả
+thành viên sẽ nhận được. Bạn cần chú ý [các quy tắc chung](#rules).
 
 Nếu chỉ muốn theo dõi mà không cần viết `email` nào, có thể dùng địa chỉ
 `rss` được cho như dưới đây.
 
 ## Danh sách nhóm thư {#all}
 
-* **theslinux-`security`@freelists.org** :
+* **`security`@lists.theslinux.org** :
   Thông báo và trao đổi các vấn đề liên quan tới bảo mật.
   [Giao diện web][security.web], [kho lưu trữ][security.archive], [RSS][security.rss],
   [Đăng ký](#fastoption).
 
-* **theslinux-`questions`@freelists.org** :
+* **`questions`@lists.theslinux.org** :
   Các trao đổi của người dùng `TheSLinux`.
   [Giao diện web][questions.web], [kho lưu trữ][questions.archive], [RSS][questions.rss],
   [Đăng ký](#fastoption).
 
-* **theslinux-`bugs`@freelists.org** :
+* **`bugs`@lists.theslinux.org** :
   Báo các lỗi khi sử dụng `TheSLinux`.
   Bạn cũng thể sử dụng hệ thống của [Github][github.issues]
   để báo lỗi và theo dõi việc phát triển `TheSLinux`.
   [Giao diện web][bugs.web], [kho lưu trữ][bugs.archive], [RSS][bugs.rss],
   [Đăng ký](#fastoption).
 
-* **theslinux-`hackers`@freelists.org** :
+* **`hackers`@lists.theslinux.org** :
   Nhóm thư dành cho những người tham gia phát triển `TheSLinux`.
   [Giao diện web][hackers.web], [kho lưu trữ][hackers.archive], [RSS][hackers.rss],
   [Đăng ký](#fastoption).
 
-* **theslinux-`phantom`@freelists.org** :
+* **`phantom`@lists.theslinux.org** :
   Chứa nội dung các xác nhận _(`commit`)_ đến với kho mã nguồn.
   [Giao diện web][phantom.web], [kho lưu trữ][phantom.archive], [RSS][phantom.rss],
   [Đăng ký](#fastoption).
@@ -65,69 +62,39 @@ khóa `[OT]` và/hoặc chỉnh lại chủ đề của thư.
 
 ## Đăng ký qua email {#emailreg}
 
-Để đăng ký vào bất kỳ nhóm thư nào, ngoài cách dùng giao diện web của
-nhóm thư đó, bạn có thể dùng các lệnh đăng ký qua `email`. Ví dụ,
-để tham gia vào nhóm thư `theslinux-questions@freelists.org`, bạn
-gửi một email vào địa chỉ `theslinux-questions-request@freelists.org`
-với tiêu đề của thư là `subscribe`. Chờ khoảng mấy phút bạn sẽ nhận
-được email phản hồi từ địa chỉ  `ecartis@freelists.org` với các chỉ dẫn
-bạn cần làm theo.
+Để đăng ký vào bất kỳ nhóm thư nào dùng các lệnh đăng ký qua `email`.
 
+Ví dụ, để tham gia vào nhóm thư `questions@lists.theslinux.org`,
+bạn gửi một email vào địa chỉ
+  [ecartis@lists.theslinux.org](mailto:ecartis@lists.theslinux.org?subject=subscribe%20questions)
+với tiêu đề thư là `subscribe questions`.
 
-## Đăng ký và điều chỉnh nhanh {#fastoption}
+Chờ khoảng mấy phút bạn sẽ nhận được email phản hồi từ địa chỉ
+`ecartis@lists.theslinux.org`. Bạn chỉ chọn "Trả lời" thư nhận được
+mà không cần điền thông tin gì thêm.
 
-Bạn có thể đăng ký hoặc chỉnh các thiết lập cơ bản bằng cách điền
-và gửi thông tin theo mẫu sau
+Các liên kết nhanh để đăng ký
 
-----
-
-{::nomarkdown}
-<br>
-<form action="http://www.freelists.org/cgi-bin/subscription.cgi" method="post">
-  Địa chỉ email của bạn:
-  <input type="text" name="email">
-  <input type=hidden name="url_or_message" value="http://theslinux.org/lists/#fothanks">
-  <br>Tên nhóm thư:
-  <select name="list">
-    <option value="theslinux-security">Security - Trao đổi về bảo mật </option>
-    <option value="theslinux-questions">Questions - Câu hỏi của người dùng</option>
-    <option value="theslinux-bugs">Bugs - Báo lỗi</option>
-    <option value="theslinux-hackers">Hackers - Dành cho người phát triển</option>
-    <option value="theslinux-phantom">Phantom - Chứa các thông tin xác nhận trên kho git</option>
-  </select>
-  <br>Tuỳ chọn:
-  <select name="action">
-    <option value="subscribe">Đăng ký</option>
-    <option value="unsubscribe">Bỏ đăng ký</option>
-    <option value="set digest">Bật chế độ Digest</option>
-    <option value="unset digest">Tắt chế độ Digest</option>
-    <option value="set vacation">Bắt đầu kỳ nghỉ</option>
-    <option value="unset vacation">Kết thúc kỳ nghỉ</option>
-    <option value="help">Nhận tài liệu hướng dẫn</option>
-  </select>
-  <br><br>
-  <input type=submit value="Xác nhận và gửi yêu cầu">
-</form>
-<br>
-{:/nomarkdown}
-
-----
-
-Sau khi được `xác nhận và gửi`, yêu cầu sẽ chuyển đến trang <http://freelists.org>
-và sau đó sẽ [quay trở lại đây](#fothanks).
+* Đăng ký nhóm thư [questions](mailto:ecartis@lists.theslinux.org?subject=subscribe%20questions)
+* Đăng ký nhóm thư [security](mailto:ecartis@lists.theslinux.org?subject=subscribe%20security)
+* Đăng ký nhóm thư [bugs](mailto:ecartis@lists.theslinux.org?subject=subscribe%20bugs)
+* Đăng ký nhóm thư [hackers](mailto:ecartis@lists.theslinux.org?subject=subscribe%20hackers)
+* Đăng ký nhóm thư [phantom](mailto:ecartis@lists.theslinux.org?subject=subscribe%20phantom)
 
 ## Ghi chú {#fothanks}
 
-Khi sử dụng [mẫu đăng ký ở trên](#fastoption) bạn sẽ được chuyển hướng
-đến <http://freelists.org> và khi mọi chuyện tốt đẹp, bạn sẽ
+Email bạn nhận được từ địa chỉ `ecartis@lists.theslinux.org`, có thể nằm
+trong `Inbox` hoặc `Spam box`. Nội dung thư là tiếng Anh nhưng hầu hết
+các chỉ dẫn đều đơn giản bạn hãy thử làm theo trước khi tìm kiếm giúp đỡ.
 
-1. Được chuyển hướng về trang này;
-2. Bạn sẽ nhận được email với các chỉ dẫn tiếp theo.
+## Lịch sử
 
-Email bạn nhận được từ địa chỉ `ecartis@freelists.org`, có thể nằm trong
-`Inbox` hoặc `Spam box`. Nội dung thư là tiếng Anh nhưng hầu hết các chỉ
-dẫn đều đơn giản bạn hãy thử làm theo trước khi tìm kiếm giúp đỡ.
+Trong giai đoạn đầu của dự án, nhóm thư được cung cấp bởi <http://freelists.org>.
+Tuy nhiên, dịch vụ của FreeLists đưa ra vài ràng buộc không rõ ràng, không
+phù hợp với tinh thần tự do của dự án.
 
+Tháng 9/2013, các nhóm thư được chuyển qua máy chủ riêng của dự án, sử
+dụng Ecartis với mã nguồn tại <https://github.com/icyfork/ecartis>.
 
 [github.issues]: https://github.com/TheSLinux/gs/issues
 [bugs.web]: http://dir.gmane.org/gmane.linux.distributions.theslinux.bugs
