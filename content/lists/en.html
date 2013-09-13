@@ -6,41 +6,34 @@ tags: ['email', 'list', 'en']
 * TOC
 {:toc}
 
-Our lists are provided by <http://freelists.org>.
-
-To join any list you need to register by using its web UI, or by using
-[email command](#mailreg) or by [using this quick form](#fastoption).
-
-
-When you're registered to a list you can send and receive email to/from
-all members of the list. When sending new message to a list you need to
-[follow some common rules](#rules).
+Our lists are running by an Ecartis system. To subscribe to any list,
+please use [email command](#emailreg). Please follow our [rules](#rules).
 
 If you just want to read lists' message without being a member, you
 may use the `rss` links as provided below.
 
 ## Lists {#all}
 
-* **theslinux-`security`@freelists.org** :
+* **`security`@lists.theslinux.org** :
   Focus on seucirty topics.
   [Web-UI][security.web], [archive][security.archive], [RSS feed][security.rss],
-  [Registration form](#fastoption).
+  [Registration][reg.security].
 
-* **theslinux-`questions`@freelists.org** :
+* **`questions`@lists.theslinux.org** :
   General questions from users.
   [Web-UI][questions.web], [archive][questions.archive], [RSS feed][questions.rss],
-  [Registration form](#fastoption).
+  [Registration][reg.questions].
 
-* **theslinux-`bugs`@freelists.org** :
+* **`bugs`@lists.theslinux.org** :
   Reporting bugs.
   You make use the [Github system][github.issues] instead.
   [Web-UI][bugs.web], [archive][bugs.archive], [RSS feed][bugs.rss],
-  [Registration form](#fastoption).
+  [Registration][reg.bugs].
 
-* **theslinux-`hackers`@freelists.org** :
+* **`hackers`@lists.theslinux.org** :
   This is for hackers and developers.
   [Web-UI][hackers.web], [archive][hackers.archive], [RSS][hackers.rss],
-  [Registration form](#fastoption).
+  [Registration][reg.hackers].
 
 ## Common rules {#rules}
 
@@ -49,7 +42,7 @@ who has internet connection can receive and read your message.
 So the first rule for you is to `be careful`, and `to respect other people`.
 
 Every list has its own kind of topics. Don't use wrong list for your
-problem. In case you are not sure, the list `theslinux-questions`
+problem. In case you are not sure, the list `questions`
 may be the good one.
 
 You can use English or Vietnamese in our lists. However, please don't
@@ -61,62 +54,28 @@ to help other people to track discussion.
 
 ## Email command {#emailreg}
 
-To register to the list `foobar@freelists.org`, you can send an email
-to the address `foobar-request@freelists.org` (here `foobar` is `theslinux-questions`,
-`theslinux-hackers`, bla bla), and use **subscribe** as email subject.
-You will need to wait some minutes after your email is sent out.
-The list server will answer you with the last steps to finish your registration.
+The Ecartis system accepts commmand sent to
+  <mailto:ecartis@lists.theslinux.org>.
+The subject of your email does matter. To subscribe to the list **foobar**,
+use **subscribe foobar** as subject. Below the list of subscribe commands
 
-Our lists are run by `Ecartis` which also provides many useful email commands.
-Please read `Ecartis` documentation for details.
+* Subscribe [questions][reg.questions]
+* Subscribe [security][reg.security]
+* Subscribe [bugs][reg.bugs]
+* Subscribe [hackers][reg.hackers]
+* Subscribe [phantom][reg.phantom]
 
-## Quick registration form {#fastoption}
+## Notes {#notes}
 
-You can register and/or change your list' setting by using the following form.
+Email sent from our system may be in your **Spam** box. Make sure you
+wait enough and/or check in *Spam* box before raising any issue to
+<mailto:ecartis-owner@lists.theslinux.org>.
 
-----
+## History
 
-{::nomarkdown}
-<br>
-<form action="http://www.freelists.org/cgi-bin/subscription.cgi" method="post">
-  Your email:
-  <input type="text" name="email">
-  <input type=hidden name="url_or_message" value="http://theslinux.org/lists/en/#fothanks">
-  <br>The list you want to join:
-  <select name="list">
-    <option value="theslinux-security">Security topics</option>
-    <option value="theslinux-questions">Users' Questions</option>
-    <option value="theslinux-bugs">Reporting Bugs</option>
-    <option value="theslinux-hackers">Hackers or Developers</option>
-  </select>
-  <br>Option:
-  <select name="action">
-    <option value="subscribe">Subscribe</option>
-    <option value="unsubscribe">Unsubscribe</option>
-    <option value="set digest">Turn Digest mode on</option>
-    <option value="unset digest">Turn Digest mode off</option>
-    <option value="set vacation">Set Vacation mode on</option>
-    <option value="unset vacation">Set Vacation mode off</option>
-    <option value="help">Get help</option>
-  </select>
-  <br><br>
-  <input type=submit value="Confirm and send this form">
-</form>
-<br>
-{:/nomarkdown}
-
-----
-
-After this form is confirmed and sent, you will be redirected to
-<http://freelists.org> and then to [this page](#fothanks).
-
-## Notes {#fothanks}
-
-Whe you use [our quick registration form](#fastoption) you will be redirected
-to <http://freelists.org> and finally to this page. You will also receive
-some instructions via email from `ecartis@freelists.org`. This email
-may come to your `Inbox` or `Spam box`. Please check and follow
-instructions in that email.
+Our lists were running by <http://freelists.org>. However, there are
+some restrictions that are not suitable for the freedom of our project.
+We decice to use our own system. The move is complete in Sep 12th 2013.
 
 [github.issues]: https://github.com/TheSLinux/gs/issues
 [bugs.web]: http://dir.gmane.org/gmane.linux.distributions.theslinux.bugs
@@ -131,3 +90,8 @@ instructions in that email.
 [security.web]: http://dir.gmane.org/gmane.linux.distributions.theslinux.security
 [security.rss]: http://rss.gmane.org/messages/excerpts/gmane.linux.distributions.theslinux.security
 [security.archive]: http://blog.gmane.org/gmane.linux.distributions.theslinux.security
+[reg.questions]: mailto:ecartis@lists.theslinux.org?subject=subscribe%20questions
+[reg.security]: mailto:ecartis@lists.theslinux.org?subject=subscribe%20security
+[reg.bugs]: mailto:ecartis@lists.theslinux.org?subject=subscribe%20bugs
+[reg.hackers]: mailto:ecartis@lists.theslinux.org?subject=subscribe%20hackers
+[reg.phantom]: mailto:ecartis@lists.theslinux.org?subject=subscribe%20phantom
