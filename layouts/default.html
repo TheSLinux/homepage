@@ -7,6 +7,45 @@
     <link href="http://theslinux.org/rss/" rel="alternate" type="application/rss+xml" title="News from TheSLinux">
   </head>
   <body>
+    <div id="cssmenu">
+      <ul class="pureCssMenu pureCssMenum">
+        <li class="pureCssMenui"><a class="pureCssMenui" href="/index.html">Trang đầu</a></li>
+        <li class="pureCssMenui"><a class="pureCssMenui" href="#"><span>Người dùng</span><![if gt IE 6]></a><![endif]><!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul class="pureCssMenum">
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/news/">Tin tức</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/doc/">Tài liệu</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/about/">Giới thiệu</a></li>
+        </ul>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]--></li>
+        <li class="pureCssMenui"><a class="pureCssMenui" href="#"><span>Phát triển</span><![if gt IE 6]></a><![endif]><!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul class="pureCssMenum">
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/bugs/">Báo lỗi</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/devs/">Hướng dẫn</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/devs/core-team/">Đội phát triển</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/sponsors/">Tài trợ</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/donation/">Đóng góp</a></li>
+        </ul>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]--></li>
+        <li class="pureCssMenui"><a class="pureCssMenui" href="#"><span>Kết nối</span><![if gt IE 6]></a><![endif]><!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul class="pureCssMenum">
+          <li class="pureCssMenui"><a class="pureCssMenui" href="https://twitter.com/theslinux">Twitter</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="https://facebook.com/theslinux/">Facebook</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/lists/">Nhóm thư</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="/contact/">Liên hệ</a></li>
+        </ul>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]--></li>
+        <li class="pureCssMenui"><a class="pureCssMenui" href="/security/">Security</a></li>
+        <li class="pureCssMenui"><a class="pureCssMenui" href="#"><span>Mirror</span><![if gt IE 6]></a><![endif]><!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul class="pureCssMenum">
+          <li class="pureCssMenui"><a class="pureCssMenui" href="http://m0.theslinux.org<%= @item.identifier %>">m0: Mỹ</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="http://m1.theslinux.org<%= @item.identifier %>">m1: Đức</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="http://m3.theslinux.org<%= @item.identifier %>">m3: Việt Nam</a></li>
+          <li class="pureCssMenui"><a class="pureCssMenui" href="http://m4.theslinux.org<%= @item.identifier %>">m4: Pháp</a></li>
+        </ul>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]--></li>
+      </ul>
+    </div>
+
     <div id="main">
       <% if @item[:title] %>
       <h1><%= @item[:title] %></h1>
@@ -53,37 +92,6 @@
         ret = license_text(@item[:license]).strip
         ret.empty? ? '' : "<pre class='license'>#{ret}</pre>"
         %>
-    </div>
-    <div id="sidebar">
-      <h2><a href="/">TheSLinux</a></h2>
-      <ul>
-        <li><a href="/news/">tin tức</a>
-          , <a href="/about/">giới thiệu</a></li>
-        <li><a href="/faq/">hỏi - đáp</a>
-          , <a href="/doc/">tài liệu</a></li>
-        <li><a href="/donations/">đóng góp</a>
-          , <a href="/sponsors/">tài trợ</a></li>
-        <li>&nbsp;</li>
-        <li><a href="/bugs/">báo lỗi</a></li>
-        <li><a href="/security/">!! security</a>
-          , <a href="/security/hackme/">hack me !!</a></li>
-      </ul>
-      <ul>
-        <li><a href="/lists/">nhóm thư</a>
-          , <a href="https://github.com/TheSLinux/gs/issues?state=open">việc đang làm</a></li>
-        <li><a href="https://twitter.com/theslinux/">twitter</a>
-          , <a href="https://facebook.com/theslinux/">facebook</a>
-        <li>email: <strong>info</strong> @ <strong>domain</strong></li>
-      </ul>
-      <ul>
-        <li><a href="/tags/">thẻ bài viết</a>
-          , <a href="https://github.com/TheSLinux/">mã nguồn</a>
-        <li><a href="http://www.google.com.vn/?q=site:theslinux.org+&nbsp;">tìm với Google</a></li>
-      </ul>
-      <ul>
-        <li><a href="http://theslinux.org/">mirror 0</a>
-          | <a href="http://theslinux.berlios.de/">mirror 1</a></li>
-      </ul>
     </div>
   </body>
 </html>
