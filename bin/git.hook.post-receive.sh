@@ -75,6 +75,15 @@ _fetch_apache_configuration() {
   mv "etc/apache.rewrite.conf" "$_D_OUTPUT/.htaccess"
 }
 
+_fetch_static_pages() {
+  local _d_dest="$_D_OUTPUT/doc/homepage/color/scheme0/"
+
+  msg "Downloading some static page"
+  mkdir -p "$_d_dest/"
+  curl -s -o "${_d_dest}/index.html" \
+    "https://raw.github.com/TheSLinux/media/master/color-scheme0.html"
+}
+
 _update_myself() {
   msg "Do nothing"
 }
@@ -208,6 +217,7 @@ _main() {
   _update || die "Something wrong happened during updating process"
   _build
   _fix_news_page
+  _fetch_static_pages
   _fetch_apache_configuration
   _fix_perm
   _create_www
