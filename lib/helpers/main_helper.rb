@@ -199,7 +199,7 @@ EOF
          "    được hàm ý tác giả trao trang này hay quyền sử dụng trang này cho bạn;",
          "(2) Nếu bạn sử dụng, chuyển đổi, hoặc xây dựng dự án từ trang này,",
          "    bạn phải áp dụng giấy phép BY-SA hoặc giấy phép có các điều khoản",
-         "    tương tự như giấy phép By-SA cho dự án của bạn."
+         "    tương tự như giấy phép BY-SA cho dự án của bạn."
         ]
       when false
         []
