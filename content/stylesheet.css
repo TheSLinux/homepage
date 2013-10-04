@@ -25,11 +25,21 @@ a:hover {
   text-decoration: none;
 }
 
-#main {
+#cssmenu {
+  display: block;
+  float: left;
   position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0 0 0 0;
+}
+
+#main {
+  padding-top: 40px;
+  padding-left: 10px;
 
   top: 40px;
-  left: 280px;
+  left: 10px;
 
   width: 500px;
 }
@@ -331,7 +341,7 @@ ul.pureCssMenu li:hover{
 	position:relative;
 }
 ul.pureCssMenu li:hover>a{
-	background-color:#3F8FD2;
+	background-color:#66A1D2;
 	border-color:#665500;
 	border-style:solid;
 	font:11px Tahoma;
@@ -340,7 +350,7 @@ ul.pureCssMenu li:hover>a{
 }
 ul.pureCssMenu li a:hover{
 	position:relative;
-	background-color:#3F8FD2;
+	background-color:#66A1D2;
 	border-color:#665500;
 	border-style:solid;
 	font:11px Tahoma;
