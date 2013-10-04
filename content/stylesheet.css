@@ -303,7 +303,7 @@ ul.pureCssMenu a, ul.pureCssMenu li.dis a:hover, ul.pureCssMenu li.sep a:hover {
 	text-decoration:none;
 	padding:4px;
 	_padding-left:0;
-	font:12px Tahoma;
+	font:13px Tahoma;
 	color: #444444;
 	text-decoration:none;
 	cursor:default;
@@ -345,7 +345,7 @@ ul.pureCssMenu li:hover>a{
 	background-color:#66A1D2;
 	border-color:#665500;
 	border-style:solid;
-	font:12px Tahoma;
+	font:13px Tahoma;
 	color: #FFFFFF;
 	text-decoration:none;
 }
@@ -354,7 +354,7 @@ ul.pureCssMenu li a:hover{
 	background-color:#66A1D2;
 	border-color:#665500;
 	border-style:solid;
-	font:12px Tahoma;
+	font:13px Tahoma;
 	color: #FFFFFF;
 	text-decoration:none;
 }
@@ -380,7 +380,7 @@ ul.pureCssMenu span{
 	background-image:url(/i/cssmenu/arrv_anim_1.gif);
 	background-position:right center;
 	background-repeat: no-repeat;
-   padding-right:12px;}
+   padding-right:13px;}
 ul.pureCssMenu li:hover>a>span{	background-image:url(/i/cssmenu/arrv_anim_1o.gif);
 }
 ul.pureCssMenu a:hover span{_background-image:url(/i/cssmenu/arrv_anim_1o.gif)}
