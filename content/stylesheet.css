@@ -152,7 +152,8 @@ pre.license {
   background-color: transparent;
   font-size: 11px;
   font-family: normal;
-  border: 1px solid #2B4281;
+  border: 1px solid #ccc;
+  margin-left: -9px;
 }
 
 pre.license b {
