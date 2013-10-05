@@ -194,6 +194,7 @@ table.CodeRay td {
 table.CodeRay td.line-numbers {
   border: 0px solid gray;
   padding-right: 5px;
+  font-size: 12px;
 }
 
 table.CodeRay td.line-numbers a,
@@ -201,12 +202,14 @@ table.CodeRay td.line-numbers a:link,
 table.CodeRay td.line-numbers a:visited,
 table.CodeRay td.line-numbers a:hover {
   font-family: monospace;
+  font-size: 12px;
 }
 
 table.CodeRay td.code {
   border: 0px solid gray;
   padding: 0px;
   margin: 0px;
+  font-size: 12px;
 }
 
 @font-face {
