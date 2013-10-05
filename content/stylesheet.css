@@ -304,7 +304,7 @@ ul.pureCssMenu a, ul.pureCssMenu li.dis a:hover, ul.pureCssMenu li.sep a:hover {
 	padding:4px;
 	_padding-left:0;
 	font:13px Tahoma;
-	color: #444444;
+	color: #000;
 	text-decoration:none;
 	cursor:default;
 }
