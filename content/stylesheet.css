@@ -40,8 +40,20 @@ a:hover {
 
   top: 40px;
   left: 10px;
+}
 
-  width: 500px;
+/* For mobile users */
+@media screen and (max-device-width: 500px){
+  #main {
+    width: 100%;
+    right: 10px;
+  }
+}
+
+@media screen and (min-device-width:501px){
+  #main {
+    width: 500px;
+  }
 }
 
 #main h1 {
