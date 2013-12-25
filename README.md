@@ -38,6 +38,18 @@ should not be updated by non-privileged developers. Because there are
 some mergences that causes very bad and messy logs, please consider to
 use `cherry-pick` if you want to use any `core` feature on your branch.
 
+Some important files that are on `core` branch
+
+* Hook scripts in `bin/`
+* Layout files in `layouts/`
+* Stylesheet files in `content/stylesheet.css`
+* All ruby files in any directories
+* Nanoc configuration files
+
+This list is not complete. It is always safe to use `master` if you
+are working on *real* contents of the site. Any changes to font colors,
+font size, layouts, bla bla must be on `core` branch.
+
 *Important notes*: Since 2013 July 28th, the two branches are divergent
 and you can't merge them. The only way to get `core` feature is to use
 `cherry-pick`. However, you should not do that unless you really mean
