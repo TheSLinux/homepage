@@ -137,6 +137,7 @@ _fix_news_page() {
     popd
   else # we now use contents/news/<year>.html to save items
     pushd "$_D_OUTPUT/news/"
+    rm -f "index.html"
     ln -s "$(date +%Y)/index.html" "index.html"
     popd
   fi
