@@ -32,6 +32,7 @@ a:hover {
   top: 0px;
   left: 0px;
   padding: 0 0 0 0;
+  white-space: nowrap;
 }
 
 #main {
@@ -343,14 +344,14 @@ ul.pureCssMenu li.sep{
 ul.pureCssMenu li.sep span{
   float:none;
   padding-right:0;
-  width:5;
-  height:16;
+  width:5px;
+  height:16px;
   display:inline-block;
   background-color:#AAAAAA;
   background-image:none;}
 ul.pureCssMenu ul li.sep span{
   width:80%;
-  height:3;
+  height:3px;
 }
 ul.pureCssMenu li:hover{
   position:relative;
