@@ -47,7 +47,8 @@ a:hover {
 @media screen and (max-device-width: 500px){
   #main {
     width: 100%;
-    padding-right: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
   }
 }
 
@@ -295,7 +296,7 @@ ul.pureCssMenu {
   float: left;
 }
 ul.pureCssMenu ul{
-  width:91.35000000000001px;
+  width: 91.35000000000001px;
 }
 ul.pureCssMenu li{
   display:block;
@@ -316,7 +317,7 @@ ul.pureCssMenu a, ul.pureCssMenu li.dis a:hover, ul.pureCssMenu li.sep a:hover {
   text-decoration:none;
   padding:4px;
   _padding-left:0;
-  font:13px Tahoma;
+  font:12px Tahoma;
   color: #000;
   text-decoration:none;
   cursor:default;
@@ -360,7 +361,7 @@ ul.pureCssMenu li:hover>a{
   background-color:#66A1D2;
   border-color:#665500;
   border-style:solid;
-  font:13px Tahoma;
+  font:12px Tahoma;
   color: #FFFFFF;
   text-decoration:none;
 }
@@ -369,7 +370,7 @@ ul.pureCssMenu li a:hover{
   background-color:#66A1D2;
   border-color:#665500;
   border-style:solid;
-  font:13px Tahoma;
+  font:12px Tahoma;
   color: #FFFFFF;
   text-decoration:none;
 }
