@@ -316,11 +316,16 @@ ul.pureCssMenu a, ul.pureCssMenu li.dis a:hover, ul.pureCssMenu li.sep a:hover {
   text-align:left;
   text-decoration:none;
   padding:4px;
-  _padding-left:0;
   font:12px Tahoma;
   color: #000;
   text-decoration:none;
   cursor:default;
+}
+
+@media screen and (max-device-width: 500px){
+  ul.pureCssMenu a, ul.pureCssMenu li.dis a:hover, ul.pureCssMenu li.sep a:hover {
+    padding: 2px;
+  }
 }
 
 ul.pureCssMenu span{
