@@ -1,0 +1,67 @@
+---
+title: Thỏa thuận giữa các thành viên đội phát triển
+tags: ['dev', 'hacker', 'rank', 'agreement']
+---
+
+## Đặt vấn đề
+
+Trong dự án `TheSLinux` sẽ có phần cơ sở hạ tầng do các nhà tài trợ cung cấp,
+do chính dự án mua sắm để phục vụ công việc. Một số bạn sẽ tham gia với tư
+cách `sysadmin`, một số bạn khác thì sử dụng các máy để biên dịch, thử nghiệm.
+Khi dự án có nhiều thành viên, để đảm bảo dự án được an toàn, các bạn cần
+tuân theo các tiêu chuẩn và quy định.
+
+`Hackers' Agreement` (viết tắt `HA`) là thỏa thuận giữa các thành viên của
+dự án. Sẽ không có gì quá to tát như NDA bạn ký với các công ty chuyên
+nghiệp. Phần tiếp theo là dự thảo nội dung của HA,
+cùng với các thức bạn chấp nhận HA.
+
+## Thỏa thuận giữa các thành viên đội phát triển
+
+1. HA phiên bản 1.0.0, được tự động điều chỉnh bởi các HA phiên bản mới
+   hơn cùng dòng (1.x.x).
+
+2. Để chấp nhận HA, tạo tài khoản Github và ghi chú về sự xác nhận của bạn
+   vào trong [ticket này] [hago]. Các thành viên cốt lõi (core team) bắt buộc
+   chấp nhận HA.
+
+3. Thông tin cần bảo vệ của dự án gồm có: các thông tin tài khoản đăng nhập
+   và điều khiển các dịch vụ, thông tin về kiến trúc hạ tầng của dự án
+   (kiến trúc của các dịch vụ và hạ tầng mạng, ví dụ thông tin về các địa
+   chỉ IP các máy.)
+
+4. Bạn có ý thức và trách nhiệm bảo vệ thông tin của máy phục vụ và của dự
+   án, không chia sẻ bên thứ ba hoặc các nhân không liên quan. Không thực
+   hiện dò tìm, khai thác thông tin không thuộc về phần việc của bạn.
+
+5. Khuyến khích bạn dùng tài nguyên của dự án vào đúng mục đích. Bạn có thể
+   dùng vào mục đích cá nhân, nhưng không nên sử dụng tài nguyên của dự án
+   vào mục đích có thể làm lộ thông tin hoặc dẫn tới nguy cơ tiềm tàng cho
+   hệ thống _(ví dụ, sử dụng email server để đăng ký các tài khoản giả hoặc
+   gửi thư rác.)_ Một cách chi tiết, tuân theo các chỉ dẫn về an toàn trong
+   dự án, và chấp nhận các cuộc kiểm tra _(audit, nếu có)_ để giảm thiểu nguy
+   cơ cho dự án.
+
+6. Ghi chú và chuẩn bị tài liệu cho các vấn đề quan trọng mà bạn đang thực
+   hiện _(kể cả bằng cách trao đổi trên các kênh như nhóm thư, irc để có thể
+   có phần lưu trữ tài liệu tự động)_, đề phòng trường hợp thông tin bị mất
+   do bạn không thể tiếp tục với dự án vì bất cứ lý do gì.
+
+99. Các ngoại lệ cần được trao đổi và thông qua với các thành viên trong dự án.
+
+
+Ví dụ áp dụng:
+=============
+
+Ví dụ, bạn X. khi tham gia vào dự án TBS, được cấp một máy ảo để tự biên
+dịch các gói. X. có thể được cấp quyền cao nhất của hệ thống là "root", với
+quyền này X. có thể thực hiện tìm hiểu thông tin của data center của nhà
+tài trợ và làm lộ thông tin hoặc gây hại cho dải IP của họ.
+
+Bằng việc chấp nhận HA., (hy vọng là) X. có ý thức thực hiện các biện pháp
+an toàn cần thiết trên máy cá nhân, và trên chính máy ảo được cung cấp.
+
+Liên kết:
+=========
+
+[hago]: https://github.com/TheSLinux/gs/issues/110
