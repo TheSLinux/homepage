@@ -109,8 +109,8 @@ _fix_stuff() {
   msg "Creating symlink :hackers -> :devs"
   pushd $_D_OUTPUT \
   && {
-    rm -v devs && ln -s hackers devs
-    :
+    rm -v devs || true
+    ln -s hackers devs || true
   } \
   && popd
 }
