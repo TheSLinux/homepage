@@ -101,10 +101,18 @@ _build() {
   fi
 }
 
-_fix_perm() {
+_fix_stuff() {
   msg "Updating files permission"
   find $_D_OUTPUT/ -mindepth 1 -type d -exec chmod 755 {} +
   find $_D_OUTPUT/ -mindepth 1 -type f -exec chmod 644 {} +
+
+  msg "Creating symlink :hackers -> :devs"
+  pushd $_D_OUTPUT \
+  && {
+    rm -v devs && ln -s hackers devs
+    :
+  } \
+  && popd
 }
 
 # NOTE: all files `*.tgz` are ignored
@@ -220,7 +228,7 @@ _main() {
   _fix_news_page
   _fetch_static_pages
   _fetch_apache_configuration
-  _fix_perm
+  _fix_stuff
   _create_www
   _create_archive
   _sync
