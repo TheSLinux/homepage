@@ -31,7 +31,7 @@ preprocess do
   generate_tag_pages
 end
 
-compile '/devs/invitation/' do
+compile '/hackers/invitation/' do
   filter :kramdown
   layout 'invitation'
 end
