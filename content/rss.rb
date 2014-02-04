@@ -22,7 +22,8 @@ $repo = Git.open("./")
 # See my feature request https://github.com/schacon/ruby-git/issues/82
 #
 # NOTE: this change requires the `post-receive` githook to be updated
-$object = "./content/news/#{$this_year == 2013 ? "index" : $this_year}.html"
+$object = "./content/news/#{$this_year}.html"
+$object = File.file?($object) ? $object : "./content/news/index.html"
 
 rss = RSS::Maker.make("2.0") do |maker|
   first_object = $repo.log(1).object($object).first
