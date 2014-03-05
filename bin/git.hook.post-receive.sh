@@ -33,8 +33,8 @@ die() {
 }
 
 _setup() {
-  { ruby -v | grep -q 'ruby 2.0' ; } \
-  || die "Unable to find Ruby >= 2.0"
+  # { ruby -v | grep -q 'ruby 2.0' ; } \
+  # || die "Unable to find Ruby >= 2.0"
 
   cd $_D_VAR || die "Can't switch to directory $_D_VAR"
 }
