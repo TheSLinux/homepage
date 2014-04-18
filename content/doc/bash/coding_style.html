@@ -143,6 +143,15 @@ kiểm soát được trạng thái của lệnh `foobar_command`. Cách làm đ
 
 Xem thêm các bình luận và ví dụ ở [s-run-pipe-error][].
 
+## Kiểm soát lỗi tự động {#set}
+
+Luôn sử dụng `set -u` để chắc rằng các biến chưa được khai báo sẽ phát
+sinh lỗi và dừng ngay lập tức kịch bản. Ví dụ về cách chuyển mã
+từ môi trường `set +u` qua `set -u` có thể [xem ở đây][set-u].
+
+Việc dùng `set +u` _(mặc định)_ có thể sinh ra nhiều lỗi nghiêm trọng.
+[Xem ví dụ ở đây][set+u_is_evil].
+
 ## Cẩn thận với $? {#last-return-code}
 
 Rất cẩn thận khi dùng `$?`. Biến này chỉ lưu trữ giá trị trả về của lệnh
@@ -193,3 +202,5 @@ tuy nhiên chỉ các quy tắc được nêu ra ở đây là chính thức đ�
 
 [s-run-pipe-error]: https://github.com/TheSLinux/buildsystem/commit/9f4824ed9e5506cd97d477dfa4c7dbf5697c7fa6
 [last-return-bad-use]: http://dragula.viettug.org/blogs/675.html
+[set-u]: https://github.com/TheSLinux/buildsystem/commit/70c9bb996511304c92279da3b6ea6ae729ddeb7f
+[set+u_is_evil]: https://github.com/icy/pacapt/commit/0d6b771942917d9f34fb1b44cc99b024b19dc492
