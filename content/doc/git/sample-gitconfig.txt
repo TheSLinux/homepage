@@ -35,8 +35,8 @@ cb = rev-parse --abbrev-ref HEAD
 clog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 # TheSLinux utils
-stag = !git tag | grep "^$(git rev-parse --abbrev-ref HEAD)"
-sbr = !git branch | grep "^$(git rev-parse --abbrev-ref HEAD)"
+stag = !git tag | grep -E "^$(git rev-parse --abbrev-ref HEAD)-[0-9.]+$"
+sbr = !git branch | grep " $(git rev-parse --abbrev-ref HEAD)$"
 
 [color "branch"]
 
