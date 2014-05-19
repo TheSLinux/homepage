@@ -169,9 +169,6 @@ _sync() {
   msg "Updating home page theslinux.tuxfamily.org (m4.theslinux.org)"
   ssh -o ConnectTimeout=3 "tuxfamily_theslinux" "tuxfamily_theslinux"
 
-  msg "Updating home page theslinux.berlios.de (m1.theslinux.org)"
-  ssh -o ConnectTimeout=3 "$_S_BERLIOS" "berlios_theslinux"
-
   msg "Updating home page m3.theslinux.org (it is disabled, though)"
   ssh -o ConnectTimeout=3 "l00s5r.theslinux.org" "l00s5r.theslinux.org"
 
