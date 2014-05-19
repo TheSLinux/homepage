@@ -33,9 +33,9 @@ berlios_theslinux() {
   || die "Can't clean up the old file $_F_SRC"
 
   wget \
-      "http://m0.theslinux.org/$_F_SRC?$(date +%s)" \
+      "http://theslinux.org/$_F_SRC?$(date +%s)" \
       -O $_F_SRC -o /dev/null \
-  || die "Can't download source file from m0.theslinux.org"
+  || die "Can't download source file from theslinux.org"
 
   msg "Extracting $_F_SRC"
   tar -xzf $_F_SRC
@@ -69,9 +69,9 @@ tuxfamily_archlinuxvn() {
   rm -rf $_D_TMP/$_F_SRC $_D_TMP/archlinuxvn.org/ \
     || die "Can't clean up the old file $_F_SRC"
   wget \
-      "http://m0.archlinuxvn.org/$_F_SRC?$(date +%s)" \
+      "http://archlinuxvn.org/$_F_SRC?$(date +%s)" \
       -O $_F_SRC -o /dev/null \
-    || die "Can't download source file from m0.archlinuxvn.org"
+    || die "Can't download source file from archlinuxvn.org"
 
   msg "Extracting $_F_SRC"
   tar -xzf $_F_SRC
@@ -84,8 +84,8 @@ tuxfamily_archlinuxvn() {
 }
 
 tuxfamily_theslinux() {
-  local _D_TMP="$HOME/theslinux/m4.theslinux.org-web/tmp/"
-  local _D_DEST="$HOME/theslinux/m4.theslinux.org-web/htdocs/"
+  local _D_TMP="$HOME/theslinux/fr.theslinux.org-web/tmp/"
+  local _D_DEST="$HOME/theslinux/fr.theslinux.org-web/htdocs/"
   local _F_SRC="theslinux.org.tgz"
 
   cd "$_D_DEST" || die "Can't switch to $_D_DEST"
@@ -95,9 +95,9 @@ tuxfamily_theslinux() {
   rm -rf "$_D_TMP/$_F_SRC" "$_D_TMP/theslinux.org/" \
     || die "Can't clean up the old file $_F_SRC"
   wget \
-      "http://m0.theslinux.org/$_F_SRC?$(date +%s)" \
+      "http://theslinux.org/$_F_SRC?$(date +%s)" \
       -O $_F_SRC -o /dev/null \
-    || die "Can't download source file from m0.theslinux.org"
+    || die "Can't download source file from theslinux.org"
 
   msg "Extracting $_F_SRC"
   tar -xzf $_F_SRC
@@ -121,9 +121,9 @@ l00s5r.theslinux.org() {
   rm -rf "$_D_TMP/$_F_SRC" "$_D_TMP/theslinux.org/" \
     || die "Can't clean up the old file $_F_SRC"
   wget \
-      "http://m0.theslinux.org/$_F_SRC?$(date +%s)" \
+      "http://theslinux.org/$_F_SRC?$(date +%s)" \
       -O $_F_SRC -o /dev/null \
-    || die "Can't download source file from m0.theslinux.org"
+    || die "Can't download source file from theslinux.org"
 
   msg "Extracting $_F_SRC"
   tar -xzf $_F_SRC
