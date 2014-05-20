@@ -166,10 +166,10 @@ _fix_news_page() {
 # I couldn't figure out how/why Tuxfamily can disable the variable.
 #
 _sync() {
-  msg "Updating home page theslinux.tuxfamily.org (m4.theslinux.org)"
+  msg "Updating mirror 'fr.theslinux.org'..."
   ssh -o ConnectTimeout=3 "tuxfamily_theslinux" "tuxfamily_theslinux"
 
-  msg "Updating home page m3.theslinux.org (it is disabled, though)"
+  msg "Updating mirror 'vn.theslinux.org'..."
   ssh -o ConnectTimeout=3 "l00s5r.theslinux.org" "l00s5r.theslinux.org"
 
   msg "All pages have been updated."
