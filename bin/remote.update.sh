@@ -138,7 +138,6 @@ l00s5r.theslinux.org() {
 _update() {
   local _cmd="${SSH_ORIGINAL_COMMAND:-$1}"
   case "$_cmd" in
-    "berlios_theslinux")      ;;
     "tuxfamily_archlinuxvn")  ;;
     "tuxfamily_theslinux")    ;;
     "l00s5r.theslinux.org")   ;;

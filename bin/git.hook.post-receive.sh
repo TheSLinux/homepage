@@ -125,7 +125,7 @@ _create_www() {
 _create_archive() {
   cd $_D_VAR/ || die "Couldn't switch to $_D_VAR/"
 
-  msg "Creating local archive for Berlios.de"
+  msg "Creating local archive..."
   tar --transform="s,^output,theslinux.org," -czf $_F_ARCHIVE output/
   chmod 644 $_F_ARCHIVE
 }
@@ -171,9 +171,6 @@ _sync() {
 
   msg "Updating mirror 'vn.theslinux.org'..."
   ssh "l00s5r.theslinux.org" "l00s5r.theslinux.org"
-
-  msg "Updating mirror 'de.theslinux.org'..."
-  ssh "$_S_BERLIOS" berlios_theslinux
 
   msg "All pages have been updated."
   msg "Thank you for your contribution. You make TheSLinux live!"
