@@ -7,20 +7,20 @@
 
 wget -c https://raw.github.com/TheSLinux/homepage/master/content/security/pgp_security.pub
 
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz
+wget -c http://f.theslinux.org/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz.asc
 
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/m/m17n-db-vi/m17n-db-vi-1.6.4-8-any.pkg.tar.xz
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/m/m17n-db-vi/m17n-db-vi-1.6.4-8-any.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/m/m17n-db-vi/m17n-db-vi-1.6.4-8-any.pkg.tar.xz
+wget -c http://f.theslinux.org/theslinux/p/m/m17n-db-vi/m17n-db-vi-1.6.4-8-any.pkg.tar.xz.asc
 
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz.asc
 
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-i686.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz
+wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-i686.pkg.tar.xz.asc
 
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/u/uim-vi/uim-vi-1.8.5-37-i686.pkg.tar.xz
-wget -c http://mirror-fpt-telecom.fpt.net/theslinux/p/u/uim-vi/uim-vi-1.8.5-37-i686.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.5-37-i686.pkg.tar.xz
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.5-37-i686.pkg.tar.xz.asc
 
 cat <<\EOF
 ========================================================================
