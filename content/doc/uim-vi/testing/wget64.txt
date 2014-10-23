@@ -17,10 +17,10 @@ wget -c http://f.theslinux.org/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1
 wget -c http://f.theslinux.org/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz.asc
 
 wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz
-wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-i686.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz.asc
 
-wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.5-37-i686.pkg.tar.xz
-wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.5-37-i686.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.6-2-x86_64.pkg.tar.xz
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.6-2-x86_64.pkg.tar.xz.asc
 
 cat <<\EOF
 ========================================================================
