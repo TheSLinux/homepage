@@ -111,7 +111,7 @@ tuxfamily_theslinux() {
 
 l00s5r.theslinux.org() {
   local _D_TMP="$HOME/tmp/"
-  local _D_DEST="/home/theslinux.org/www/"
+  local _D_DEST="/home/www/theslinux.org/"
   local _F_SRC="theslinux.org.tgz"
 
   cd "$_D_DEST" || die "Can't switch to $_D_DEST"
