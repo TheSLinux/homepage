@@ -6,14 +6,22 @@ tags: ['faq', 'uim', 'xtelex', 'xvni', 'vietnamese']
 1. TOC
 {:toc}
 
+Những vấn đề thường gặp nhất khi dùng `uim-vi`.
+
+## Cài đặt `uim-vi` như thế nào {#installation}
+
+Xem [hướng dẫn dành cho người thử nghiệm](.../testing/2013/).
+
 ## Các cài đặt mặc định của TheSLinux {#defaults}
+
+Cài đặt mặc định được mô tả trong [126-uim-vi](../126-uim-vi/).
 
 1. **Làm thế nào để bật bộ gõ lên**: Khi bật một chương trình mới,
   gộ gõ mặc định sẽ tắt. Để bật bộ gõ lên, bạn nhấn tổ hợp phím
   `Ctrl Alt \` để chuyển đến bộ gõ đầu tiên là `XTelex`.
   Bạn cũng có thể dùng chuột để chọn bộ gõ từ khay hệ thống.
 
-    Nếu là người dùng kiểu gõ `VNI` bạn [xem thêm cách điều chỉnh](../126-uim-vi#VNI-users).
+  Nếu là người dùng kiểu gõ `VNI` bạn [xem thêm cách điều chỉnh](../126-uim-vi#VNI-users).
 
 2. **Tạm thời tắt bộ gõ như thế nào**: Có hai cách:
   chuyển qua kiểu gõ `trực tiếp` _(tổ hợp hím: `Ctrl Alt Space`)_ hoặc
@@ -56,5 +64,11 @@ tags: ['faq', 'uim', 'xtelex', 'xvni', 'vietnamese']
 
 6. **Tôi không muốn dùng uim-setup**: Bạn có thể sử dụng `scim` hoặc `ibus`
   thay cho `uim-vi`. Hiện tại bạn phải biên dịch các gói này từ mã nguồn.
+
+7. **Tại sao không gõ được tiếng Việt trong ứng dụng xyz**:
+  `uim-vi` chưa hỗ trợ các ứng dụng `qt5`, nhưng Ngô Huy đang phát triển
+  và [kết quả ban đầu rất khích lệ](/bugs/116). Với các ứng dụng `qt4`,
+  và hầu hết các ứng dung khác, bạn sẽ không gặp vấn đề gì, một khi
+  bạn cấu hình đúng cho bộ gõ `uim-vi`.
 
 [XTelex]: /doc/uim-vi/xtelex/
