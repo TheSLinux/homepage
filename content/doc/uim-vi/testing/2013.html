@@ -51,6 +51,8 @@ Sau đó, vào thư mục `$HOME` và liên kết tới `profile` mặc định
     # nếu bạn dùng Telex và không muốn thay đổi gì, có thể dùng
     # $ ln -s /usr/share/theslinux/126/uim.d/customs/
 
+## Chỉnh môi trường {#env}
+
 Thêm các biến môi trường sau đây vào `/etc/profile`, hoặc `$HOME/.xprofile`,
 `$HOME/.xinitrc` _(hoặc bất cứ nơi nào mà bạn biết, tùy vào cấu hình chương
 trình quản lý cửa sổ của bạn; ví dụ, `openbox` bỏ qua thiết lập trong
@@ -72,6 +74,20 @@ thể thêm vào `$HOME/.xinitrc` _(hoặc `$HOME/.xprofile`)_:
 chọn kiểu nhập mặc định là `uim`.
 
 _(Một số bạn không sử dụng `systray` thì không cần dùng `uim-systray`.)_
+
+## Thiết lập cho GTK2 {#gtk-settings}
+
+Phần này do bạn Ngô-Huy đề nghị _(tháng 11/2014)_. Dường như là để dùng
+cho phiên bản đang phát triển của `uim-vi` với hỗ trợ QT5`. Bạn không
+cần thực hiện phần này trừ khi đã hết cách.
+
+Thêm vào tập tin `~/.gtkrc-2.0` dòng sau đây
+
+    im_module_file "/etc/gtk-2.0/gtk.immodules"
+
+Tuy nhiên, nếu tập tin này được sinh ra tự độn, bạn cần đọc hướng dẫn
+cụ thể trong tập tin đó. Chẳng hạn, khi dùng `lxappearance` để tùy chỉnh
+giao diện thì bạn cần thêm vào `~/.gtkrc-2.0.mine` dòng ở trên.
 
 ## Chú ý {#notes}
 
