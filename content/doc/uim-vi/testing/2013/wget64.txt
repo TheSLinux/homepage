@@ -8,19 +8,19 @@
 wget -c https://raw.github.com/TheSLinux/homepage/master/content/security/pgp_security.pub
 
 wget -c http://f.theslinux.org/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz
-wget -c http://f.theslinux.org/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz.sig
 
 wget -c http://f.theslinux.org/theslinux/p/m/m17n-db-vi/m17n-db-vi-1.6.4-8-any.pkg.tar.xz
-wget -c http://f.theslinux.org/theslinux/p/m/m17n-db-vi/m17n-db-vi-1.6.4-8-any.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/m/m17n-db-vi/m17n-db-vi-1.6.4-8-any.pkg.tar.xz.sig
 
 wget -c http://f.theslinux.org/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz
-wget -c http://f.theslinux.org/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi-xtelex/uim-vi-xtelex-1.4.2-1-any.pkg.tar.xz.sig
 
 wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz
-wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/m/m17n-lib/m17n-lib-1.6.4-2-x86_64.pkg.tar.xz.sig
 
 wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.6-2-x86_64.pkg.tar.xz
-wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.6-2-x86_64.pkg.tar.xz.asc
+wget -c http://f.theslinux.org/theslinux/p/u/uim-vi/uim-vi-1.8.6-2-x86_64.pkg.tar.xz.sig
 
 cat <<\EOF
 ========================================================================
@@ -30,7 +30,7 @@ cat <<\EOF
 You should verify the packages using GnuPG
 
   gpg --import pgp_security.pub
-  for f in *.asc; do gpg --verify $f || break; done
+  for f in *.sig; do gpg --verify $f || break; done
 
 After verifying packages (no error found!) you can install them with
 
