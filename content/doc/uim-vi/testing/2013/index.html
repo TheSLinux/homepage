@@ -12,17 +12,21 @@ và bạn không phải điều chỉnh phức tạp như sau đây.
 * Toc
 {:toc}
 
-## Tải về các gói sau {#download}
+## Lời cảm ơn {#thanks}
 
-Bạn có thể dùng các kịch bản `wget` có sẵn, hoặc đơn giản là đọc nội dung
-các kịch bản sau đây để biết cần tải về các gói gì.
+Chân thành cảm ơn các bạn:
 
-* [Dành cho máy 32 bit](wget32.txt)
-* [Dành cho máy 64 bit](wget64.txt)
+* Nguyễn Quang
+* Ngô Huy
+* Nguyễn Duy Hùng
+* Nguyễn Bảo Ngọc
 
-**Chú ý**: Tất cả các gói đều có chữ ký riêng, bạn có thể xác nhận các
-tập tin bằng cách dùng chìa khóa công cộng ở trang [Security](/security/).
-Chìa khóa này cũng được tải về khi bạn dùng các kịch bản ở trên.
+cùng nhiều bạn khác đã kiểm tra, sử dụng và góp phần phát triển `uim-vi`.
+
+## Tải và cấu hình pacman {#download}
+
+Vui lòng xem [hướng dẫn chi tiết tại đây](/doc/buildsystem/repo_arch/).
+
 
 Các gói cần cài bao gồm:
 
@@ -35,12 +39,33 @@ Các gói cần cài bao gồm:
 và bạn sẽ phải gỡ bỏ một số gói gây xung đột trên hệ thống, ví dụ gói
 `m17n-db` hoặc `uim`. Xem thêm [phần kiểm tra](#notes).
 
+## Lựa chọn gói uim-vi {#pkgsel}
+
+Có nhiều gói `uim-vi` như sau:
+
+* `uim-vi 1.8.6-2`
+* `uim-vi@qt5-debug-git-cfd6013ebc 1.9-1`
+* `uim-vi@qt5-git-cfd6013ebc 1.9-1`
+* `uim-vi@qt5-nocandwin-debug-git-cfd6013ebc 1.9-1`
+* `uim-vi@qt5-nocandwin-git-cfd6013ebc 1.9-1`
+
+Tính đến ngày 28/11/2014, hai gói ổn nhất là `uim-vi 1.8.6-2`
+_(không hỗ trợ ứng dụng `qt5`)_ và
+`uim-vi@qt5-nocandwin-git-cfd6013ebc 1.9-1` _(hỗ trợ ứng dụng `qt5`).
+
 ## Cài đặt {#install}
 
 Dùng `pacman` để cài các gói đã tải về; có thể chấp nhận gỡ bỏ các gói
 gây xung đội như đã nói.
 
-    # pacman -U *.pkg.tar.xz
+    $ pacman -S \
+        126-uim-vi \
+        m17n-db-vi \
+        m17n-lib \
+        uim-vi-xtelex
+        uim-vi
+
+Nếu muốn bạn thay `uim-vi` bởi `uim-vi@qt5-nocandwin-git-cfd6013ebc`.
 
 Sau đó, vào thư mục `$HOME` và liên kết tới `profile` mặc định
 
@@ -90,6 +115,21 @@ Thêm vào tập tin `~/.gtkrc-2.0` dòng sau đây
 Tuy nhiên, nếu tập tin này được sinh ra tự động, bạn cần đọc hướng dẫn
 cụ thể trong tập tin đó. Chẳng hạn, khi dùng `lxappearance` để tùy chỉnh
 giao diện thì bạn cần thêm vào `~/.gtkrc-2.0.mine` dòng ở trên.
+
+## Thiết lập cho ứng dụng `Viber` {#viber}
+
+Phần này được đóng góp bởi Ngô Huy.
+
+Để dùng `uim-vi` với `Viber` bạn cần cài gói có hỗ trợ `qt5`. Ví dụ
+gói `uim-vi@qt5-nocandwin-git-cfd6013ebc` _(hoặc tương tự)_.
+
+Giả sử `viber` được cài vào thư mục `/opt/viber`/. Chạy các lệnh sau
+
+    $ mkdir -pv /opt/viber/platforminputcontexts
+    $ cd /opt/viber/platforminputcontexts/
+    $ ln -sv /usr/lib/qt/plugins/platforminputcontexts/libuimplatforminputcontextplugin.so
+
+Mục đích là để `Viber` nhận ra thư viện xử lý nhập nào đang được dùng.
 
 ## Chú ý {#notes}
 
