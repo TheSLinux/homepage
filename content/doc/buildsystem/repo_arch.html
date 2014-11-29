@@ -1,0 +1,62 @@
+---
+title: Sử dụng gói của TheSLinux cho ArchLinux
+tags: ['buildsystem', 'repository']
+---
+
+Để sử dụng các gói của `TheSLinux` trên `ArchLinux`,
+bạn có thể dùng kho chính thức các gói như sau:
+
+1. Thêm vào tập tin `/etc/pacman.conf` cấu hình sau
+      [theslinux]
+      SigLevel = Required DatabaseRequired
+      Server = http://f.theslinux.org/$repo/z/$arch/
+  Thứ tứ rất quan trọng. Nếu bạn muốn ưu tiên cho các gói
+  từ `TheSLinux` thì đặt mục `[theslinux]` trước phần `core`.
+2. Tải về hai tập tin [theslinux-keryring][p.theslinux-keryring]
+  và [theslinux-keryring.sig][p.theslinux-keryring.sig] từ địa chỉ
+
+      http://f.theslinux.org/theslinux/p/t/theslinux-keyring/
+3. Dùng `gpg` để kiểm tra rằng tập tin tải về là hợp lệ
+
+      $ gpg --recv-keys 503CDEA5
+      gpg: requesting key 503CDEA5 from hkp server keys.gnupg.net
+      gpg: key 503CDEA5: public key "Anh K. Huynh <kyanh@theslinux.org>" imported
+      gpg: Total number processed: 1
+      gpg:               imported: 1  (RSA: 1)
+
+      $ gpg --verify theslinux-keyring-latest-any.pkg.tar.xz.sig
+      $ gpg --verify theslinux-keyring-latest-any.pkg.tar.xz.sig
+      gpg: Signature made Fri Nov 28 15:03:05 2014 ICT using RSA key ID 503CDEA5
+      gpg: Good signature from "Anh K. Huynh <kyanh@theslinux.org>" [unknown]
+      gpg:                 aka "Anh Ky Huynh <kyanh@viettug.org>" [unknown]
+      gpg:                 aka "TheSLinux-Security <security@theslinux.org>" [unknown]
+      gpg: WARNING: This key is not certified with a trusted signature!
+      gpg:          There is no indication that the signature belongs to the owner.
+      Primary key fingerprint: 1BD3 A113 475B 8735 D34E  9CC1 B477 86AF 503C DEA5
+4. Nếu không có lỗi gì, bạn có thể tiến hành cài đặt gói `theslinux-keyring`
+      $ pacman -u theslinux-keyring-latest-any.pkg.tar.xz
+5. Sau đó, tiến hành cập nhật cho hệ thống và tìm các gói của `TheSLinux`
+      $ pacman -Syy
+      ....
+      theslinux         6.5 KiB  6.34M/s 00:00 [#####...] 100%
+      theslinux.sig   287.0   B  0.00B/s 00:00 [#####...] 100%
+      $ pacman -Ss uim-vi
+      theslinux/126-uim-vi 1.0.0-2
+          Default profile for uim-vi
+      theslinux/uim-vi 1.8.6-2
+          Vietnamese input method library
+      theslinux/uim-vi-xtelex 1.4.2-1
+          Provide xtelex, xvni data for uim-vi
+      theslinux/uim-vi@qt5-debug-git-cfd6013ebc 1.9-1
+          Vietnamese input method library (based on uim) [with Qt5]
+      theslinux/uim-vi@qt5-git-cfd6013ebc 1.9-1
+          Vietnamese input method library (based on uim) [with Qt5]
+      theslinux/uim-vi@qt5-nocandwin-debug-git-cfd6013ebc 1.9-1
+          Vietnamese input method library (based on uim) [no candidate window] [with Qt5]
+      theslinux/uim-vi@qt5-nocandwin-git-cfd6013ebc 1.9-1
+          Vietnamese input method library (based on uim) [no candidate window] [with Qt5]
+
+Nếu gặp trục trặc, vui lòng liên hệ các kênh hỗ trợ của `#TheSLinux`.
+
+[p.theslinux-keryring]: http://f.theslinux.org/theslinux/p/t/theslinux-keyring/theslinux-keyring-latest-any.pkg.tar.xz
+[p.theslinux-keryring.sig]: http://f.theslinux.org/theslinux/p/t/theslinux-keyring/theslinux-keyring-latest-any.pkg.tar.xz.sig
