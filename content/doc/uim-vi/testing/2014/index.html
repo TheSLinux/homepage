@@ -1,0 +1,107 @@
+---
+title: Mô tả quá trình đóng gói uim-vi
+tags: ['vietnamese', 'im', 'uim', 'testing']
+authors: z1y
+---
+
+Bài này mô tả lại các gói và các bước đóng gói `uim-vi`
+để có thể dùng trên hệ thống khác, như `Ubuntu`.
+
+* Toc
+{:toc}
+
+## Danh sách các gói
+
+Các gói bắt buộc
+
+* `uim-vi`:
+  Phần cốt lõi các thay đổi để làm gọn bản `uim` gốc
+  và thêm vào các hỗ trợ  khác;
+* `uim-vi-xtelex`:
+  Các định nghĩa của kiểu nhập `xtelex` và `xvni`;
+
+Các gói tùy chọn
+
+* `126-uim-vi`:
+  Thiết lập mặc định mẫu để dùng với `uim-vi`
+* `m17n-lib`:
+  Thư viện `m17n`, có thể dùng gói có sẵn trên hệ thống
+* `m17n-db-vi`:
+  Bộ `data` đầu vào cho `m17n`, chỉ gồm những thứ liên quan
+  tới tiếng Việt. Nếu bạn có nhu cầu xài tiếng Nhật, Hàn
+  với `m17n` thì bỏ qua gói này.
+
+Hai gói `uim-vi` và `m17n-db-vi` lần lượt xung đột với `uim`, `m17n-db`,
+nên bạn không thể cài chúng đồng thời trên máy tính.
+
+## Thay đổi đã thực hiện
+
+Thật ra không có gì nhiều :)
+
+* Vá một số lỗi đơn giản
+* Bỏ đi các hỗ trợ không cần thiết cho tiếng Việt;
+* Thêm kiểu gõ `xtelex` và `xvni` _(cùng với biến thể `IPA`)_;
+* Đưa ra thiết lập mẫu `126-uim-vi` để giúp người mới dùng `uim-vi`;
+
+Lý do là bản `uim` gốc rất đồ sộ, rất choáng ngợp. Nếu bạn thật sự
+cần tất cả các hỗ trợ của `uim` thì nên dừng đọc ở đây.:)
+
+## Biên dịch và đóng gói
+
+### `uim-vi-xtelex`
+
+Kịch bản mẫu [uim-vi-xtelex.pkgbuild].
+
+Phiên bản ổn định: 1.4.2, mã nguồn [uim-vi-xtelex.source][].
+
+Mã nguồn chỉ có phần `make clean` và `make build`. Bạn cần tham khảo
+phần đóng gói _(package)_ để xem danh sách các tập tin cần cài.
+Lý do là trong `uim-vi` khi biên dịch, sẽ tạo ra các phiên bản trống
+của các tập tin của `uim-vi-xtelex`; và khi biết chính xác các tập tin
+bạn chỉ việc chép đè là xong.
+
+### `uim-vi`
+
+Kịch bản mẫu: [uim-vi.pkgbuild][].
+
+Phiên bản ổn định: 1.8.6, mã nguồn [uim-vi.source][].
+
+Sử dụng nhánh ổn định `uim-vi-1.8` _(không hỗ trợ `qt5`)_
+hoặc nhánh đang phát triển `uim-vi-1.9` _(có thể dùng với `qt5`).
+Mã nguồn của nhánh `uim-vi-1.9` là [uim-vi-1.9.source][].
+
+Bạn cần đọc qua `PKGBUILD`, quan trọng nhất là phần `build`,
+gồm các phần quan trọng sau
+
+* Chép thư viện `sigscheme` từ [uim.source][];
+* Chép các tập tin đồ họa _(`.svg`, `.png`)_ từ  [uim.source][];
+* Làm trống tập tin `po/LINGUAS`
+* Chạy `./autogen.sh`
+* Cấu hình biên dịch:
+    Nếu dùng bản `uim-vi-1.8.6` bạn có thể
+    dùng lại các cờ đã thấy sau lệnh `./configure`.
+    Nếu dùng dòng `uim-vi-1.9`, bạn thêm vào các cờ
+    `--with-qt5-immodule`, nhưng bỏ qua cờ `--with-qt5`
+    vì sẽ sinh ra lỗi _(xác nhận ngày 30/11/2014)_;
+* Biên dịch và `make install`
+
+Bạn cần xem qua phần đóng gói _(lệnh `package()`)_ trong `PKGBUILD`,
+quan trọng là phần xóa các file tạm của `xtelex` và `xvni`;
+như đã nói ở trên, các tập tin này _trống trơn_, và bạn cần thay thế
+chúng bởi các tập tin từ `uim-vi-xtelex`.
+
+## Câu hỏi
+
+* **Tại sao không dùng upstream**:
+  Dùng hay không đều có cái khó cái dễ.
+  Nhưng cả hai đều cần sự am hiểu và tinh xảo.
+  Vấn đề còn lại là `thời gian`.
+* **xtelex và xvni là gì**:
+  Xem <http://theslinux.org/doc/uim-vi/xtelex/>.
+
+[uim-vi-xtelex.pkgbuild]: https://github.com/TheSLinux/buildsystem/blob/uim-vi-xtelex/uim-vi-xtelex/PKGBUILD
+[uim-vi-xtelex.source]: https://github.com/TheSLinux-forks/myquartz-scim2uim/releases
+[uim-vi.pkgbuild]: https://github.com/TheSLinux/buildsystem/blob/uim-vi/uim-vi/PKGBUILD
+[uim-vi.source]: https://github.com/TheSLinux-forks/uim/releases
+[uim.source]: https://uim.googlecode.com/files/uim-1.8.6.tar.gz
+[uim-vi-1.9.source]: https://github.com/TheSLinux-forks/uim/archive/uim-vi-1.9.tar.gz
