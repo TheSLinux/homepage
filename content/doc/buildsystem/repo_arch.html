@@ -16,6 +16,7 @@ Thêm vào tập tin `/etc/pacman.conf` cấu hình sau
 
 Thứ tự rất quan trọng. Bạn nên để mục `[theslinux]`
 trong phần cuối cùng của tập tin `/etc/pacman.conf`.
+Xem thêm phần **Lưu ý quan trọng** cuối bài này.
 
 ## Tải các gói cơ bản
 
@@ -67,6 +68,22 @@ Sau đó, tiến hành cập nhật cho hệ thống và tìm các gói của `T
     ...
 
 Nếu gặp trục trặc, vui lòng liên hệ các kênh hỗ trợ của `#TheSLinux`.
+
+## Lưu ý quan trọng {#notes}
+
+Do [lỗi của `pacman`](/bugs/143) mà một số gói của `TheSLinux` với các
+ký tự đặc biệt trong tên như `pacman%makepkg` hay `uim-vi%lib32` không
+thể cài được trên các máy `ArchLinux` thông thường.
+
+Để cài các gói đó, bạn phải cài bằng tay, hoặc đặt `[theslinux]` trước
+mục `[core]` trong cấu hình `/etc/pacman.conf`. Cái giá phải trả là
+
+1. Bạn sẽ phải sử dụng gói `pacman` từ kho `[theslinux]`, theo đó `makepkg`
+   sẽ không chạy được theo cách thông thường;
+2. Bạn sẽ phải bỏ qua gói `pacman` bằng cách thêm vào dòng `IgnorePkg`
+   trong `/etc/pacman.conf` tên gói `pacman`.
+
+Bạn đã được cảnh báo trước!
 
 [theslinux-keyring]: http://f.theslinux.org/theslinux/p/t/theslinux-keyring/theslinux-keyring-latest-any.pkg.tar.xz
 [theslinux-keyring.sig]: http://f.theslinux.org/theslinux/p/t/theslinux-keyring/theslinux-keyring-latest-any.pkg.tar.xz.sig
