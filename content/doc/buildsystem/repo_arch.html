@@ -78,11 +78,11 @@ Do [lỗi của `pacman`](/bugs/143) mà một số gói của `TheSLinux` với
 ký tự đặc biệt trong tên như `pacman%makepkg` hay `uim-vi%lib32` không
 thể cài được trên các máy `ArchLinux` thông thường.
 
-Để cài các gói đó, bạn phải cài bằng tay, hoặc đặt `[theslinux]` trước
+Để cài các gói đó, bạn phải cài bằng tay, **hoặc** đặt `[theslinux]` trước
 mục `[core]` trong cấu hình `/etc/pacman.conf`. Cái giá phải trả là
 
 1. Bạn sẽ phải sử dụng gói `pacman` từ kho `[theslinux]`, theo đó `makepkg`
-   sẽ không chạy được theo cách thông thường;
+   sẽ không chạy được theo cách thông thường; **HOẶC**
 2. Bạn sẽ phải bỏ qua gói `pacman` bằng cách thêm vào dòng `IgnorePkg`
    trong `/etc/pacman.conf` tên gói `pacman`.
 
