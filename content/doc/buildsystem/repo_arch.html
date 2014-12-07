@@ -54,6 +54,10 @@ Nếu không có lỗi gì, bạn có thể tiến hành cài đặt gói `thesl
 
     $ pacman -U theslinux-keyring-latest-any.pkg.tar.xz
 
+_(Nếu gặp bất kỳ lỗi gì ở bước này, bạn phải dừng lại và tìm kiếm sự
+giúp đỡ từ cộng đồng. Phiên bản mới nhất của `gpg` có thể buộc bạn phải
+xóa đi `/etc/pacman.d/gnupg` và chạy lại `pacman-key --init`.)_
+
 Sau đó, tiến hành cập nhật cho hệ thống và tìm các gói của `TheSLinux`
 
     $ pacman -Syy
