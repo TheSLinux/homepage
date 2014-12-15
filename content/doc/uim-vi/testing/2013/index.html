@@ -27,7 +27,6 @@ cùng nhiều bạn khác đã kiểm tra, sử dụng và góp phần phát tri
 
 Vui lòng xem [hướng dẫn chi tiết tại đây](/doc/buildsystem/repo_arch/).
 
-
 Các gói cần cài bao gồm:
 
 * 126-uim-vi
@@ -35,6 +34,7 @@ Các gói cần cài bao gồm:
 * m17n-lib
 * uim-vi
 * uim-vi-xtelex
+* uim-vi%lib32 _(để dùng với `skype`)_
 
 và bạn sẽ phải gỡ bỏ một số gói gây xung đột trên hệ thống, ví dụ gói
 `m17n-db` hoặc `uim`. Xem thêm [phần kiểm tra](#notes).
@@ -43,13 +43,11 @@ và bạn sẽ phải gỡ bỏ một số gói gây xung đột trên hệ th�
 
 Có nhiều gói `uim-vi` như sau:
 
-* `uim-vi 1.8.6-2`
-* `uim-vi@qt5-debug-git-cfd6013ebc 1.9-1`
-* `uim-vi@qt5-git-cfd6013ebc 1.9-1`
-* `uim-vi@qt5-nocandwin-debug-git-cfd6013ebc 1.9-1`
-* `uim-vi@qt5-nocandwin-git-cfd6013ebc 1.9-1`
+* `uim-vi 1.8.7-1`
+* `uim-vi@qt5-nocandwin-git-ec1fc40 1.9-1`
+* `uim-vi%lib32-git-ec1fc40 1.9-1`
 
-Tính đến ngày 29/11/2014, hai gói ổn nhất là `uim-vi 1.8.6-2`
+Tính đến ngày 29/11/2014, hai gói ổn nhất là `uim-vi 1.8.7-1`
 _(không hỗ trợ ứng dụng `qt5`)_ và
 `uim-vi@qt5-nocandwin-git-xxx` _(hỗ trợ ứng dụng `qt5`)_.
 
@@ -65,7 +63,7 @@ Dùng `pacman` để tìm và cài các gói
         uim-vi-xtelex
         uim-vi
 
-Nếu muốn bạn thay `uim-vi` bởi `uim-vi@qt5-nocandwin-git-cfd6013ebc`.
+Nếu muốn bạn thay `uim-vi` bởi `uim-vi@qt5-nocandwin-git-xxx`.
 
 Sau đó, vào thư mục `$HOME` và liên kết tới `profile` mặc định
 
