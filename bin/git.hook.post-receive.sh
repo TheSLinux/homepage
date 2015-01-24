@@ -133,28 +133,17 @@ _create_archive() {
 # See also https://github.com/TheSLinux/homepage/commit/ \
 #   27372a4e26d67bd63c0d4e25fd2ebc1ddb791112
 _fix_news_page() {
-  msg "'news' page: Add a trick to have per-year support"
-  msg "See also https://github.com/TheSLinux/homepage/commit/"
-  msg "   .... 27372a4e26d67bd63c0d4e25fd2ebc1ddb791112"
-
-  # In the year 2013 we are still using the `news/index.hml` for items
-  if [[ "$(date +%Y)" == "2013" ]]; then
-    mkdir -p "$_D_OUTPUT/news/2013/"
-    pushd "$_D_OUTPUT/news/2013/"
-    ln -s "../index.html" "index.html"
-    popd
-  else # we now use contents/news/<year>.html to save items
-    _year="$(date +%Y)"
-    while :; do
-      [[ -d "$_D_OUTPUT/news/$_year/" ]] && break
-      [[ "$_year" == "2014" ]] && break
-      (( _year -- ))
-    done
-    pushd "$_D_OUTPUT/news/$_year"
-    rm -f "index.html"
-    ln -s "$_year/index.html" "index.html"
-    popd
-  fi
+  msg "Link the latest #news pages..."
+  _year="$(date +%Y)"
+  while :; do
+    [[ -d "$_D_OUTPUT/news/$_year/" ]] && break
+    [[ "$_year" == "2014" ]] && break
+    (( _year -- ))
+  done
+  pushd "$_D_OUTPUT/news/"
+  rm -f "index.html"
+  ln -s "$_year/index.html" "index.html"
+  popd
 }
 
 # NOTES:
