@@ -150,9 +150,9 @@ _fix_news_page() {
       [[ "$_year" == "2014" ]] && break
       (( _year -- ))
     done
-    pushd "$_D_OUTPUT/news/"
+    pushd "$_D_OUTPUT/news/$_year"
     rm -f "index.html"
-    ln -s "$(date +%Y)/index.html" "index.html"
+    ln -s "$_year/index.html" "index.html"
     popd
   fi
 }
