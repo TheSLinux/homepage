@@ -23,7 +23,7 @@ $repo = Git.open("./")
 #
 # NOTE: this change requires the `post-receive` githook to be updated
 $object = "./content/news/#{$this_year}.html"
-$object = File.file?($object) ? $object : "./content/news/index.html"
+$object = File.file?($object) ? $object : "./content/news/2014.html"
 
 rss = RSS::Maker.make("2.0") do |maker|
   first_object = $repo.log(1).object($object).first
