@@ -144,6 +144,12 @@ _fix_news_page() {
     ln -s "../index.html" "index.html"
     popd
   else # we now use contents/news/<year>.html to save items
+    _year="$(date +%Y)"
+    while :; do
+      [[ -d "$_D_OUTPUT/news/$_year/" ]] && break
+      [[ "$_year" == "2014" ]] && break
+      (( _year -- ))
+    fi
     pushd "$_D_OUTPUT/news/"
     rm -f "index.html"
     ln -s "$(date +%Y)/index.html" "index.html"
