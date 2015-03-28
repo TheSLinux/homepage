@@ -1,8 +1,8 @@
 ---
-title: Mã hóa một chiều, CA và tấn công MITM
+title: Mã hóa với chìa khóa công khai, CA và tấn công MITM
 tags: [security, https, mitm-attack, encryption]
 authors: Darel Rex Finley (2011)
-translator: Huỳnh Kỳ Anh (aka z1y, *kyanh* at *theslinux*)
+translator: Huỳnh Kỳ Anh _(bản nháp)_
 origin: http://alienryderflex.com/man_in_the_middle/
 license: CC BY-NC-ND 3.0
 ---
@@ -18,11 +18,11 @@ chìa khóa công khai, cách tấn công `MITM` và cách vô hiệu tấn côn
 1. TOC
 {:toc}
 
-## Mã hóa hai chiều
+## Mã hóa đối xứng
 
-Trong [Hình 1][img1], *bạn* (`you`) và *người quen* (`them`) thực hiện kết nối an
-toàn thông qua mạng không an toàn _(ví dụ mạng `internet`)_ bằng cách dùng
-cách mã hóa `hai chiều` quen thuộc. Sử dụng một chìa khóa _(màu đỏ)_
+Trong [Hình 1][img1], *bạn* (`you`) và *người quen* (`them`) thực hiện kết
+nối an toàn thông qua mạng không an toàn _(ví dụ mạng `internet`)_
+bằng cách dùng cách mã hóa quen thuộc. Sử dụng chìa khóa _(màu đỏ)_
 mà chỉ hai người biết, bạn mã hóa dữ liệu trước gửi đi. Người nhận sẽ
 dùng chìa khóa đó để giải mã. Do dữ liệu đã mã hóa, không ai có thể
 biết trao đổi giữa hai người, cũng như không thể thay đổi dữ liệu đang
@@ -36,29 +36,30 @@ nhiều người, bạn sẽ trao đổi chìa khóa cho từng người cần l
 Ngoài ra, nếu người nhận sống thật xa bạn, và có thể chưa bao giờ gặp
 mặt bạn trực tiếp, thì bạn sẽ chia sẻ chìa khóa như thế nào với họ?
 
-## Mã hóa một chiều
+## Mã hóa khóa công khai
 
 Xem [Hình 2][img2].
 
-Để khắc phục vấn đề chia sẻ khóa hai chiều, bạn có thể dùng cách mã hóa
-một chiều, trong đó bạn sẽ dùng một cặp chìa khóa: một `chìa riêng tư`
-_(`A`, màu hồng trên hình)_ là cái bạn cần giữ kín, không được chia sẻ
-với bất kỳ ai, và một `chìa khóa công cộng` _(`A`, màu xanh trên hình)_
-có thể chia sẻ với cả thế giới qua trang web, email hay các dịch vụ lưu
-trữ chìa khóa công cộng.
+Để khắc phục vấn đề chia sẻ khóa bí mật, bạn có thể dùng cách mã hóa
+với chìa khóa công khai, trong đó bạn sẽ dùng một cặp chìa khóa:
 
-Khi một ai đó cần gửi bạn một tin bí mật, họ sẽ mã hóa thông điệp sử dụng
-chìa khóa công cộng của bạn _(`A` xanh)_. Sau khi được mã hóa, chỉ có bạn
+* `chìa riêng tư` _(`A`, màu hồng trên hình)_ là cái bạn cần giữ kín,
+  không được chia sẻ với bất kỳ ai,
+* và `chìa khóa công khai` _(`A`, màu xanh trên hình)_ có thể chia sẻ
+  với cả thế giới qua trang web, email.
+
+Khi ai đó cần gửi bạn tin bí mật, họ sẽ mã hóa thông điệp sử dụng
+chìa khóa công khai của bạn _(`A` xanh)_. Sau khi được mã hóa, chỉ có bạn
 là người có thể giải mã được nội dung gửi đi bằng cách sử dụng chìa khóa
-riêng tư _(`A` hồng)_ tương ứng với khóa công cộng. Và đến lượt bạn, khi
-cần trả lời bí mật cho người kia, bạn sẽ sử dụng chìa khóa công cộng của
-họ _(`B` xanh)_ để mã hóa thư thành dạng mà chỉ có họ mới giải mã được bằng chìa
-khóa riêng tư _(`B` hồng)_.
+riêng tư _(`A` hồng)_ tương ứng với khóa công khai. Và đến lượt bạn, khi
+cần trả lời bí mật cho người kia, bạn sẽ sử dụng chìa khóa công khai của
+họ _(`B` xanh)_ để mã hóa thư thành dạng mà chỉ có họ mới giải mã được
+bằng chìa khóa riêng tư _(`B` hồng)_.
 
-Bản chất của mã hóa một chiều là không có cơ chế nào cho phép khôi
-phục chìa khóa riêng tư từ chìa khóa công cộng. Chìa khóa công cộng chỉ
-có ích để mã hóa thông tin, để đảm bảo rằng sau khi mã hóa thì chỉ có
-một người giữa chìa khóa riêng tư mới đọc được.
+Bản chất của mã hóa này là không có cơ chế nào cho phép khôi
+phục chìa khóa riêng tư từ chìa khóa công khai (FIXME).
+Chìa khóa công khai chỉ có ích để mã hóa thông tin, để đảm bảo rằng sau
+khi mã hóa thì chỉ có một người giữ chìa khóa riêng tư mới đọc được.
 
 ## HTTPS
 
@@ -70,17 +71,16 @@ trình duyệt và máy phục vụ _(trang web, `HTTPS server`)_ có mở một
 an toàn _(`session key`)_ để đảm bảo nội dung trang web bạn xem là bí mật,
 không bị ai chen ngang theo dõi, thay đổi.
 
-Đầu tiên, trình duyệt tạo ra ngẫu nhiên cặp chìa khóa một chiều _(`A` hồng
-là chìa khóa riêng tư, `A` xanh là chìa khóa công cộng.)_ Chìa khóa công
-cộng sẽ được gửi _(không mã hóa)_ tới máy phục vụ.
+Đầu tiên, trình duyệt tạo ra ngẫu nhiên cặp chìa khóa
+_(`A` hồng là chìa khóa riêng tư, `A` xanh là chìa khóa công khai.)_
+Chìa khóa công khai sẽ được gửi _(không mã hóa)_ tới máy phục vụ.
 
-Như trong [Hình 4][img4], máy phục vụ tạo ngẫu nhiên một chìa khóa hai chiều
-_(màu đỏ)_, gửi chìa khóa này cho trình duyệt sau khi mã hóa nội dung của
-chìa khóa đỏ bằng chìa khóa công cộng _(`A` xanh)_ của trình duyệt. Khi
+Như trong [Hình 4][img4], máy phục vụ tạo ngẫu nhiên chìa khóa _(màu đỏ)_,
+gửi chìa khóa này cho trình duyệt sau khi mã hóa nội dung của
+chìa khóa đỏ bằng chìa khóa công khai _(`A` xanh)_ của trình duyệt. Khi
 nhận được, trình duyệt dùng chìa khóa riêng _(`A` đỏ)_ để đọc ra chìa khóa
-đỏ. Như vậy, kể từ lúc này trình duyệt và máy phục vụ đều biết chìa khóa
-hai chiều đỏ để mã hóa và giải mã thông tin trong toàn bộ quá trình giao
-nhận thông tin tiếp theo sau.
+đỏ. Như vậy, kể từ lúc này trình duyệt và máy phục vụ đều biết chìa khóa đỏ
+để mã hóa và giải mã thông tin trong quá trình truyền tin tiếp theo sau.
 
 ## MITM
 
@@ -96,25 +96,23 @@ thì sao? Kẻ tò mò bây giờ trở thành kẻ tấn công `MITM`, mà ý t
 xa của hắn được thực hiện như ở [Hình 5][img5].
 
 Ngay trong bước đầu tiên khi trình duyệt mở kênh riêng và gửi chìa khóa
-công cộng _(`A` xanh)_ tới máy phục vụ _(như trong [Hình 3][img3] và
+công khai _(`A` xanh)_ tới máy phục vụ _(như trong [Hình 3][img3] và
 [Hình 4][img4])_, kẻ tấn công `MITM` đã bắt kết nối mạng, sao chép nội dung
-khóa công cộng `A`-xanh, và hắn cũng sinh ra một cặp chìa khóa riêng tư
--- công cộng `B`-xanh _(công cộng)_ và `B`-hồng _(riêng tư)_, sau đó
-gửi khóa `B` xanh tới máy phục vụ, làm cho máy phục vụ **nghĩ rằng chìa khóa
-đó được gửi từ trình duyệt**.
+khóa công khai `A`-xanh, và hắn cũng sinh ra một cặp chìa khóa
+`B`-xanh _(công khai)_ và `B`-hồng _(riêng tư)_, sau đó gửi khóa `B` xanh
+tới máy phục vụ, làm cho máy phục vụ **nghĩ rằng chìa khóa đó được gửi từ trình duyệt**.
 
-Tiếp theo, khi máy phục vụ tạo ra chìa khóa hai chiều đỏ, mã hóa nội dung
-chìa khóa này bằng khóa công cộng `B`-xanh để gửi cho trình duyệt, thì
+Tiếp theo, khi máy phục vụ tạo ra chìa khóa đỏ, mã hóa nội dung
+chìa khóa này bằng khóa công khai `B`-xanh để gửi cho trình duyệt, thì
 kẻ tấn công lại chặn kết nối, đọc và giải mã để lấy chìa khóa đỏ.
-Kẻ này lại dùng chìa khóa công cộng `A`-xanh để mã hóa chìa khóa đỏ rồi
+Kẻ này lại dùng chìa khóa công khai `A`-xanh để mã hóa chìa khóa đỏ rồi
 gửi cho trình duyệt, khiến cho **trình duyệt nghĩ rằng đang nhận nội dung
 mã hóa từ máy phục vụ**.
 
 Kể từ lúc này, khi trình duyệt và máy phục vụ trao đổi thông tin dựa trên
-mã hóa hai chiều với chìa khóa đỏ, thì kẻ tò mò luôn biết được hai bên
-trao đổi gì, vì hắn đã có chìa khóa đỏ, trong khi cả trình duyệt và máy
-phục vụ vẫn đinh ninh rằng ngoài 2 bên ra không còn ai biết được nội dung
-chìa khóa đỏ đấy.
+mã hóa với chìa khóa đỏ, thì kẻ tò mò luôn biết được hai bên trao đổi gì,
+vì hắn đã có chìa khóa đỏ, trong khi cả trình duyệt và máy phục vụ vẫn
+đinh ninh rằng ngoài 2 bên ra không còn ai biết được nội dung chìa khóa đỏ đấy.
 
 ## Certificate Authority
 
@@ -122,29 +120,29 @@ Xêm [Hình 7][img7].
 
 Có cách nào để qua mặt kẻ tấn công `MITM`? Có thể nghĩ tới việc là ngay
 sau khi kênh an toàn được thiết lập, trình duyệt và máy phục vụ có thể
-so sánh chìa khóa công cộng _(`A` xanh)_ mà trình duyệt sinh ra và bản
+so sánh chìa khóa công khai _(`A` xanh)_ mà trình duyệt sinh ra và bản
 mà máy phục vụ nhận được, và phải chắc rằng hai phiên bản đó giống nhau.
 Tuy nhiên, kẻ tấn công sẽ biết được ý định này, và vì hắn có cả chìa khóa
 đỏ để mã hóa -- giải mã thông tin, hắn có thể tiếp tục làm cho cả trình
 duyệt và máy phục vụ **vẫn nghĩ kết nối đang an toàn, tức là hai phiên bản
-của chìa khóa công cộng là khớp nhau.**
+của chìa khóa công khai là khớp nhau.**
 
 Để đảm bảo sự so khớp chìa khóa không bị can thiệp, cần hỗ trợ bởi bên
 thứ ba, là `CA` như trong [Hình 7][img7].
 
 Khi `CA` đầu tiên lên mạng _(nhiều năm trước đây)_, họ tạo ra chìa khóa
-riêng tư ngẫu nhiên `CA`-hồng, rồi chia sẻ chìa khóa công cộng `CA`-xanh
-tương ứng với toàn thế giới. Các trình duyệt đã nạp chìa khóa công cộng
+riêng tư ngẫu nhiên `CA`-hồng, rồi chia sẻ chìa khóa công khai `CA`-xanh
+tương ứng với toàn thế giới. Các trình duyệt đã nạp chìa khóa công khai
 này từ trước phần mềm được biên dịch, nên chúng không mất công tìm lại
 mỗi khi mở kết nối an toàn tới các máy phục vụ.
 
 Khi máy phục vụ muốn nhờ tới `CA` để hỗ trợ cho kết nối an toàn, người
 điều hành sẽ tạo tài khoản ở `CA` _(tài khoản này cần phải trả tiền hằng
-năm để duy trì)_, sau đó họ được cấp một khóa hai chiều `H`-đỏ duy nhất,
+năm để duy trì)_, sau đó họ được cấp một khóa `H`-đỏ duy nhất,
 dành riêng cho trang web hay máy phục vụ. Chìa khóa này được chuyển tới
 người điều hành nhờ dịch vụ `FedEx` chẳng hạn, để họ cài trên máy phục vụ.
 
-Bởi vì `CA` và máy phục vụ đã chia sẻ với nhau chìa khóa hai chiều `H`-đỏ,
+Bởi vì `CA` và máy phục vụ đã chia sẻ với nhau chìa khóa `H`-đỏ,
 giữa `CA` và máy phục vụ có thể trao đổi thông tin một cách an toàn mà
 không sợ kẻ tấn công `MITM` biết được nội dung gốc. Điều tồi tệ nhất mà
 hắn có thể làm ngăn không cho `CA` và máy phục vụ trao đổi với nhau.
@@ -153,26 +151,26 @@ hắn có thể làm ngăn không cho `CA` và máy phục vụ trao đổi vớ
 
 Xem [Hình 8][img8] và [Hình 9][img9].
 
-Vì trình duyệt đã có chìa khóa công cộng `CA`-xanh, nó có thể gửi thông tin
+Vì trình duyệt đã có chìa khóa công khai `CA`-xanh, nó có thể gửi thông tin
 tới `CA` mà không sợ kẻ tấn công `MITM` biết được nội dung gốc. Tuy nhiên,
 kẻ tấn công có thể giả mạo thông tin, do hắn cũng có được chìa khóa công
-cộng `CA`-xanh giống như trình duyệt. Thực tế thì hắn làm thế sẽ bị phát
+khai `CA`-xanh giống như trình duyệt. Thực tế thì hắn làm thế sẽ bị phát
 hiện ngay, như mô tả sau đây.
 
 Đầu tiên, trình duyệt và máy phục vụ tạo ra kết nối an toàn như trong
 [Hình 3][img3] và [Hình 4][img4]. Sau đó, cả hai sẽ nhờ tới `CA` để so khớp
-chìa khóa công cộng `A`-xanh mỗi bên đang giữ xem chúng có giống nhau không.
+chìa khóa công khai `A`-xanh mỗi bên đang giữ xem chúng có giống nhau không.
 
-Như trong [Hình 8][img8], máy phục mã hóa chìa khóa công cộng `A`-xanh mà
+Như trong [Hình 8][img8], máy phục mã hóa chìa khóa công khai `A`-xanh mà
 máy đang nắm giữ với chìa khóa `H`-đỏ, sau đó gửi thông tin tới `CA` theo
 cách an toàn _(thật sự an toàn, vì kẻ tấn công `MITM` không biết khóa `H`-đỏ).
 Trình duyệt làm động tác tương tự, nhưng việc mã hóa được thực hiện
-với chìa khóa công cộng `CA`-xanh, và cũng gửi thông tin tới `CA`. Trình
+với chìa khóa công khai `CA`-xanh, và cũng gửi thông tin tới `CA`. Trình
 duyệt cũng đồng thời gửi tới `CA` một chìa khóa `R`-đỏ được tạo ra ngẫu nhiên
 trong cùng kết nối này.
 
 Sau khi nhận cùng lúc hai thông tin từ trình duyệt và máy phục vụ, `CA`
-sẽ thực hiện so sánh hai chìa khóa công cộng nhận được. Nếu chúng khớp
+sẽ thực hiện so sánh hai chìa khóa công khai nhận được. Nếu chúng khớp
 nhau, `CA` gửi thông điệp `all-clear` tới trình duyệt theo chìa khóa
 `R`-đỏ, và cũng gửi thông điệp đó tới máy phục vụ theo chìa khóa `H`-đỏ.
 Từ thời điểm này, trao đổi giữa máy phục vụ và trình duyệt thật sự an toàn.
@@ -180,12 +178,12 @@ Bạn có thể thực hiện các giao dịch ngân hàng, điền các thông 
 khoản, chìa khóa riêng trong kết nối an toàn đã thiết lập, không sự bị
 kẻ tấn công `MITM` nào nhòm ngó.
 
-Thế chuyện gì xảy ra nếu kẻ tấn công `MITM` đánh tráo chìa khóa công cộng
+Thế chuyện gì xảy ra nếu kẻ tấn công `MITM` đánh tráo chìa khóa công khai
 `A`-xanh bởi `B`-xanh để thay mặt trình duyệt gửi tới máy phục vụ, như ở
 [Hình 8][img8]? Khi điều này xảy ra, `CA` vẫn gửi trạng thái `all-clear`
 tới máy phục vụ, tuy nhiên khi `CA` gửi thông tin `all-clear` tới trình duyệt,
 thì thông tin điệp `CA` gửi đi được mã hóa bởi khóa `R`-phẩy nào đó tạo
-bởi kẻ tấn công. Nhắc lại rằng, do trình duyệt dùng chìa khóa công cộng
+bởi kẻ tấn công. Nhắc lại rằng, do trình duyệt dùng chìa khóa công khai
 `CA`-xanh để mã hóa chìa khóa `R`-đỏ, nên kẻ tấn công chịu không giải mã
 để biết được `R`-đỏ là gì; rốt cuộc là trình duyệt không thể đọc được
 thông điệp từ `CA`, và nó không thực hiện kết nối hoặc ngắt kết nối hiện
@@ -198,14 +196,28 @@ công `MITM` bị vô hiệu. Cái giá phải trả cũng không nhỏ tí nào
 cùng mà tác giả kiểm tra thì `VeriSign` đòi khoảng `400` đô một năm để
 làm bên trung gian kiểm tra và vô hiệu `MITM`. Ouch!
 
-## Vài dòng của người dịch
+## Ghi chú của người dịch
 
 Bản dịch này được thực hiện với sự cho phép của tác giả `Darel Rex Finley`.
 Bản dịch đầu tiên được công bố với giấy phép `CC BY-NC-ND 3.0`. Các thay
 đổi về giấy phép sẽ trao đổi với tác giả gốc và cập nhật sau.
 
-Trong bài này dùng `mã hóa một chiều` và `mã hóa hai chiều`. Các thuật
-ngữ chính xác hơn là `mã hóa chìa khóa công khai` và `mã hóa chìa khóa đối xứng`.
+**28/3/2015:**
+  Trong bản dịch đầu tiên, `symmetric` và `public-key encryption`
+  được dịch tương ứng thành `mã hóa hai chiều` và `mã hóa một chiều`.
+  Lý do là người dịch thấy dùng thuật ngữ `mã hóa khóa công khai` là
+  ... quá dài, và trong phương pháp này, tính _một chiều_ là đúng
+  với người chỉ biết khóa công cộng.
+
+  Do một số bạn có thắc mắc, nên người dịch đã sử dụng lại từ của trang
+  wiki tiếng Việt. Bỏ qua vấn đề này thì nhìn chung, bài dịch rất tối
+  nghĩa và khó theo dõi, cần điều chỉnh lại. Do đó, bài dịch này được
+  đánh dấu như là bản nháp.
+
+**20/2/2015:**
+  Tác giả Darel có gửi email có nói thêm phần bổ sung về trường hợp
+  hãng Lenovo cài cắm `Superfish` trên máy người dùng. Phần này chưa
+  được chuyển ngữ.
 
 TODO
 
