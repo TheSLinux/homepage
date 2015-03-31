@@ -25,7 +25,11 @@ cùng nhiều bạn khác đã kiểm tra, sử dụng và góp phần phát tri
 
 ## Tải và cấu hình pacman {#download}
 
-Vui lòng xem [hướng dẫn chi tiết tại đây](/doc/buildsystem/repo_arch/).
+Bạn sẽ sử dụng kho dành cho `ArchLinux` riêng,
+vui lòng xem [hướng dẫn chi tiết tại đây](/doc/buildsystem/repo_arch/).
+
+Bạn sẽ phải gỡ bỏ một số gói gây xung đột trên hệ thống, ví dụ gói
+`m17n-db` hoặc `uim`. Xem thêm [phần kiểm tra](#notes).
 
 Các gói cần cài bao gồm:
 
@@ -34,22 +38,40 @@ Các gói cần cài bao gồm:
 * m17n-lib
 * uim-vi
 * uim-vi-xtelex
-* uim-vi%lib32 _(để dùng với `skype`)_
 
-và bạn sẽ phải gỡ bỏ một số gói gây xung đột trên hệ thống, ví dụ gói
-`m17n-db` hoặc `uim`. Xem thêm [phần kiểm tra](#notes).
+Các gói để dùng với `skype` gồm có
+
+* uim-vi%lib32
+* libdatrie%lib32
+* libthai%lib32
+* libxaw%lib32
+* libxpm%lib32
+* m17n-lib%lib32
+* uim-vi%lib32-git-ec1fc40
+
+_(những gói này không tự động cài do vấn đề với phần phụ thuộc,
+nên bạn cần cài đặt thủ công.)_
 
 ## Lựa chọn gói uim-vi {#pkgsel}
 
 Có nhiều gói `uim-vi` như sau:
 
 * `uim-vi 1.8.7-1`
-* `uim-vi@qt5-nocandwin-git-ec1fc40 1.9-1`
+* `uim-vi@qt5-nocandwin-git-ff2dbcd 1.9-2`
 * `uim-vi%lib32-git-ec1fc40 1.9-1`
 
-Tính đến ngày 29/11/2014, hai gói ổn nhất là `uim-vi 1.8.7-1`
-_(không hỗ trợ ứng dụng `qt5`)_ và
-`uim-vi@qt5-nocandwin-git-xxx` _(hỗ trợ ứng dụng `qt5`)_.
+Cập nhật:
+
+* **Ngày 31/3/2015:**
+    `uim-vi@qt5-nocandwin-git-ff2dbcd` ổn định nhất. Bản `ec1fc40` bị lỗi
+    với `firefox > 34`. Các gói `%lib32` vẫn có thể dùng với `ec1fc40`.
+
+    Gói `uim-vi-1.8.7` là gói cuối cùng của dòng `uim-vi-1.8`. Gói này
+    gây lỗi với `firefox > 34`.
+
+* **Ngày 29/11/2014:**
+    hai gói ổn nhất là `uim-vi 1.8.7-1` và
+    `uim-vi@qt5-nocandwin-git-ec1fc40` _(hỗ trợ ứng dụng `qt5`)_.
 
 ## Cài đặt {#install}
 
