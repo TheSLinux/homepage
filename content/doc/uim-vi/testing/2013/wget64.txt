@@ -5,6 +5,14 @@
 # License: Fair license
 # Date   : 2013 July 12th
 
+cat >&2 <<-EOF
+  This script is obsolete.
+  Please configure your system to use a local repository.
+  See also: http://vn.theslinux.org/doc/buildsystem/repo_arch/.
+EOF
+
+exit 0
+
 wget -c https://raw.github.com/TheSLinux/homepage/master/content/security/pgp_security.pub
 
 wget -c http://f.theslinux.org/theslinux/p/1/126-uim-vi/126-uim-vi-1.0.0-2-any.pkg.tar.xz
