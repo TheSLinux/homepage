@@ -102,6 +102,14 @@ giữ nguyên và không thực hiện bước trên.)_
 
 ## Chỉnh môi trường {#env}
 
+### Người dùng enlightenment {#env-enlightenment}
+
+Nếu dùng `enlightenment`, bạn vào `Settings`, `Settings Panel`,
+vào phần `Languages`, chọn `Input Method Settings` rồi chỉ việc
+chọn `uim`, rồi đăng nhập hoặc khởi động lại `enlightenment`.
+
+### Người dùng khác {#env-others}
+
 Thêm các biến môi trường sau đây vào `/etc/profile`, hoặc `$HOME/.xprofile`,
 `$HOME/.xinitrc` _(hoặc bất cứ nơi nào mà bạn biết, tùy vào cấu hình chương
 trình quản lý cửa sổ của bạn; ví dụ, `openbox` bỏ qua thiết lập trong
@@ -112,9 +120,12 @@ có trong thư mục `~/.config/openbox/`.)_
     export QT_IM_MODULE='uim'
     export XMODIFIERS='@im=uim'
 
+## Các ứng dụng nền {#background-tasks}
+
 Bạn cần chạy nền hai ứng dụng `uim-systray` và `uim-xim` để có thể có thanh
 hiển thị trạng thái và để gõ được tiếng Việt trên `xterm` chẳng hạn. Bạn có
-thể thêm vào `$HOME/.xinitrc` _(hoặc `$HOME/.xprofile`)_:
+thể thêm vào `$HOME/.xinitrc` _(nếu bạn dùng `enlightenment` chẳng hạn,
+bạn phải cần thêm vào `$HOME/.xprofile`; [xem ví dụ ở đây][dot.xprofile])_:
 
     uim-xim &
     uim-systray &
@@ -193,3 +204,5 @@ kết tượng trưng thì bạn không thay đổi cấu hình `uim` bằng cá
 ## Câu hỏi, hỗ trợ {#support}
 
 Trao đổi trên các nhóm thư, kênh `irc` hoặc ở `github`.
+
+[dot.xprofile]: http://icy.theslinux.org/s/dot.profile.txt
