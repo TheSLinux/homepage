@@ -125,6 +125,9 @@ có trong thư mục `~/.config/openbox/`.)_
     export QT_IM_MODULE='uim'
     export XMODIFIERS='@im=uim'
 
+Một số bạn đặt vào trong `/etc/profile*`, tuy nhiên nên hạn chế điều này,
+vì đơn giản đó không phải là nơi _bình thường_ để lưu cấu hình.
+
 ## Các ứng dụng nền {#background-tasks}
 
 Bạn cần chạy nền hai ứng dụng `uim-systray` và `uim-xim` để có thể có thanh
@@ -157,16 +160,27 @@ Việc điều chỉnh như trên là bắt buộc để gõ tiếng Việt tron
 
 ## Thiết lập cho ứng dụng `Viber` {#viber}
 
-Phần này được đóng góp bởi Ngô Huy.
+**Cập nhật ngày 9/4/2015**:
+  Do ứng dụng `Viber` hiện tại được biên dịch với phiên bản `Qt 5.3.`,
+  trong khi phiên bản mới nhất của `uim-vi` đuợc biên dịch với `Qt 5.4`,
+  nên để dùng `uim-vi` với `Viber` bạn cần theo dõi kỹ hướng dẫn sau.
 
-Để dùng `uim-vi` với `Viber` bạn cần cài gói có hỗ trợ `qt5`. Ví dụ
-gói `uim-vi@qt5-nocandwin-git-cfd6013ebc` _(hoặc tương tự)_.
+Giả sử `viber` được cài vào thư mục `/opt/viber/`. Chạy các lệnh sau
 
-Giả sử `viber` được cài vào thư mục `/opt/viber`/. Chạy các lệnh sau
+    # Lưu ý: chỉ có hỗ trợ cho máy 64-bit
+
+    $ _URL=http://f.theslinux.org/theslinux/p/u/uim-vi/
+    $ _PACKAGE=uim-vi@qt5-nocandwin-git-ec1fc40-1.9-1-x86_64.pkg.tar.xz
+    $ _PLUGIN=usr/lib/qt/plugins/platforminputcontexts/libuimplatforminputcontextplugin.so
+
+    $ wget $_URL/$_PACKAGE $_URL/$_PACKAGE.sig
+    $ gpg --veriry $_PACKAGE.sig
+
+    $ xz -d -c $_PACKAGE | tar -xf- $_PLUGIN --strip-components=5
 
     $ mkdir -pv /opt/viber/platforminputcontexts
-    $ cd /opt/viber/platforminputcontexts/
-    $ ln -sv /usr/lib/qt/plugins/platforminputcontexts/libuimplatforminputcontextplugin.so
+    $ rm -fv /opt/viber/platforminputcontexts/$(basename $_PLUGIN)
+    $ mv -iv $(basename $_PLUGIN) /opt/viber/platforminputcontexts/
 
 Mục đích là để `Viber` nhận ra thư viện xử lý nhập nào đang được dùng.
 
