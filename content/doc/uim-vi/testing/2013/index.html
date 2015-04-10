@@ -169,6 +169,11 @@ Giả sử `viber` được cài vào thư mục `/opt/viber/`. Chạy các lệ
 
     # Lưu ý: chỉ có hỗ trợ cho máy 64-bit
 
+    $ strings /opt/viber/libQt5Core.so.5 | grep 5\.3 | grep ^Qt
+    Qt 5.3.1 (Jun 30 2014, GCC 4.6.3, 64 bit, release build)
+
+    # Nếu đúng là Qt 5.3 như trên, bạn hãy tiếp tục
+
     $ _URL=http://f.theslinux.org/theslinux/p/u/uim-vi/
     $ _PACKAGE=uim-vi@qt5-nocandwin-git-ec1fc40-1.9-1-x86_64.pkg.tar.xz
     $ _PLUGIN=usr/lib/qt/plugins/platforminputcontexts/libuimplatforminputcontextplugin.so
