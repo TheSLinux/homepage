@@ -160,6 +160,14 @@ Việc điều chỉnh như trên là bắt buộc để gõ tiếng Việt tron
 
 ## Thiết lập cho ứng dụng `Viber` {#viber}
 
+**Cập nhật ngày 10/4/2015**:
+  Nếu bạn cài `viber` từ [aur](https://aur.archlinux.org/packages/viber),
+  có thể bộ cài của bạn không kèm theo thư viện `libQt5Core` như đề cập
+  dưới đây. Khi đó, bạn có thể chỉ cần sử dụng `libuimplatforminputcontextplugin.so`
+  có trong `uim-vi` mới nhất. Tuy nhiên, cách này không đảm bảo mọi việc.
+  Tốt nhất, bạn nên tự cài `viber` bằng cách tải về tập tin `viber.deb`
+  từ trang chủ của `viber` để có đầy đủ thư viện `Qt`.
+
 **Cập nhật ngày 9/4/2015**:
   Do ứng dụng `Viber` hiện tại được biên dịch với phiên bản `Qt 5.3.`,
   trong khi phiên bản mới nhất của `uim-vi` đuợc biên dịch với `Qt 5.4`,
@@ -171,6 +179,9 @@ Giả sử `viber` được cài vào thư mục `/opt/viber/`. Chạy các lệ
 
     $ strings /opt/viber/libQt5Core.so.5 | grep 5\.3 | grep ^Qt
     Qt 5.3.1 (Jun 30 2014, GCC 4.6.3, 64 bit, release build)
+
+    $ strings /opt/viber/libQt5WebKit.so.5 | grep 5\.3
+    /libs/qt/5.3.1R/lib
 
     # Nếu đúng là Qt 5.3 như trên, bạn hãy tiếp tục
 
