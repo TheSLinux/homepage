@@ -9,18 +9,6 @@ bạn có thể dùng kho chính thức các gói như sau đây.
 1. TOC
 {:toc}
 
-## Điều chỉnh /etc/pacman.conf
-
-Thêm vào tập tin `/etc/pacman.conf` cấu hình sau
-
-    [theslinux]
-    SigLevel = Required DatabaseRequired
-    Server = http://f.theslinux.org/$repo/z/$arch/
-
-Thứ tự rất quan trọng. Bạn nên để mục `[theslinux]`
-trong phần cuối cùng của tập tin `/etc/pacman.conf`.
-Xem thêm phần **Lưu ý quan trọng** cuối bài này.
-
 ## Tải các gói cơ bản
 
 Tải về hai tập tin [theslinux-keyring][theslinux-keyring]
@@ -48,15 +36,30 @@ Dùng `gpg` để kiểm tra rằng tập tin tải về là hợp lệ
 
 Dòng `WARNING` cuối cùng có thể bỏ qua.
 
-## Cập nhật pacman
+## Cài đặt gói mới tải về
 
 Nếu không có lỗi gì, bạn có thể tiến hành cài đặt gói `theslinux-keyring`
 
+    $ rm -fv theslinux-keyring-latest-any.pkg.tar.xz.sig
     $ pacman -U theslinux-keyring-latest-any.pkg.tar.xz
 
 _(Nếu gặp bất kỳ lỗi gì ở bước này, bạn phải dừng lại và tìm kiếm sự
 giúp đỡ từ cộng đồng. Phiên bản mới nhất của `gpg` có thể buộc bạn phải
 xóa đi `/etc/pacman.d/gnupg` và chạy lại `pacman-key --init`.)_
+
+## Điều chỉnh /etc/pacman.conf
+
+Thêm vào tập tin `/etc/pacman.conf` cấu hình sau
+
+    [theslinux]
+    SigLevel = Required DatabaseRequired
+    Server = http://f.theslinux.org/$repo/z/$arch/
+
+Thứ tự rất quan trọng. Bạn nên để mục `[theslinux]`
+trong phần cuối cùng của tập tin `/etc/pacman.conf`.
+Xem thêm phần **Lưu ý quan trọng** cuối bài này.
+
+## Cập nhật pacman
 
 Sau đó, tiến hành cập nhật cho hệ thống và tìm các gói của `TheSLinux`
 
